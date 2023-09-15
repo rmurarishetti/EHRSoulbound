@@ -4,7 +4,7 @@ import {CiMedicalClipboard} from 'react-icons/ci';
 export function Navbar(){
     return(
         <nav>
-            <div className="flex justify-between  bg-[#F3F6E4]">
+            <div className="flex justify-between">
                 <div className="flex p-[25px] justify-start gap-10">
                     <div className="flex font-sans text-base font-medium text-[#0B1EB5]">
                         <CiMedicalClipboard></CiMedicalClipboard>
@@ -21,9 +21,9 @@ export function Navbar(){
                     </div>
                 </div>
                 <div className="flex p-[15px] justify-end">
-                    <div className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 hover:bg-[#3898EC]/25 font-sans text-base font-medium text-[#0B1EB5]">
+                    <button className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:border-[#ff9090] font-sans text-base font-medium text-[#0B1EB5]">
                         <Link href="/">Sign In</Link>
-                    </div>
+                    </button>
                 </div>
             </div>
             
