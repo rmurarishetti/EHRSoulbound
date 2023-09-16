@@ -10,7 +10,7 @@ export default function Home() {
           <div className="font-sans text-[65px] font-medium text-[#0B1E5B]">
             Soulbound NFT for your EHR
           </div>
-          <div className="w-3/4 pt-5 font-sans text-2xl font-extralight text-[#0B1E5B]">
+          <div className="w-3/5 pt-5 font-sans text-2xl font-extralight text-[#0B1E5B]">
             Your Decentralized Electronic Health Records on the Web3.
           </div>
           <div className="pt-5 items-center">
@@ -25,7 +25,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="w-1/2 ">
           <Image alt="homebg" src="/homeBackground.jpeg" width="600" height="400"/>
         </div>
       </div>
