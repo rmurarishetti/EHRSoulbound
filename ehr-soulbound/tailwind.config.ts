@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+const { blackA, violet, mauve } = require('@radix-ui/colors');
 
 const config: Config = {
   content: [
@@ -13,6 +14,14 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        'quicksand': ['Quicksand', 'sans-serif']
+      },
+      colors: {
+        ...blackA,
+        ...violet,
+        ...mauve,
+      }
     },
   },
   plugins: [],
