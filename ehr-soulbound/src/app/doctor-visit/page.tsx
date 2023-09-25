@@ -21,7 +21,7 @@ const DoctorVisitForm = () => {
         if (e.target.files && e.target.files[0]) {
           const i = e.target.files[0].name;
           setFileName(i);
-          setState({ ...state, [e.target.name]: i })
+          setState({ ...state, ["prescriptionfile"]: e.target.files[0] })
         } else {
           setState({ ...state, [e.target.name]: e.target.value })
         }
@@ -60,13 +60,15 @@ const DoctorVisitForm = () => {
             <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Doctor's Visit Form</h3>
         </div>
         <div className='flex basis-1/2 justify-center items-center'>
-          <Image alt="doctor-visit.png" src="/doctor-visit.png" width="600" height="400"/>
+          <a href="https://www.freepik.com/">
+            <Image alt="doctor-visit.png" src="/doctor-visit.png" width="600" height="400" style={{width: '100%', height: 'auto'}} priority/>
+          </a>
         </div>
         <div className='mx-auto w-1/2'>
-            <Form.Root className='mx-auto w-1/2' onSubmit={submitForm}>
+            <Form.Root className='mx-auto w-1/2 mt-20' onSubmit={submitForm}>
                 <Form.Field className="grid mb-10" name="userdisease">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
                         Disease
                         </Form.Label>
                         <Form.Message className="font-quicksand text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
@@ -85,7 +87,7 @@ const DoctorVisitForm = () => {
                 </Form.Field>
                 <Form.Field className="grid mb-10" name="usersymptoms">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
                         Symptoms
                         </Form.Label>
                         <Form.Message className="font-quicksand text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
@@ -104,7 +106,7 @@ const DoctorVisitForm = () => {
                 </Form.Field>
                 <Form.Field className="grid mb-10" name="usermeds">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
                         Medicines taken
                         </Form.Label>
                         <Form.Message className="font-quicksand text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
@@ -123,7 +125,7 @@ const DoctorVisitForm = () => {
                 </Form.Field>
                 <Form.Field className="grid mb-10" name="usersideeffects">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
                         Side-Effects
                         </Form.Label>
                         <Form.Message className="font-quicksand text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
@@ -142,7 +144,7 @@ const DoctorVisitForm = () => {
                 </Form.Field>
                 <Form.Field className="grid mb-10" name="userrecoverystatus">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
                         Do the symptoms persist?
                         </Form.Label>
                         <Form.Message className="font-quicksand text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
@@ -194,7 +196,7 @@ const DoctorVisitForm = () => {
                 </Form.Field>
                 <Form.Field className="grid mb-10" name="prescriptionfile">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
                         Add Prescription
                         </Form.Label>
                         <Form.Message className="font-quicksand text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
@@ -205,7 +207,7 @@ const DoctorVisitForm = () => {
                         <input type="file" id="fileupload" onChange={handleChange} hidden required/><br />
                         <label 
                         htmlFor="fileupload" 
-                        className='font-quicksand cursor-pointer box-border w-48 px-4 py-4 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full text-2xl justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6'
+                        className='font-quicksand cursor-pointer box-border w-56 px-4 py-4 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full text-2xl justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6'
                         >
                             Select file...
                         </label>
@@ -213,7 +215,7 @@ const DoctorVisitForm = () => {
                     </div>
                 </Form.Field>
                 <Form.Submit asChild>
-                    <button className="box-border w-full text-[#0B1E5B] hover:text-[#9aaff3] inline-flex h-16 items-center justify-center rounded-full bg-[#f6a290] hover:bg-[#f6d1cc]    px-4 py-4 text-2xl font-semibold leading-none focus:outline-none mt-5 mb-5 transition-colors duration-200">
+                    <button className="box-border w-full text-[#0B1E5B] hover:text-[#9aaff3] inline-flex h-16 items-center justify-center rounded-full bg-[#f6a290] hover:bg-[#f6d1cc] px-4 py-4 text-2xl font-semibold leading-none focus:outline-none mt-5 mb-5 transition-colors duration-200">
                         Submit
                     </button>
                 </Form.Submit>
