@@ -16,9 +16,12 @@ const DoctorVisitForm = () => {
         prescriptionfile: {}
     });
 
+    const [filename, setFileName] = useState<string>("");
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        if (e.target.files) {
-          setState({ ...state, [e.target.name]: e.target.files[0] })
+        if (e.target.files && e.target.files[0]) {
+          const i = e.target.files[0].name;
+          setFileName(i);
+          setState({ ...state, [e.target.name]: i })
         } else {
           setState({ ...state, [e.target.name]: e.target.value })
         }
@@ -27,15 +30,6 @@ const DoctorVisitForm = () => {
     const handleStatusChange = (e: string) => {
         setState({...state, ["userrecoverystatus"]: e})
     }
-
-    const [filename, setFileName] = useState<string>("");
-    const handleFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            const i = event.target.files[0].name;
-            setFileName(i);
-            setState({ ...state, ["prescriptionfile"]: event.target.files[0] });
-        }
-    };
 
     async function submitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -208,7 +202,7 @@ const DoctorVisitForm = () => {
                         </Form.Message>
                     </div>
                     <div className='flex items-center'>
-                        <input type="file" id="fileupload" onChange={handleFile} hidden required/><br />
+                        <input type="file" id="fileupload" onChange={handleChange} hidden required/><br />
                         <label 
                         htmlFor="fileupload" 
                         className='font-quicksand cursor-pointer box-border w-48 px-4 py-4 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full text-2xl justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6'
