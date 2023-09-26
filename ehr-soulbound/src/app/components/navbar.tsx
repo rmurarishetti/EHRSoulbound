@@ -21,7 +21,7 @@ export function Navbar(){
                     </div>
                 </div>
                 <div className="flex p-[15px] justify-end">
-                    <div className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 hover:bg-[#3898EC]/25 font-sans text-base font-medium text-[#0B1E5B]">
+                    <button className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:border-[#ff9090] font-sans text-base font-medium text-[#0B1E5B]">
                         <Link href="/">Sign In</Link>
                     </button>
                 </div>

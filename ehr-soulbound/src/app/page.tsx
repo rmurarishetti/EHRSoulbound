@@ -4,7 +4,7 @@ import {AiOutlineMail} from "react-icons/ai";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex-col items-center bg-[#F3F6E4]">
+    <main className="min-h-screen flex-col items-center">
       <div className="flex justify-start p-10">
         <div className="pl-10 w-1/2">
           <div className="font-sans text-[65px] font-medium text-[#0B1E5B]">
@@ -25,8 +25,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-1/2 ">
-          <Image alt="homebg" src="/homeBackground.jpeg" width="600" height="400"/>
+        <div className="w-1/2">
+          <Image alt="homebg" src="/homeBackground.png" width="600" height="400"/>
         </div>
       </div>
     </main>
