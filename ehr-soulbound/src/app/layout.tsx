@@ -1,6 +1,6 @@
 import './globals.css'
 import { Navbar } from './components/navbar'
-
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export default function RootLayout({
   children,
@@ -9,6 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
+      <UserProvider>
       <body>
         <div>
           <Navbar/>
@@ -17,6 +18,7 @@ export default function RootLayout({
             </main>
         </div>
       </body>
+      </UserProvider>
     </html>
   )
 }
