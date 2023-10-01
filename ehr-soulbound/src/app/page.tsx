@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import {AiOutlineMail} from "react-icons/ai";
+import prisma from "../../lib/prisma";
 
-export default function Home() {
+export default async function Home() {
+  const user = await prisma.user.findFirst({where:{email:'test@test.com'}})
   return (
     <main className="min-h-screen flex-col items-center">
       <div className="flex justify-start p-10">
