@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {AiOutlineMail} from "react-icons/ai";
+import { AiOutlineMail } from "react-icons/ai";
 
 export default function Home() {
   return (
