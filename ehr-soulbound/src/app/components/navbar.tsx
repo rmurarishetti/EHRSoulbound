@@ -8,7 +8,7 @@ export function Navbar(){
 
     return(
         <nav>
-            <div className="flex justify-between bg-[#F3F6E4]">
+            <div className="flex justify-between bg-[#F3F6EF]">
                 <div className="flex p-[25px] justify-start gap-10">
                     <div className="flex font-sans text-base font-medium text-[#0B1E5B]">
                         <CiMedicalClipboard></CiMedicalClipboard>
