@@ -10,28 +10,30 @@ export function Navbar(){
         <nav>
             <div className="flex justify-between bg-[#F3F6EF]">
                 <div className="flex p-[25px] justify-start gap-10">
-                    <div className="flex font-sans text-base font-medium text-[#0B1E5B]">
+                    <div className="flex font-quicksand text-base font-medium text-[#0B1E5B]">
                         <CiMedicalClipboard></CiMedicalClipboard>
                         <Link href="/">SoulEHR</Link>
                     </div>
-                    <div className="flex font-sans text-base font-medium text-[#0B1E5B]">
+                    <div className="flex font-quicksand text-base font-medium text-[#0B1E5B]">
                         <Link href="/">About</Link>
                     </div>
-                    <div className="flex font-sans text-base font-medium text-[#0B1E5B]">
+                    <div className="flex font-quicksand text-base font-medium text-[#0B1E5B]">
                         <Link href="/user-page">Patients</Link>
                     </div>
-                    <div className="flex font-sans text-base font-medium text-[#0B1E5B]">
+                    <div className="flex font-quicksand text-base font-medium text-[#0B1E5B]">
                         <Link href="/">Doctors</Link>
                     </div>
                 </div>
                 <div className="flex p-[15px] justify-end">
                     {!isLoading && !user &&
-                    (<div className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 hover:bg-[#3898EC]/25 font-sans text-base font-medium text-[#0B1E5B]">
-                        <Link href="/api/auth/login">Sign In</Link>
-                    </div>)}
+                    (
+                        <div>
+                            <Link className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4] hover:bg-[#eadbd3] font-quicksand text-base font-medium text-[#0B1E5B]" href="/api/auth/login">Sign In</Link>
+                        </div>
+                    )}
                     {user&&(
-                    <div className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 hover:bg-[#3898EC]/25 font-sans text-base font-medium text-[#0B1E5B]">
-                        <Link href="/api/auth/logout">Sign Out</Link>
+                    <div>
+                        <Link className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4] hover:bg-[#eadbd3] font-quicksand text-base font-medium text-[#0B1E5B]" href="/api/auth/logout">Sign Out</Link>
                     </div>)}
                 </div>
             </div>

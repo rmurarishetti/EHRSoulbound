@@ -79,7 +79,7 @@ const DoctorVisitForm = () => {
                     </div>
                     <Form.Control asChild>
                         <input
-                        className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
+                        className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
                         onChange={handleChange} 
                         value={state.userdisease}
                         placeholder='Ex: Hypothyroidism'
@@ -98,7 +98,7 @@ const DoctorVisitForm = () => {
                     </div>
                     <Form.Control asChild>
                         <input
-                        className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
+                        className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
                         onChange={handleChange} 
                         value={state.usersymptoms}
                         placeholder='Ex: Fever, Nausea'
@@ -117,7 +117,7 @@ const DoctorVisitForm = () => {
                     </div>
                     <Form.Control asChild>
                         <input
-                        className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
+                        className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
                         onChange={handleChange} 
                         value={state.usermeds}
                         placeholder='Ex: DOLO 650'
@@ -136,7 +136,7 @@ const DoctorVisitForm = () => {
                     </div>
                     <Form.Control asChild>
                         <input
-                        className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
+                        className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
                         onChange={handleChange} 
                         value={state.usersideeffects}
                         placeholder='Ex: Headache'
@@ -157,7 +157,7 @@ const DoctorVisitForm = () => {
                         <Select.Root onValueChange={handleStatusChange} defaultValue="choose an option...">
                             <Select.Trigger asChild aria-label="choose recovery status">
                                 <button 
-                                className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] resize-none select-none"
+                                className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none"
                                 >
                                     <Select.Value/>
                                     <Select.Icon className="ml-auto">
@@ -211,7 +211,7 @@ const DoctorVisitForm = () => {
                     <div className='flex items-center'>
                         <label 
                         htmlFor="fileupload" 
-                        className='font-quicksand cursor-pointer box-border w-56 px-4 py-4 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full text-2xl justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_1px_rgba(255,144,144,1)] focus:shadow-[0_0_0_2px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6'
+                        className='font-quicksand cursor-pointer box-border w-56 px-4 py-4 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full text-2xl justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none'
                         >
                             Select file...
                         </label>
