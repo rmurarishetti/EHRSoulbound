@@ -15,3 +15,38 @@ model User{
   email String @unique
   name String?
 }
+
+model Patient{
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String?
+  HealthRecord HealthRecord[]
+}
+
+model Doctor{
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String?
+  specialization String?
+  HealthRecord HealthRecord[]
+}
+
+model LabRecord {
+  id Int @id @default(autoincrement())
+  date DateTime
+  description String?
+  healthRecord HealthRecord?
+}
+
+model HealthRecord {
+  id Int @id @default(autoincrement())
+  patient Patient @relation(fields: [patientId], references: [id])
+  patientId Int
+  doctor Doctor @relation(fields: [doctorId], references: [id])
+  doctorId Int
+  uploadDate DateTime
+  consentExpiry DateTime
+  labRecord LabRecord @relation(fields: [labRecordId], references: [id])
+  labRecordId Int @unique
+  remarks String?
+}
