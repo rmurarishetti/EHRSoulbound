@@ -18,9 +18,17 @@ export default function page() {
     const [filename, setFileName] = useState<string>("");
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files && e.target.files[0]) {
-          const i = e.target.files[0].name;
-          setFileName(i);
-          setState({ ...state, ["labreportfile"]: e.target.files[0] })
+            var allowedTypes = ['image/jpeg', 'image/png'];
+            if (e.target.files && e.target.files[0]) {
+                if (!allowedTypes.includes(e.target.files[0].type)) {
+                     alert('Invalid file type. Please upload a JPEG or PNG file.');
+                }
+                else {
+                    const i = e.target.files[0].name;
+                    setFileName(i);
+                    setState({ ...state, ["labreportfile"]: e.target.files[0] })
+                }
+            }
         }
     }
 
@@ -120,7 +128,7 @@ export default function page() {
                         </Form.Message>
                     </div>
                     <Form.Control asChild>
-                        <input type="file" id="fileupload" onChange={handleChange} hidden required/>
+                        <input type="file" id="fileupload" onChange={handleChange} accept="image/*" hidden required/>
                     </Form.Control>
                     <div className='flex items-center'>
                         <label 
