@@ -18,4 +18,4 @@ export default withPageAuthRequired(async function UserPage() {
       </div>
     </div>
   )
-}, { returnTo: '/user-page' });
+}, { returnTo: '/user/home' });
