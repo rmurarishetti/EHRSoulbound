@@ -18,10 +18,10 @@ export function Navbar(){
                         <Link href="/">About</Link>
                     </div>
                     <div className="flex font-quicksand text-base font-medium text-[#0B1E5B]">
-                        <Link href="/user-page">Patients</Link>
+                        <Link href="/user/home">Patients</Link>
                     </div>
                     <div className="flex font-quicksand text-base font-medium text-[#0B1E5B]">
-                        <Link href="/">Doctors</Link>
+                        <Link href="/doctor/home">Doctors</Link>
                     </div>
                 </div>
                 <div className="flex p-[15px] justify-end">
