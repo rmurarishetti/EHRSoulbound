@@ -15,6 +15,7 @@ const DoctorVisitForm = () => {
         usermeds: "",
         usersideeffects: "",
         userrecoverystatus: "",
+        doctorname: "",
         prescriptionfile: {}
     });
 
@@ -36,7 +37,12 @@ const DoctorVisitForm = () => {
     }
 
     const handleStatusChange = (e: string) => {
-        setState({...state, ["userrecoverystatus"]: e})
+        if(e=='no' || e=='yes') {
+            setState({...state, ["userrecoverystatus"]: e})
+        }
+        else {
+            setState({...state, ["doctorname"]: e})
+        }
     }
 
     async function submitForm(event: FormEvent<HTMLFormElement>) {
@@ -178,6 +184,58 @@ const DoctorVisitForm = () => {
                                 <Select.Viewport className="w-full bg-[#f2e9e4] rounded-3xl shadow-[0_0_0_2px_rgba(255,144,144,1)]">
                                     <Select.Group>
                                         {["Choose an option...", "Yes", "No"].map(
+                                            (f, i) => (
+                                                <Select.Item
+                                                disabled={f === "Choose an option..."}
+                                                key={`${f}-${i}`}
+                                                value={f.toLowerCase()}
+                                                className=
+                                                "font-quicksand relative flex items-center px-4 py-4 h-16 rounded-full text-2xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
+                                                >
+                                                    <Select.ItemText>{f}</Select.ItemText>
+                                                    <Select.ItemIndicator className="ml-auto inline-flex items-center">
+                                                        <CheckIcon />
+                                                    </Select.ItemIndicator>
+                                                </Select.Item>
+                                            )
+                                        )}
+                                    </Select.Group>
+                                </Select.Viewport>
+                                <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
+                                    <FontAwesomeIcon icon={faChevronDown} size="sm" style={{color: '#0B1E5B'}}/>
+                                </Select.ScrollDownButton>
+                            </Select.Content>
+                        </Select.Root>
+                    </Form.Control>
+                </Form.Field>
+                <Form.Field className="grid mb-10" name="doctorname">
+                    <div className="flex items-baseline justify-between">
+                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
+                            Choose Doctor
+                        </Form.Label>
+                        <Form.Message className="font-quicksand text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
+                            Please pick a doctor
+                        </Form.Message>
+                    </div>
+                    <Form.Control asChild>
+                        <Select.Root onValueChange={handleStatusChange} defaultValue="choose an option...">
+                            <Select.Trigger asChild aria-label="choose doctor">
+                                <button 
+                                className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none"
+                                >
+                                    <Select.Value/>
+                                    <Select.Icon className="ml-auto">
+                                        <ChevronDownIcon />
+                                    </Select.Icon>
+                                </button>
+                            </Select.Trigger>
+                            <Select.Content>
+                                <Select.ScrollUpButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
+                                    <ChevronUpIcon />
+                                </Select.ScrollUpButton>
+                                <Select.Viewport className="w-full bg-[#f2e9e4] rounded-3xl shadow-[0_0_0_2px_rgba(255,144,144,1)]">
+                                    <Select.Group>
+                                        {["Choose an option...", "Doc1", "Doc2", "Doc3"].map(
                                             (f, i) => (
                                                 <Select.Item
                                                 disabled={f === "Choose an option..."}
