@@ -37,12 +37,14 @@ const DoctorVisitForm = () => {
     }
 
     const handleStatusChange = (e: string) => {
+
         if(e=='no' || e=='yes') {
             setState({...state, ["userrecoverystatus"]: e})
         }
         else {
             setState({...state, ["doctorname"]: e})
         }
+
     }
 
     async function submitForm(event: FormEvent<HTMLFormElement>) {
@@ -208,6 +210,7 @@ const DoctorVisitForm = () => {
                         </Select.Root>
                     </Form.Control>
                 </Form.Field>
+
                 <Form.Field className="grid mb-10" name="doctorname">
                     <div className="flex items-baseline justify-between">
                         <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
