@@ -34,19 +34,45 @@ model Doctor{
 model LabRecord {
   id Int @id @default(autoincrement())
   date DateTime
-  description String?
-  healthRecord HealthRecord?
+  labTest String?
+  labReport LabReport?
+  healthRecordId Int @unique
+  HealthRecord HealthRecord @relation(fields: [healthRecordId], references: [id])
 }
 
-model HealthRecord {
+model LabReport{
+  id       String @default(cuid()) @id
+  publicId String @unique
+  format   String
+  version  String
+  LabRecordId Int @unique
+  LabRecord LabRecord @relation(fields: [LabRecordId], references: [id])
+}
+
+model HealthRecord{
   id Int @id @default(autoincrement())
+  patientId Int @unique
   patient Patient @relation(fields: [patientId], references: [id])
-  patientId Int
+  doctorId Int @unique
   doctor Doctor @relation(fields: [doctorId], references: [id])
-  doctorId Int
   uploadDate DateTime
   consentExpiry DateTime
-  labRecord LabRecord @relation(fields: [labRecordId], references: [id])
-  labRecordId Int @unique
+  LabRecord LabRecord[]
   remarks String?
+  disease String?
+  symptoms String?
+  medsTaken String?
+  sideEffects String?
+  symptomsPersist Boolean?
+  HealthReport HealthReport[]
 }
+
+model HealthReport {
+  id       String @default(cuid()) @id
+  publicId String @unique
+  format   String
+  version  String
+  HealthRecordId Int @unique
+  HealthRecord HealthRecord @relation(fields: [HealthRecordId], references: [id])
+}
+//Prescription is HealthReport
