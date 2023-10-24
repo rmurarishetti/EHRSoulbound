@@ -5,6 +5,7 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 
 export function Navbar(){
     const { user, isLoading } = useUser();
+    console.log(user);
 
     return(
         <nav>
