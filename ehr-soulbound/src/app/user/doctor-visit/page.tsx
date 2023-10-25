@@ -12,6 +12,14 @@ const DoctorVisitForm = () => {
     
     const formData = new FormData();
 
+    // async function getDoctors() {
+    //     const doctors = await fetch("/api/getDoctors", {
+    //         method: 'GET',
+            
+    //     }).then((res) => res.json());
+    //     console.log(doctors);
+    // }
+
     const [state, setState] = useState({
         userdisease: "",
         usersymptoms: "",
@@ -58,6 +66,7 @@ const DoctorVisitForm = () => {
 
     async function submitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        //getDoctors();
 
         formData.append("userdisease", state.userdisease);
         formData.append("usersymptoms", state.usersymptoms);
