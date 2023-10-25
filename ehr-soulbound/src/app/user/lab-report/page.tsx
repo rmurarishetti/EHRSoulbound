@@ -8,7 +8,9 @@ import { CheckIcon, ChevronUpIcon, ChevronDownIcon } from '@radix-ui/react-icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-export default function page() {
+const LabReport = () => {
+
+    const formData = new FormData();
 
     const [state, setState] = useState({
         labtest: "",
@@ -17,6 +19,7 @@ export default function page() {
     });
 
     const [filename, setFileName] = useState<string>("");
+    const [imageUploaded, setImageUploaded] = useState<File>();
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         if (e.target.files && e.target.files[0]) {
             var allowedTypes = ['image/jpeg', 'image/png'];
@@ -27,6 +30,7 @@ export default function page() {
                 else {
                     const i = e.target.files[0].name;
                     setFileName(i);
+                    setImageUploaded(e.target.files[0]);
                     setState({ ...state, ["labreportfile"]: e.target.files[0] })
                 }
             }
@@ -46,16 +50,17 @@ export default function page() {
 
     async function submitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        const response = await fetch("/api/form", {
+
+        formData.append("labtest", state.labtest);
+        formData.append("healthrecord", state.healthrecord);
+        formData.append("labreportfile", imageUploaded as File);
+
+        const response = await fetch("/api/labReport", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(state),
+            body: formData,
         })
         if (response.ok) {
             console.log("Form data sent");
-            console.log(state)
         }
         if (!response.ok) {
             console.log("Error sending data");
@@ -210,3 +215,5 @@ export default function page() {
     </div>
   )
 }
+
+export default LabReport;   
