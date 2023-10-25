@@ -9,6 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 const DoctorVisitForm = () => {
+    
+    const formData = new FormData();
+
     const [state, setState] = useState({
         userdisease: "",
         usersymptoms: "",
@@ -20,6 +23,7 @@ const DoctorVisitForm = () => {
     });
 
     const [filename, setFileName] = useState<string>("");
+    const [imageUploaded, setImageUploaded] = useState<File>();
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         var allowedTypes = ['image/jpeg', 'image/png'];
         if (e.target.files && e.target.files[0]) {
@@ -29,10 +33,12 @@ const DoctorVisitForm = () => {
             else {
                 const i = e.target.files[0].name;
                 setFileName(i);
+                setImageUploaded(e.target.files[0]);
                 setState({ ...state, ["prescriptionfile"]: e.target.files[0] })
             }
         } else {
           setState({ ...state, [e.target.name]: e.target.value })
+          formData.append(e.target.name, e.target.value);
         }
     }
 
@@ -40,30 +46,33 @@ const DoctorVisitForm = () => {
 
         if(e=='no' || e=='yes') {
             setState({...state, ["userrecoverystatus"]: e})
+            formData.append("userrecoverystatus", e);
         }
         else {
             setState({...state, ["doctorname"]: e})
+            formData.append("doctorname", e);
+            console.log(formData.get("doctorname"));
         }
 
     }
 
     async function submitForm(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault()
-        // const formData = new FormData(event.currentTarget)
-        // for (let [key, value] of Object.entries(state)) {
-        //     formData.append(key, value);
-        // }
+        event.preventDefault();
 
-        const response = await fetch("/api/form", {
+        formData.append("userdisease", state.userdisease);
+        formData.append("usersymptoms", state.usersymptoms);
+        formData.append("usermeds", state.usermeds);
+        formData.append("usersideeffects", state.usersideeffects);
+        formData.append("userrecoverystatus", state.userrecoverystatus);
+        formData.append("doctorname", state.doctorname);
+        formData.append("prescriptionfile", imageUploaded as File);
+
+        const response = await fetch("/api/docVisit", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(state),
+            body: formData,
         })
         if (response.ok) {
             console.log("Form data sent");
-            console.log(state)
         }
         if (!response.ok) {
             console.log("Error sending data");
