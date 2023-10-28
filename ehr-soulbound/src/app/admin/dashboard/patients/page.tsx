@@ -20,9 +20,9 @@ const page = () => {
 			</div>
 			<div className="w-3/4 flex justify-between text-[#0B1E5B] text-xs font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.3)" }}>
 				<div>1</div>
-				<div>LOL</div>
-				<div>LOL</div>
-				<div>LOL</div>
+				<div>Data</div>
+				<div>Data</div>
+				<div>Data</div>
 			</div>
 		</div>
     </div>

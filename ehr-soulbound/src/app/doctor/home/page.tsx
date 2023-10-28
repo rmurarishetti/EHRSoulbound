@@ -7,7 +7,8 @@ export default function page() {
           <div>
             <h3 className='font-quicksand font-medium text-4xl px-5 py-5 text-[#0B1E5B]'>Welcome, Dr.XYZ</h3>
           </div> 
-          <div className="w-3/4 flex justify-between text-[#f2e9e4]/90 text-xs font-bold p-5 mb-auto rounded-full" style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}>
+          <div className="w-3/4 flex justify-between text-[#f2e9e4]/90 text-xs font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}>
+            <div>S.No.</div>
             <div>Patient Name</div>
             <div>Disease</div>
             <div>Symptoms</div>
@@ -17,6 +18,18 @@ export default function page() {
             <div>Prescription File</div>
             <div>Lab Test</div>
             <div>Lab Report File</div>
+          </div>
+          <div className="w-3/4 flex justify-between text-[#0B1E5B] text-xs font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.3)" }}>
+            <div>1</div>
+            <div>Data</div>
+            <div>Data</div>
+            <div>Data</div>
+            <div>Data</div>
+            <div>Data</div>
+            <div>Data</div>
+            <div>Data</div>
+            <div>Data</div>
+            <div>Data</div>
           </div>
         </div>
     </div>
