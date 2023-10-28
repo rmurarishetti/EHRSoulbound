@@ -1,13 +1,13 @@
-import { useState } from 'react'
+
 
 export default function page() {
   return (
     <div className='min-h-screen flex flex-row flex-wrap'>
-        <div className='flex basis-full justify-center items-center'>
-            <h3 className='font-quicksand text-5xl px-5 py-5 mb-auto font-medium text-[#0B1E5B]'>Welcome, Dr.XYZ</h3>
-        </div>
-        <div className='flex basis-full justify-center items-center'>
-          <div className="w-3/4 flex h-[60px] justify-between text-[#635dff] font-bold px-10 pt-5 mb-auto rounded-xl" style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}>
+        <div className='flex flex-col basis-full justify-center items-center'>
+          <div>
+            <h3 className='font-quicksand font-medium text-4xl px-5 py-5 text-[#0B1E5B]'>Welcome, Dr.XYZ</h3>
+          </div> 
+          <div className="w-3/4 flex justify-between text-[#f2e9e4]/90 text-xs font-bold p-5 mb-auto rounded-full" style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}>
             <div>Patient Name</div>
             <div>Disease</div>
             <div>Symptoms</div>
@@ -18,7 +18,7 @@ export default function page() {
             <div>Lab Test</div>
             <div>Lab Report File</div>
           </div>
-        </div>      
+        </div>
     </div>
   )
 }

@@ -71,7 +71,7 @@ const LabReport = () => {
     <div className='min-h-screen flex flex-row flex-wrap'>
         <div className='flex basis-1/2 justify-center items-center'>
           <a href="https://www.freepik.com/">
-            <Image alt="lab-report.png" src="/lab-report.png" width="998" height="652" style={{width: '100%', height: 'auto'}} priority/>
+            <Image alt="lab-report.png" src="/lab-report.png" width="6189" height="4038" style={{width: '100%', height: 'auto'}} priority/>
           </a>
         </div>
         <div className='flex basis-1/2 justify-center items-center'>

@@ -95,7 +95,7 @@ const DoctorVisitForm = () => {
         </div>
         <div className='flex basis-1/2 justify-center items-center'>
           <a href="https://www.freepik.com/">
-            <Image alt="doctor-visit.png" src="/doctor-visit.png" width="600" height="400" style={{width: '100%', height: 'auto'}} priority/>
+            <Image alt="doctor-visit.png" src="/doctor-visit.png" width="3000" height="2000" style={{width: '100%', height: 'auto'}} priority/>
           </a>
         </div>
         <div className='mx-auto w-1/2'>
