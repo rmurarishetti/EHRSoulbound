@@ -12,14 +12,14 @@ const page = () => {
         	</div>
 		</div>
 		<div className='flex flex-col basis-full justify-center items-center'>
-        	<div className="w-3/4 flex justify-between text-[#f2e9e4]/90 text-xs font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}>
+        	<div className="w-3/4 flex justify-between text-[#f2e9e4]/90 text-xs font-quicksand font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}>
                 <div>S.No.</div>
             	<div>Doctor ID</div>
 				<div>Doctor Name</div>
                 <div>Specialization</div>
 				<div>Doctor E-Mail</div>
 			</div>
-            <div className="w-3/4 flex justify-between text-[#0B1E5B] text-xs font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.3)" }}>
+            <div className="w-3/4 flex justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.3)" }}>
 				<div>1</div>
 				<div>Data</div>
 				<div>Data</div>
