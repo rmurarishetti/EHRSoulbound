@@ -20,7 +20,7 @@ export default function page() {
             <div>Lab Report File</div>
             <div>Remarks</div>
           </div>
-          <div className="w-4/5 flex justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.3)" }}>
+          <div className="w-4/5 flex justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70">
             <div>1</div>
             <div>Data</div>
             <div>Data</div>
