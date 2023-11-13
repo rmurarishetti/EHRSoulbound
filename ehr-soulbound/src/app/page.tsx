@@ -32,17 +32,22 @@ export default async function Home() {
           </div>
         </div>
         <div className="flex flex-row flex-wrap px-10 my-20 font-quicksand font-medium text-[#0B1E5B]">
-          <div className="flex w-1/2 pr-10 text-5xl">
-            What We Are
+          <div className="w-[49%] pr-10">
+            <div className="text-5xl">
+              What We Are
+            </div>
+            <div className="pt-5 text-lg">
+              eLekha is a distinguished platform that specialises in facilitating therapeutic interactions through the medium of written communication.
+            </div>
           </div>
-          <div className="flex w-1/2 pl-10 text-5xl">
-            Our Motto
-          </div>
-          <div className="flex w-1/2 pt-5 pr-10 text-lg">
-            eLekha is a distinguished platform that specialises in facilitating therapeutic interactions through the medium of written communication.
-          </div>
-          <div className="flex w-1/2 pt-5 pl-10 text-lg">
-            We are committed to providing a secure and private environment for individuals seeking professional support and guidance for their mental health and emotional well-being.
+          <div className="h-full w-1 bg-[#0B1E5B]"></div>
+          <div className="w-[49%] pl-20">
+            <div className="text-5xl">
+              Our Motto
+            </div>
+            <div className="pt-5 text-lg">
+              We are committed to providing a secure and private environment for individuals seeking professional support and guidance for their mental health and emotional well-being.
+            </div>
           </div>
         </div>
         <div className="flex flex-wrap justify-start font-medium text-[#0B1E5B] my-20">
