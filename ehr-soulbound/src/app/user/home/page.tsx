@@ -3,6 +3,8 @@ import Link from "next/link";
 
 export default withPageAuthRequired(async function UserPage() {
   
+  const { user } = await getSession();
+  console.log(user.email, user.name);
   return (
     <div className="flex justify-center items-center">
       <div className="flex justify-between">

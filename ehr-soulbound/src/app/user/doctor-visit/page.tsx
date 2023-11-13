@@ -1,5 +1,5 @@
 'use client'
-import { FormEvent } from 'react'
+import { FormEvent, useEffect } from 'react'
 import { useState } from 'react'
 import * as Form from '@radix-ui/react-form'
 import * as Select from '@radix-ui/react-select'
@@ -7,18 +7,25 @@ import { CheckIcon, ChevronUpIcon, ChevronDownIcon } from '@radix-ui/react-icons
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import axios from "axios";
 
 const DoctorVisitForm = () => {
     
     const formData = new FormData();
 
-    // async function getDoctors() {
-    //     const doctors = await fetch("/api/getDoctors", {
-    //         method: 'GET',
-            
-    //     }).then((res) => res.json());
-    //     console.log(doctors);
-    // }
+    const [options, setOptions] = useState<string[]>(["Choose an option..."]);
+    useEffect(() => {
+        async function fetchDoctors(){
+            const { data } = await axios.get("/api/getDoctors/");
+            const results = []
+            for (const doctor of data) {
+                results.push(doctor.name);
+            }
+            console.log(results)
+            setOptions(results);
+        }
+        fetchDoctors();
+    }, []);
 
     const [state, setState] = useState({
         userdisease: "",
@@ -66,7 +73,6 @@ const DoctorVisitForm = () => {
 
     async function submitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        //getDoctors();
 
         formData.append("userdisease", state.userdisease);
         formData.append("usersymptoms", state.usersymptoms);
@@ -256,7 +262,7 @@ const DoctorVisitForm = () => {
                                 </Select.ScrollUpButton>
                                 <Select.Viewport className="w-full bg-[#f2e9e4] rounded-3xl shadow-[0_0_0_2px_rgba(255,144,144,1)]">
                                     <Select.Group>
-                                        {["Choose an option...", "Doc1", "Doc2", "Doc3"].map(
+                                        {options.map(
                                             (f, i) => (
                                                 <Select.Item
                                                 disabled={f === "Choose an option..."}
