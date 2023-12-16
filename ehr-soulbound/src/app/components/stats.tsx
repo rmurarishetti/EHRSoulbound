@@ -13,12 +13,12 @@ export function Stats(props: statProps){
     return(
         <Tilt>
             <Link href={props.link}>
-            <div className="w-[200px] h-[200px] border-[3px] border-[#F6D1CC] rounded-lg bg-[#F3F6EF] p-5 hover:bg-[#3898EC]/25 active:bg-[#3898EC]/25 focus:outline-none focus:ring focus:ring-[#F6D1CC]/300">
-                <div className="font-sans text-[25px] font-medium text-[#0B1E5B] pb-5">
+            <div className="w-40 border-[3px] border-[rgba(255,174,174,1)] hover:border-[rgba(255,144,144,1)] focus:border-[rgba(255,144,144,1)] rounded-lg bg-[#f2e9e4] p-5 focus:outline-none focus:ring focus:ring-[#F6D1CC]/300">
+                <div className="flex justify-center font-quicksand text-lg font-semibold text-[#0B1E5B] pb-5">
                     {props.title}
                 </div>
                 <div className="flex justify-center">
-                    <div className="font-sans text-[25px] font-medium text-[#0B1E5B]">
+                    <div className="font-quicksand text-lg font-bold text-[#0B1E5B]">
                         {props.count}
                     </div>
                 </div>
