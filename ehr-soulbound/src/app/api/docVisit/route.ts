@@ -1,17 +1,47 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
+import { PrismaClient } from '@prisma/client';
 
-export async function POST(req: Request){
+const prisma = new PrismaClient()
+
+export async function POST(req: NextRequest){
     const formData = await req.formData();
-    const imageFile = formData.get('prescriptionfile');
-    const imageData = new FormData();
-    imageData.append('file', imageFile as File);
-    imageData.append('upload_preset', 'doctorvisit');
-    const imageUploaded = await fetch( "https://api.cloudinary.com/v1_1/dga8afqxx/image/upload",{
-        method: 'POST',
-        body: imageData,
-    }).then(res => res.json())
-    
-    console.log(imageUploaded)
-    
+    const imageFile: File | null = formData.get('prescriptionfile') as unknown as File;
+    if (!imageFile) {
+        return NextResponse.json({success: false})
+    }
+    let boolval = true;
+    if (formData.getAll('userrecoverystatus')[0].toString()=='no') {
+        boolval = false;
+    }
+    const imageBuffer = Buffer.from(await imageFile.arrayBuffer())
+    const result = await prisma.healthRecord.upsert({
+        where: { patientId: 1 }, //Modify this
+        update: {
+            patientId: 1, //Modify this
+            doctorId: parseInt(formData.getAll('doctorid')[0].toString()),
+            uploadDate: new Date(),
+            consentExpiry: new Date(), //Modify this
+            remarks: "ok", //Modify this
+            disease: formData.getAll('userdisease')[0].toString(),
+            symptoms: formData.getAll('usersymptoms')[0].toString(),
+            medsTaken: formData.getAll('usermeds')[0].toString(),
+            sideEffects: formData.getAll('usersideeffects')[0].toString(),
+            symptomsPersist: boolval,
+            imageFile: imageBuffer,
+        },
+        create:{
+            patientId: 1, //Modify this
+            doctorId: parseInt(formData.getAll('doctorid')[0].toString()),
+            uploadDate: new Date(),
+            consentExpiry: new Date(), //Modify this
+            remarks: "ok", //Modify this
+            disease: formData.getAll('userdisease')[0].toString(),
+            symptoms: formData.getAll('usersymptoms')[0].toString(),
+            medsTaken: formData.getAll('usermeds')[0].toString(),
+            sideEffects: formData.getAll('usersideeffects')[0].toString(),
+            symptomsPersist: boolval,
+            imageFile: imageBuffer,
+        },
+    })
     return NextResponse.json({ message: "success" })
 }

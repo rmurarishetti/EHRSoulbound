@@ -26,7 +26,7 @@ const DoctorVisitForm = () => {
         usermeds: "",
         usersideeffects: "",
         userrecoverystatus: "",
-        doctorname: "",
+        doctorid: "",
         prescriptionfile: {}
     });
 
@@ -57,9 +57,8 @@ const DoctorVisitForm = () => {
             formData.append("userrecoverystatus", e);
         }
         else {
-            setState({...state, ["doctorname"]: e})
-            formData.append("doctorname", e);
-            console.log(formData.get("doctorname"));
+            setState({...state, ["doctorid"]: e})
+            formData.append("doctorid", e);
         }
 
     }
@@ -73,7 +72,7 @@ const DoctorVisitForm = () => {
         formData.append("usermeds", state.usermeds);
         formData.append("usersideeffects", state.usersideeffects);
         formData.append("userrecoverystatus", state.userrecoverystatus);
-        formData.append("doctorname", state.doctorname);
+        formData.append("doctorid", state.doctorid);
         formData.append("prescriptionfile", imageUploaded as File);
 
         const response = await fetch("/api/docVisit", {
@@ -228,7 +227,7 @@ const DoctorVisitForm = () => {
                         </Select.Root>
                     </Form.Control>
                 </Form.Field>
-                <Form.Field className="grid mb-10" name="doctorname">
+                <Form.Field className="grid mb-10" name="doctorid">
                     <div className="flex items-baseline justify-between">
                         <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
                             Choose Doctor
@@ -238,7 +237,7 @@ const DoctorVisitForm = () => {
                         </Form.Message>
                     </div>
                     <Form.Control asChild>
-                        <Select.Root onValueChange={handleStatusChange} defaultValue="choose an option...">
+                        <Select.Root onValueChange={handleStatusChange} defaultValue="0">
                             <Select.Trigger asChild aria-label="choose doctor">
                                 <button 
                                 className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none"
@@ -255,12 +254,12 @@ const DoctorVisitForm = () => {
                                 </Select.ScrollUpButton>
                                 <Select.Viewport className="w-full bg-[#f2e9e4] rounded-3xl shadow-[0_0_0_2px_rgba(255,144,144,1)]">
                                     <Select.Group>
-                                        {["Choose an option...", "Doc1", "Doc2", "Doc3"].map(
+                                        {["Choose an option...", "Heisenberg Bohr", "Albert Einstein"].map(
                                             (f, i) => (
                                                 <Select.Item
                                                 disabled={f === "Choose an option..."}
                                                 key={`${f}-${i}`}
-                                                value={f.toLowerCase()}
+                                                value={i.toString()}
                                                 className=
                                                 "font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                                                 >
