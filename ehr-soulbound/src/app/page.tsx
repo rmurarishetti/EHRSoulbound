@@ -65,7 +65,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="flex flex-row px-10 my-20 items-end justify-end">
-            <div className="flex w-1/2 items-center justify-center">
+            <div className="flex w-1/2">
               <Image alt="psych-2.png" src="/psych-2.png" width="580" height="435" style={{width: "70%", height: "auto"}}/>
             </div>
             <div className="w-1/2">
