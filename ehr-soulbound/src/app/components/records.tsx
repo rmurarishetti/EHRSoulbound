@@ -21,10 +21,8 @@ export function Records(props: props) {
             <div className="flex font-quicksand text-xs justify-center items-center font-medium text-[#0B1E5B]">
                 {props.title}
             </div>
-            <div>   
-                <a href="https://www.freepik.com/">
-                    <Image alt="medical-record.png" src="/personal-record.png" width="523" height="477" style={{width: '100%', height: 'auto'}} priority/>
-                </a>
+            <div>
+                <Image alt="medical-record.png" src="/personal-record.png" width="523" height="477" style={{width: '100%', height: 'auto'}} priority/>
             </div>
             <div className="font-quicksand font-medium text-sm text-[#0B1E5B]">
                 <ul className='list-disc list-outside'>
