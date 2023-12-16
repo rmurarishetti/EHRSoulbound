@@ -21,7 +21,7 @@ export default async function Home() {
                   <AiOutlineMail/>
                   <input type="text" className="flex font-quicksand gap-2 ml-3 focus:outline-none" style={{width: "100%"}}placeholder="Enter your email here to register"/> 
                 </div>
-                <Link type='submit' className="flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand text-base font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200" href="/">
+                <Link type='submit' className="flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand text-base font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200" href="/user/home">
                   Register
                 </Link>
               </div>

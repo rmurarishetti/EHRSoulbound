@@ -1,5 +1,3 @@
-
-
 const page = () => {
   return (
 	<div className="flex flex-row flex-wrap items-start">
