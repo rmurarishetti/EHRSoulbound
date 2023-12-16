@@ -71,20 +71,20 @@ const LabReport = () => {
     <div className='min-h-screen flex flex-row flex-wrap'>
         <div className='flex basis-1/2 justify-center items-center'>
           <a href="https://www.freepik.com/">
-            <Image alt="lab-report.png" src="/lab-report.png" width="998" height="652" style={{width: '100%', height: 'auto'}} priority/>
+            <Image alt="lab-report.png" src="/lab-report.png" width="6189" height="4038" style={{width: '100%', height: 'auto'}} priority/>
           </a>
         </div>
         <div className='flex basis-1/2 justify-center items-center'>
             <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Lab Report</h3>
         </div>
-        <div className='mx-auto w-1/2 mt-40'>
+        <div className='mx-auto w-3/4 mt-40'>
             <Form.Root className='mx-auto w-1/2' onSubmit={submitForm}>
                 <Form.Field className="grid mb-10" name="labtest">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
                             Lab Test
                         </Form.Label>
-                        <Form.Message className="font-quicksand ml-auto text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
+                        <Form.Message className="font-quicksand ml-auto text-lg text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
                             Please choose lab test
                         </Form.Message>
                     </div>
@@ -92,7 +92,7 @@ const LabReport = () => {
                         <Select.Root onValueChange={handleStatusChange} defaultValue="select the lab test...">
                             <Select.Trigger asChild aria-label="choose lab test">
                                 <button 
-                                className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none"
+                                className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none"
                                 >
                                 <Select.Value />
                                 <Select.Icon className="ml-auto">
@@ -113,7 +113,7 @@ const LabReport = () => {
                                             key={`${f}-${i}`}
                                             value={f.toLowerCase()}
                                             className=
-                                                "font-quicksand relative flex items-center px-4 py-4 h-16 rounded-full text-2xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
+                                                "font-quicksand relative flex items-center px-4 py-4 h-16 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                                             >
                                             <Select.ItemText>{f}</Select.ItemText>
                                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
@@ -133,10 +133,10 @@ const LabReport = () => {
                 </Form.Field>
                 <Form.Field className="grid mb-10" name="labtest">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
                             Health Record
                         </Form.Label>
-                        <Form.Message className="font-quicksand ml-auto text-xl text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
+                        <Form.Message className="font-quicksand ml-auto text-lg text-[#0B1E5B] opacity-[0.8]" match="valueMissing">
                             Please pick health record
                         </Form.Message>
                     </div>
@@ -144,7 +144,7 @@ const LabReport = () => {
                         <Select.Root onValueChange={handleStatusChange} defaultValue="select the health record...">
                             <Select.Trigger asChild aria-label="choose health record">
                                 <button 
-                                className="font-quicksand box-border w-full px-4 py-4 h-16 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-2xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none"
+                                className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none"
                                 >
                                 <Select.Value />
                                 <Select.Icon className="ml-auto">
@@ -165,7 +165,7 @@ const LabReport = () => {
                                             key={`${f}-${i}`}
                                             value={f.toLowerCase()}
                                             className=
-                                                "font-quicksand relative flex items-center px-4 py-4 h-16 rounded-full text-2xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
+                                                "font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                                             >
                                             <Select.ItemText>{f}</Select.ItemText>
                                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
@@ -185,10 +185,10 @@ const LabReport = () => {
                 </Form.Field>
                 <Form.Field className="grid mb-10" name="labreportfile">
                     <div className="flex items-baseline justify-between">
-                        <Form.Label className="font-quicksand pl-4 text-2xl font-semibold text-[#0B1E5B]">
+                        <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
                             Add Lab Reports
                         </Form.Label>
-                        <Form.Message className="font-quicksand ml-auto text-xl text-[#0B1E5B] opacity-[0.8]" match='valueMissing'>
+                        <Form.Message className="font-quicksand ml-auto text-lg text-[#0B1E5B] opacity-[0.8]" match='valueMissing'>
                             Please upload file
                         </Form.Message>
                     </div>
@@ -198,7 +198,7 @@ const LabReport = () => {
                     <div className='flex items-center'>
                         <label 
                         htmlFor="fileupload" 
-                        className='font-quicksand cursor-pointer box-border w-56 px-4 py-4 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full text-2xl justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6'
+                        className='font-quicksand cursor-pointer box-border w-52 px-4 h-12 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full text-xl justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6'
                         >
                             Select file...
                         </label>
@@ -206,7 +206,7 @@ const LabReport = () => {
                     </div>
                 </Form.Field>
                 <Form.Submit asChild>
-                    <button className="box-border w-full text-[#0B1E5B] hover:text-[#9aaff3] inline-flex h-16 items-center justify-center rounded-full bg-[#f6a290] hover:bg-[#f6d1cc] px-4 py-4 text-2xl font-semibold leading-none focus:outline-none mt-3 mb-5 transition-colors duration-200">
+                    <button className="box-border w-full text-[#0B1E5B] hover:text-[#9aaff3] inline-flex h-12 items-center justify-center rounded-full bg-[#f6a290] hover:bg-[#f6d1cc] px-4 text-xl font-semibold leading-none focus:outline-none mt-3 mb-5 transition-colors duration-200">
                         Submit
                     </button>
                 </Form.Submit>
