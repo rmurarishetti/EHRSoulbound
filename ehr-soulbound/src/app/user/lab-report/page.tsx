@@ -7,10 +7,12 @@ import * as Select from '@radix-ui/react-select'
 import { CheckIcon, ChevronUpIcon, ChevronDownIcon } from '@radix-ui/react-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const LabReport = () => {
 
     const formData = new FormData();
+    const { user, error, isLoading } = useUser();
 
     const [state, setState] = useState({
         labtest: "",
@@ -67,7 +69,30 @@ const LabReport = () => {
         }
     }
 
-  return (
+    if (isLoading) return (
+        <div className='min-h-screen flex flex-row flex-wrap'>
+        <div className='flex basis-1/2 justify-center items-center'>
+            <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Login to Continue</h3>
+        </div>
+        <div className='flex basis-1/2 justify-center items-center'>
+          <a href="https://www.freepik.com/">
+            <Image alt="doctor-visit.png" src="/doctor-visit.png" width="3000" height="2000" style={{width: '100%', height: 'auto'}} priority/>
+          </a>
+        </div>
+        </div>
+    );
+    if (error) return(
+        <div className='min-h-screen flex flex-row flex-wrap'>
+        <div className='flex basis-1/2 justify-center items-center'>
+            <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Login to Continue</h3>
+        </div>
+        <div className='flex basis-1/2 justify-center items-center'>
+          <a href="https://www.freepik.com/">
+            <Image alt="doctor-visit.png" src="/doctor-visit.png" width="3000" height="2000" style={{width: '100%', height: 'auto'}} priority/>
+          </a>
+        </div>
+        </div>);
+    if (user) return (
     <div className='min-h-screen flex flex-row flex-wrap'>
         <div className='flex basis-1/2 justify-center items-center'>
           <a href="https://www.freepik.com/">

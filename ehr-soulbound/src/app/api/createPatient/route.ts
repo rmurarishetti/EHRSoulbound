@@ -1,7 +1,9 @@
-import { NextResponse } from "next/server";
-import prisma from "../../../../lib/prisma";
+import { NextResponse, NextRequest } from "next/server";
+import { PrismaClient } from "@prisma/client";
 
-export async function POST(req: Request){
+const prisma = new PrismaClient();
+
+export async function POST(req: NextRequest){
     const patientParticulars = await req.formData();
     const p_email = patientParticulars.get('email');
     const p_name = patientParticulars.get('name');
@@ -18,7 +20,7 @@ export async function POST(req: Request){
                 name: p_name,
             },
         })
-        return NextResponse.json(patient);
+        return NextResponse.json({ message: "success" });
     }
     
 }

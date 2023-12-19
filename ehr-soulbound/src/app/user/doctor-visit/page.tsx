@@ -8,24 +8,50 @@ import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
+import { useUser } from '@auth0/nextjs-auth0/client'
+import { getSession } from '@auth0/nextjs-auth0'
 
 const DoctorVisitForm = () => {
     
     const formData = new FormData();
-
-    const [options, setOptions] = useState<string[]>(["Choose an option..."]);
+    const { user, error, isLoading } = useUser();
+  
+    const [options, setOptions] = useState<any[]>(["Choose an option..."]);
     useEffect(() => {
         async function fetchDoctors(){
             const { data } = await axios.get("/api/getDoctors/");
             const results = []
             for (const doctor of data) {
-                results.push(doctor.name);
+                results.push(doctor);
             }
-            console.log(results)
             setOptions(results);
         }
         fetchDoctors();
     }, []);
+    
+    const userData = new FormData();
+    
+    async function createPatient() {
+        
+        if (user) {
+            userData.append("name", user.name);
+            userData.append("email", user.email);
+        }
+        
+
+        const response = await fetch("/api/createPatient/", {
+        method: "POST",
+        body: userData,
+        })
+        if (response.ok) {
+        console.log("User");
+        }
+        if (!response.ok) {
+        console.log("Error sending data");
+        } 
+    }
+    
+    
 
     const [state, setState] = useState({
         userdisease: "",
@@ -81,6 +107,7 @@ const DoctorVisitForm = () => {
         formData.append("userrecoverystatus", state.userrecoverystatus);
         formData.append("doctorname", state.doctorname);
         formData.append("prescriptionfile", imageUploaded as File);
+        formData.append("useremail", user.email as string);
 
         const response = await fetch("/api/docVisit", {
             method: "POST",
@@ -94,7 +121,34 @@ const DoctorVisitForm = () => {
         }
     }
 
-  return (
+    if (isLoading) return (
+        <div className='min-h-screen flex flex-row flex-wrap'>
+        <div className='flex basis-1/2 justify-center items-center'>
+            <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Login to Continue</h3>
+        </div>
+        <div className='flex basis-1/2 justify-center items-center'>
+          <a href="https://www.freepik.com/">
+            <Image alt="doctor-visit.png" src="/doctor-visit.png" width="3000" height="2000" style={{width: '100%', height: 'auto'}} priority/>
+          </a>
+        </div>
+        </div>
+    );
+    if (error) return(
+        <div className='min-h-screen flex flex-row flex-wrap'>
+        <div className='flex basis-1/2 justify-center items-center'>
+            <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Doctor&apos;s Visit Form</h3>
+        </div>
+        <div className='flex basis-1/2 justify-center items-center'>
+          <a href="https://www.freepik.com/">
+            <Image alt="doctor-visit.png" src="/doctor-visit.png" width="3000" height="2000" style={{width: '100%', height: 'auto'}} priority/>
+          </a>
+        </div>
+        <div>
+            Login to continue
+        </div>
+        </div>);
+    if (user) return (
+        createPatient(),
     <div className='min-h-screen flex flex-row flex-wrap'>
         <div className='flex basis-1/2 justify-center items-center'>
             <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Doctor&apos;s Visit Form</h3>
@@ -261,16 +315,17 @@ const DoctorVisitForm = () => {
                                 </Select.ScrollUpButton>
                                 <Select.Viewport className="w-full bg-[#f2e9e4] rounded-3xl shadow-[0_0_0_2px_rgba(255,144,144,1)]">
                                     <Select.Group>
+                                        
                                         {options.map(
-                                            (f, i) => (
+                                            (doc)=>(
                                                 <Select.Item
-                                                disabled={f === "Choose an option..."}
-                                                key={`${f}-${i}`}
-                                                value={f.toLowerCase()}
+                                                disabled={doc === "Choose an option..."}
+                                                key={`${doc.name}`}
+                                                value={doc.id}
                                                 className=
                                                 "font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                                                 >
-                                                    <Select.ItemText>{f}</Select.ItemText>
+                                                    <Select.ItemText>{doc.name}</Select.ItemText>
                                                     <Select.ItemIndicator className="ml-auto inline-flex items-center">
                                                         <CheckIcon />
                                                     </Select.ItemIndicator>

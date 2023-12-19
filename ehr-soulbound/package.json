@@ -11,6 +11,11 @@
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
