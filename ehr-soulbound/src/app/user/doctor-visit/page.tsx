@@ -80,7 +80,6 @@ const DoctorVisitForm = () => {
             }
         } else {
           setState({ ...state, [e.target.name]: e.target.value })
-          formData.append(e.target.name, e.target.value);
         }
     }
 
@@ -88,19 +87,16 @@ const DoctorVisitForm = () => {
 
         if(e=='no' || e=='yes') {
             setState({...state, ["userrecoverystatus"]: e})
-            formData.append("userrecoverystatus", e);
         }
 
     }
 
     const handleDoctorStatusChange = (e: string) => {
         setState({...state, ["doctorid"]: e})
-        formData.append("doctorid", e);
     }
 
     async function submitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-
         formData.append("userdisease", state.userdisease);
         formData.append("usersymptoms", state.usersymptoms);
         formData.append("usermeds", state.usermeds);
