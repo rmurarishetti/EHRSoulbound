@@ -1,4 +1,4 @@
-import { Stats } from "../../../components/stats";
+import { Stats } from "../../components/stats";
 import Image from "next/image";
 
 export default function AdminHome(){
@@ -17,7 +17,7 @@ export default function AdminHome(){
                 <div className="flex justify-center p-10 gap-x-5">
                     <Stats link={'/admin/dashboard/patients'} title="Patients" count="65"></Stats>
                     <Stats link={'/admin/dashboard/doctors'} title="Doctors" count="20"></Stats>
-                    <Stats link={'/admin/dashboard/home'} title="Records" count="150+"></Stats>
+                    <Stats link={'/admin/dashboard'} title="Records" count="150+"></Stats>
                 </div>
             </div>
             

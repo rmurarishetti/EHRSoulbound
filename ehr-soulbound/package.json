@@ -11,6 +11,11 @@
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
@@ -26,7 +31,7 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
-    "axios": "^1.5.0",
+    "axios": "^1.5.1",
     "dotenv": "^16.3.1",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",

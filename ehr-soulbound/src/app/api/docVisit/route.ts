@@ -14,31 +14,34 @@ export async function POST(req: NextRequest){
         boolval = false;
     }
     const imageBuffer = Buffer.from(await imageFile.arrayBuffer())
-    const result = await prisma.healthRecord.upsert({
-        where: { patientId: 1 }, //Modify this
-        update: {
-            patientId: 1, //Modify this
-            doctorId: parseInt(formData.getAll('doctorid')[0].toString()),
-            uploadDate: new Date(),
-            consentExpiry: new Date(), //Modify this
-            remarks: "ok", //Modify this
-            disease: formData.getAll('userdisease')[0].toString(),
-            symptoms: formData.getAll('usersymptoms')[0].toString(),
-            medsTaken: formData.getAll('usermeds')[0].toString(),
-            sideEffects: formData.getAll('usersideeffects')[0].toString(),
-            symptomsPersist: boolval,
-            imageFile: imageBuffer,
+    const patientCurrent = await prisma.patient.findUnique({
+        where: {
+            email: formData.getAll('useremail')[0].toString(),
         },
-        create:{
-            patientId: 1, //Modify this
-            doctorId: parseInt(formData.getAll('doctorid')[0].toString()),
+    })
+
+    const doctorCurrent = await prisma.doctor.findUnique({
+        where: {
+            id: parseInt(formData.getAll('doctorid')[0].toString(), 10),
+        },
+    })
+    
+    const disease = formData.getAll('userdisease')[0].toString();
+    const symptoms = formData.getAll('usersymptoms')[0].toString();
+    const medsTaken = formData.getAll('usermeds')[0].toString();
+    const sideEffects = formData.getAll('usersideeffects')[0].toString();
+
+    const result = await prisma.healthRecord.create({
+        data: {
+            patientId: patientCurrent.id,
+            doctorId: doctorCurrent.id,
             uploadDate: new Date(),
-            consentExpiry: new Date(), //Modify this
+            consentExpiry: new Date(Date.now() + 12096e5),
             remarks: "ok", //Modify this
-            disease: formData.getAll('userdisease')[0].toString(),
-            symptoms: formData.getAll('usersymptoms')[0].toString(),
-            medsTaken: formData.getAll('usermeds')[0].toString(),
-            sideEffects: formData.getAll('usersideeffects')[0].toString(),
+            disease: disease,
+            symptoms: symptoms,
+            medsTaken: medsTaken,
+            sideEffects: sideEffects,
             symptomsPersist: boolval,
             imageFile: imageBuffer,
         },

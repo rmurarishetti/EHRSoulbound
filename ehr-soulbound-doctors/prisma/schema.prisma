@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Patient{
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String?
+  HealthRecord HealthRecord[]
+}
+
+model Doctor{
+  id Int @id @default(autoincrement())
+  email String @unique
+  name String?
+  specialization String?
+  HealthRecord HealthRecord[]
+}
+
+model LabRecord {
+  id Int @id @default(autoincrement())
+  date DateTime
+  labTest String?
+  labReport LabReport?
+  healthRecordId Int @unique
+  HealthRecord HealthRecord @relation(fields: [healthRecordId], references: [id])
+}
+
+model LabReport{
+  id       String @default(cuid()) @id
+  publicId String @unique
+  format   String
+  version  String
+  LabRecordId Int @unique
+  LabRecord LabRecord @relation(fields: [LabRecordId], references: [id])
+}
+
+model HealthRecord{
+  id Int @id @default(autoincrement())
+  patientId Int @unique
+  patient Patient @relation(fields: [patientId], references: [id])
+  doctorId Int @unique
+  doctor Doctor @relation(fields: [doctorId], references: [id])
+  uploadDate DateTime
+  consentExpiry DateTime
+  LabRecord LabRecord[]
+  remarks String?
+  disease String?
+  symptoms String?
+  medsTaken String?
+  sideEffects String?
+  symptomsPersist Boolean?
+  HealthReport HealthReport[]
+}
+
+model HealthReport {
+  id       String @default(cuid()) @id
+  publicId String @unique
+  format   String
+  version  String
+  HealthRecordId Int @unique
+  HealthRecord HealthRecord @relation(fields: [HealthRecordId], references: [id])
+}
+//Prescription is HealthReport
