@@ -7,7 +7,7 @@ import { CheckIcon, ChevronUpIcon, ChevronDownIcon } from '@radix-ui/react-icons
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import axios from "axios";
+import axios from "axios"
 import { useUser } from '@auth0/nextjs-auth0/client'
 import { getSession } from '@auth0/nextjs-auth0'
 
@@ -121,7 +121,7 @@ const DoctorVisitForm = () => {
     if (isLoading) return (
         <div className='min-h-screen flex flex-row flex-wrap'>
             <div className='flex basis-full justify-center items-center'>
-                <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Logging in...</h3>
+                <h3 className='font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]'>Logging In...</h3>
             </div>
         </div>
     );
@@ -136,9 +136,10 @@ const DoctorVisitForm = () => {
           </a>
         </div>
         <div>
-            Login to continue
+            Please Login To Continue
         </div>
-        </div>);
+        </div>
+    );
     if (user) return (
         createPatient(),
     <div className='min-h-screen flex flex-row flex-wrap'>
