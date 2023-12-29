@@ -30,7 +30,7 @@ export default function page() {
 	}
 
     async function sendDoctorData() {
-        const response = await fetch("/api/getPatientRecords/", {
+        const response = await fetch("/api/getHealthRecords/", {
 			method: "POST",
 			body: doctorData,
 		})
