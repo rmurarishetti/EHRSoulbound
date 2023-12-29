@@ -13,7 +13,9 @@ export async function POST(req: NextRequest){
     if (formData.getAll('userrecoverystatus')[0].toString()=='no') {
         boolval = false;
     }
-    const imageBuffer = Buffer.from(await imageFile.arrayBuffer())
+    const bytes = await imageFile.arrayBuffer()
+    const imageBuffer = Buffer.from(bytes)
+    
     const patientCurrent = await prisma.patient.findUnique({
         where: {
             email: formData.getAll('useremail')[0].toString(),

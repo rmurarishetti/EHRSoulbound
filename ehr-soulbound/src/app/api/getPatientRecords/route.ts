@@ -15,6 +15,6 @@ export async function POST(req: NextRequest){
             patientId: patientcurrent?.id, // Add null check here
         },
     });
-
+    
     return NextResponse.json(records);
 }

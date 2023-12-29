@@ -9,10 +9,10 @@ type props = {
     sideeffects: string,
     persist: string,
     doctor: string,
-    //presfile:,
+    presfile: string,
     labtest: string,
     healthrecord: string,
-    //labreportfile:,
+    labreportfile: string,
 }
 
 export function Records(props: props) {
@@ -32,10 +32,10 @@ export function Records(props: props) {
                     <li>Side-Effects: {props.sideeffects}</li>
                     <li>Persistance of Symptoms: {props.persist}</li>
                     <li>Doctor Chosen: {props.doctor}</li>
-                    <li>Prescription: {}</li>
+                    <li>Prescription: <Image src={`data:image/png;base64,${props.presfile}`} alt='prescription-image' width="10" height="10" style={{width: '50%', height: 'auto'}}/></li>
                     <li>Lab Test: {props.labtest}</li>
                     <li>Associated Health Record: {props.healthrecord}</li>
-                    <li>Lab Report: {}</li>
+                    <li>Lab Report: {props.labreportfile}</li>
                 </ul>
             </div>
         </div>
