@@ -28,7 +28,7 @@ const RecordsPage = () => {
 			}
 		}
 		fetchData();
-	})
+	}, [])
 
 
   return (

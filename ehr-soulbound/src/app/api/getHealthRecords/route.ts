@@ -6,7 +6,7 @@ export async function POST(req: NextRequest){
 
     const doctorCurrent = await prisma.doctor.findUnique ({
         where: {
-            email: formData.getAll('docemail')[0].toString(),
+            email: 'doctor@doctor.com',
         },
     })
 
