@@ -91,7 +91,7 @@ export default function DoctorHome() {
             <div>Remarks</div>
           </div>
           <div className="w-4/5 flex justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70">
-            {patientData.map(
+            {patientData?.map(
                 (data)=>(
                     <div>
                         <div>{data.id}</div>
