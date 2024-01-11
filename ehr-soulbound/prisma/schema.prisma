@@ -8,15 +8,15 @@ datasource db {
 }
 
 model Patient {
-  id           Int           @id @default(autoincrement())
-  email        String        @unique
+  id           Int            @id @default(autoincrement())
+  email        String         @unique
   name         String?
   HealthRecord HealthRecord[]
 }
 
 model Doctor {
-  id             Int           @id @default(autoincrement())
-  email          String        @unique
+  id             Int            @id @default(autoincrement())
+  email          String         @unique
   name           String?
   specialization String?
   HealthRecord   HealthRecord[]
@@ -42,8 +42,8 @@ model LabReport {
 
 model HealthRecord {
   id              Int           @id @default(autoincrement())
-  patientId       Int            
-  doctorId        Int            
+  patientId       Int
+  doctorId        Int
   uploadDate      DateTime
   consentExpiry   DateTime
   remarks         String?
@@ -53,7 +53,7 @@ model HealthRecord {
   sideEffects     String?
   symptomsPersist Boolean?
   imageFile       Bytes
-  doctor          Doctor        @relation(fields:[doctorId], references: [id])
+  doctor          Doctor        @relation(fields: [doctorId], references: [id])
   patient         Patient       @relation(fields: [patientId], references: [id])
   HealthReport    HealthReport?
   LabRecord       LabRecord?

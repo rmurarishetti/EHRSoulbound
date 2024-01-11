@@ -13,8 +13,10 @@ export async function POST(req: NextRequest){
     if (formData.getAll('userrecoverystatus')[0].toString()=='no') {
         boolval = false;
     }
-    const imageBuffer = Buffer.from(await imageFile.arrayBuffer())
-    const patientcurrent = await prisma.patient.findUnique({
+    const bytes = await imageFile.arrayBuffer()
+    const imageBuffer = Buffer.from(bytes)
+    
+    const patientCurrent = await prisma.patient.findUnique({
         where: {
             email: formData.getAll('useremail')[0].toString(),
         },
@@ -22,7 +24,7 @@ export async function POST(req: NextRequest){
 
     const doctorCurrent = await prisma.doctor.findUnique({
         where: {
-            id: parseInt(formData.getAll('doctorname')[0].toString(), 10),
+            id: parseInt(formData.getAll('doctorid')[0].toString(), 10),
         },
     })
     
@@ -32,11 +34,11 @@ export async function POST(req: NextRequest){
     const sideEffects = formData.getAll('usersideeffects')[0].toString();
 
     const result = await prisma.healthRecord.create({
-        data:{
-            patientId: patientcurrent.id, //Modify this
+        data: {
+            patientId: patientCurrent.id,
             doctorId: doctorCurrent.id,
             uploadDate: new Date(),
-            consentExpiry: new Date(Date.now() + 12096e5), //Modify this
+            consentExpiry: new Date(Date.now() + 12096e5),
             remarks: "ok", //Modify this
             disease: disease,
             symptoms: symptoms,

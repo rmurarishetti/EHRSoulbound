@@ -8,8 +8,8 @@ const RecordsPage = () => {
 
 	const formData = new FormData();
     const { user, error, isLoading } = useUser();
-	
 	const [records, setRecords] = useState<any[]>([]);
+
 	useEffect(() => {
 		async function fetchData() {
 			if (user){
@@ -28,8 +28,13 @@ const RecordsPage = () => {
 			}
 		}
 		fetchData();
-	})
+	}, [])
 
+	const fetchImage = (imageBytes: any) => {
+		const t = Buffer.from(imageBytes, 'base64').toString('base64')
+		console.log(t)
+		return t
+	};
 
   return (
     <div className='min-h-screen flex flex-col flex-wrap'>
@@ -43,14 +48,8 @@ const RecordsPage = () => {
 		</div>
 		<div className="flex flex-row flex-wrap justify-around m-20">
 			{records.map((record) => (
-				// eslint-disable-next-line react/jsx-key
-				<Records title={record.title} disease={record.disease} symptoms={record.symptoms} meds={record.meds} sideeffects={record.sideeffects} persist={record.persist} doctor={record.doctor} labtest={record.labtest} healthrecord={record.healthrecord}></Records>
+				<Records title={record.title} disease={record.disease} symptoms={record.symptoms} meds={record.medsTaken} sideeffects={record.sideEffects} persist={record.symptomsPersist.toString()} doctor={record.doctorId} presfile={fetchImage(record.imageFile)} labtest={record.labTest} healthrecord={record.id} labreportfile={record.symptomsPersist.toString()}></Records> //put title name and increment title number, doctor name, lab test, lab report file
 			))}
-			{/* <Records title='RECORD 1' disease="Diabetes" symptoms="Fatigue" meds="Amaryl" sideeffects="Low concentration levels" persist="Yes" doctor="Meher Ramesh" labtest="CBP" healthrecord="HR-1"></Records>
-			<Records title='RECORD 1' disease="Diabetes" symptoms="Fatigue" meds="Amaryl" sideeffects="Low concentration levels" persist="Yes" doctor="Meher Ramesh" labtest="CBP" healthrecord="HR-1"></Records>
-			<Records title='RECORD 1' disease="Diabetes" symptoms="Fatigue" meds="Amaryl" sideeffects="Low concentration levels" persist="Yes" doctor="Meher Ramesh" labtest="CBP" healthrecord="HR-1"></Records>
-			<Records title='RECORD 1' disease="Diabetes" symptoms="Fatigue" meds="Amaryl" sideeffects="Low concentration levels" persist="Yes" doctor="Meher Ramesh" labtest="CBP" healthrecord="HR-1"></Records>
-		</div> */}
 		</div>
     </div>
   )

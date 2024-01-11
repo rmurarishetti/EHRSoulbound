@@ -9,10 +9,10 @@ type props = {
     sideeffects: string,
     persist: string,
     doctor: string,
-    //presfile:,
+    presfile: string,
     labtest: string,
     healthrecord: string,
-    //labreportfile:,
+    labreportfile: string,
 }
 
 export function Records(props: props) {
@@ -22,7 +22,7 @@ export function Records(props: props) {
                 {props.title}
             </div>
             <div>
-                <Image alt="medical-record.png" src="/personal-record.png" width="523" height="477" style={{width: '100%', height: 'auto'}} priority/>
+            <Image src={`data:image/png;base64,${props.presfile}`} alt='prescription-image' width="10" height="10" style={{width: '50%', height: 'auto'}}/>
             </div>
             <div className="font-quicksand font-medium text-sm text-[#0B1E5B]">
                 <ul className='list-disc list-outside'>
@@ -32,10 +32,10 @@ export function Records(props: props) {
                     <li>Side-Effects: {props.sideeffects}</li>
                     <li>Persistance of Symptoms: {props.persist}</li>
                     <li>Doctor Chosen: {props.doctor}</li>
-                    <li>Prescription: {}</li>
+                    {/* <li>Prescription: <Image src={`data:image/png;base64,${props.presfile}`} alt='prescription-image' width="10" height="10" style={{width: '50%', height: 'auto'}}/></li> */}
                     <li>Lab Test: {props.labtest}</li>
                     <li>Associated Health Record: {props.healthrecord}</li>
-                    <li>Lab Report: {}</li>
+                    <li>Lab Report: {props.labreportfile}</li>
                 </ul>
             </div>
         </div>

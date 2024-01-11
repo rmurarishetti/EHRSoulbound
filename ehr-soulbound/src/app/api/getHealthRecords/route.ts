@@ -4,17 +4,17 @@ import prisma from "../../../../lib/prisma";
 export async function POST(req: NextRequest){
     const formData = await req.formData();
 
-    const patientcurrent = await prisma.patient.findUnique({
+    const doctorCurrent = await prisma.doctor.findUnique ({
         where: {
-            email: formData.getAll('useremail')[0].toString(),
+            email: 'doctor@doctor.com',
         },
     })
 
     const records = await prisma.healthRecord.findMany({
         where: {
-            patientId: patientcurrent?.id, // Add null check here
+            doctorId: doctorCurrent?.id, // Add null check here
         },
     });
-    
+
     return NextResponse.json(records);
 }

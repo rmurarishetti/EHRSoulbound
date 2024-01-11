@@ -5,15 +5,15 @@ const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest){
     const patientParticulars = await req.formData();
-    const p_email = patientParticulars.get('email');
-    const p_name = patientParticulars.get('name');
+    const p_email = patientParticulars.getAll('email')[0].toString();
+    const p_name = patientParticulars.getAll('name')[0].toString();
     
     if (p_email == "" || p_name == "" || p_email == null || p_name == null) {
         return NextResponse.error();
     }
     else{
         const patient = await prisma.patient.upsert({
-            where: { email: p_email},
+            where: { email: p_email },
             update: {},
             create:{
                 email: p_email,
