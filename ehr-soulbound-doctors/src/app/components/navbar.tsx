@@ -20,9 +20,6 @@ export function Navbar(){
                 <Link href="/doctors" className={ 'border-b-4 hover:border-[#0B1E5B] transition ease-in-out delay-50 duration-100' + (currentRoute === "/doctors" ? "border-b-4 border-[#0B1E5B]" : "border-b-4 border-transparent")}>
                     Doctors
                 </Link>
-                <Link href="/user/home" className={'border-b-4 hover:border-[#0B1E5B] transition ease-in-out delay-50 duration-100' + (currentRoute === "/user/home" ? "border-b-4 border-[#0B1E5B]" : "border-b-4 border-transparent")}>
-                    Patient Dashboard
-                </Link>
                 <Link href="/user/doctor/home" className={ 'border-b-4 hover:border-[#0B1E5B] transition ease-in-out delay-50 duration-100' + (currentRoute === "/user/doctor/home" ? "border-b-4 border-[#0B1E5B]" : "border-b-4 border-transparent")}>
                     Doctor Dashboard
                 </Link>
