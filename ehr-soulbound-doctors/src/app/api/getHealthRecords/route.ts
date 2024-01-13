@@ -3,10 +3,14 @@ import prisma from "../../../../lib/prisma";
 
 export async function POST(req: NextRequest){
     const formData = await req.formData();
+    const docEmail = formData.get('docemail');
 
+    if (!docEmail) {
+        return NextResponse.error();
+    }
     const doctorCurrent = await prisma.doctor.findUnique ({
         where: {
-            email: 'doctor@doctor.com',
+            email: docEmail,
         },
     })
 
