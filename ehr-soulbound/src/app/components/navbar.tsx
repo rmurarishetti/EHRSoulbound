@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { usePathname } from 'next/navigation';
+import { SignOutBtn } from "./signoutbtn";
 
 export function Navbar(){
     const { user, isLoading } = useUser();
@@ -23,9 +24,9 @@ export function Navbar(){
                 <Link href="/user/home" className={'border-b-4 hover:border-[#0B1E5B] transition ease-in-out delay-50 duration-100' + (currentRoute === "/user/home" ? "border-b-4 border-[#0B1E5B]" : "border-b-4 border-transparent")}>
                     Patient Dashboard
                 </Link>
-                <Link href="/user/doctor/home" className={ 'border-b-4 hover:border-[#0B1E5B] transition ease-in-out delay-50 duration-100' + (currentRoute === "/user/doctor/home" ? "border-b-4 border-[#0B1E5B]" : "border-b-4 border-transparent")}>
+                {/* <Link href="/user/doctor/home" className={ 'border-b-4 hover:border-[#0B1E5B] transition ease-in-out delay-50 duration-100' + (currentRoute === "/user/doctor/home" ? "border-b-4 border-[#0B1E5B]" : "border-b-4 border-transparent")}>
                     Doctor Dashboard
-                </Link>
+                </Link> */}
             </div>
             <div className="flex p-5 justify-end">
                 {!isLoading && !user &&
@@ -38,9 +39,10 @@ export function Navbar(){
                 )}
                 {user&&(
                 <div>
-                    <Link className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4] hover:bg-[#eadbd3] font-quicksand text-sm font-[550] text-[#0B1E5B] transition ease-in-out delay-50 duration-200" href="/api/auth/logout">
+                    {/* <Link className="flex border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4] hover:bg-[#eadbd3] font-quicksand text-sm font-[550] text-[#0B1E5B] transition ease-in-out delay-50 duration-200" href="/api/auth/logout">
                         Sign Out
-                    </Link>
+                    </Link> */}
+                    <SignOutBtn/>
                 </div>)}
             </div>   
         </nav>

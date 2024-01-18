@@ -1,5 +1,5 @@
 'use client'
-import { FormEvent } from 'react'
+import { FormEvent, use, useEffect } from 'react'
 import { useState } from 'react'
 import Image from 'next/image';
 import * as Form from '@radix-ui/react-form'
@@ -69,6 +69,55 @@ const LabReport = () => {
         }
     }
 
+    const userData = new FormData();
+
+    async function createPatient() {
+        
+        if (user) {
+            userData.append("name", user.name);
+            userData.append("email", user.email);
+        }
+
+        const response = await fetch("/api/createPatient/", {
+        method: "POST",
+        body: userData,
+        })
+        if (response.ok) {
+        console.log("User");
+        }
+        if (!response.ok) {
+        console.log("Error sending data");
+        } 
+    }
+
+    const [options, setOptions] = useState<any[]>(["Choose an option..."]);
+    
+    async function getPatientRecords() {
+        const formData = new FormData();
+        if (user) {
+            formData.append('useremail', user.email)
+        }
+        const response = await fetch("/api/getPatientRecords/", {
+        method: "POST",
+        body: formData,
+        })
+        if (response.ok) {
+        console.log("User");
+        }
+        if (!response.ok) {
+        console.log("Error sending data");
+        } 
+
+        const data = await response.json();
+        const result = []
+        for (const item of data) {
+            result.push(item)
+        }
+        setOptions(result);
+        console.log(data);
+    }
+    
+
     if (isLoading) return (
         <div className='min-h-screen flex flex-row flex-wrap'>
         <div className='flex basis-1/2 justify-center items-center'>
@@ -93,6 +142,7 @@ const LabReport = () => {
         </div>
         </div>);
     if (user) return (
+        createPatient(), getPatientRecords(),
     <div className='min-h-screen flex flex-row flex-wrap'>
         <div className='flex basis-1/2 justify-center items-center'>
           <a href="https://www.freepik.com/">
@@ -183,16 +233,16 @@ const LabReport = () => {
                                 </Select.ScrollUpButton>
                                 <Select.Viewport className="w-full bg-[#f2e9e4] rounded-3xl shadow-[0_0_0_2px_rgba(255,144,144,1)]">
                                     <Select.Group>
-                                        {["Select the health record...", "HR1", "HR2", "HR3"].map(
-                                        (f, i) => (
+                                        {options.map(
+                                        (hr, i) => (
                                             <Select.Item
-                                            disabled={f === "Select the health record..."}
-                                            key={`${f}-${i}`}
-                                            value={f.toLowerCase()}
+                                            disabled={hr === "Select the health record..."}
+                                            key={`${hr.id}`}
+                                            value={`${hr.id}`}
                                             className=
                                                 "font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                                             >
-                                            <Select.ItemText>{f}</Select.ItemText>
+                                            <Select.ItemText>{`${hr.disease}-${hr.symptoms}-${hr.medsTaken}-${hr.uploadDate}`}</Select.ItemText>
                                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
                                                 <CheckIcon />
                                             </Select.ItemIndicator>

@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import axios from "axios"
 import { useUser } from '@auth0/nextjs-auth0/client'
-import { getSession } from '@auth0/nextjs-auth0'
+import { Particulars } from '@/app/components/particulars'
 
 const DoctorVisitForm = () => {
     
