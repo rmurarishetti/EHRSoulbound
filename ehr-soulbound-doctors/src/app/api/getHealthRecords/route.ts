@@ -10,16 +10,16 @@ export async function POST(req: NextRequest){
     }
     const doctorCurrent = await prisma.doctor.findUnique ({
         where: {
-            email: docEmail,
+            email: docEmail ? docEmail.toString() : "",
         },
     })
 
     const records = await prisma.healthRecord.findMany({
         where: {
             doctorId: doctorCurrent?.id, // Add null check here
-            consentExpiry: {
-                gt: new Date(), // Add check for consentexpiry greater than now
-            },
+            // consentExpiry: {
+            //     gt: new Date(), // Add check for consentexpiry greater than now
+            // },
         },
     });
 

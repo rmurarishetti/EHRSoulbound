@@ -1,6 +1,6 @@
 'use client'
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client'
-import { useEffect } from 'react'
+import { use, useEffect } from 'react'
 import { useState } from 'react'
 import Image from "next/image";
 import Link from 'next/link';
@@ -9,6 +9,7 @@ import Link from 'next/link';
 export default function DoctorHome() {
 	const { user, error, isLoading } = useUser();
 	const [patientData, setPatientData] = useState<any[]>();
+    const [doctorDetails, setDoctorDetails] = useState<any>({name: "", specialization: ""});
 	
 	const doctorData = new FormData();
 	
@@ -22,13 +23,20 @@ export default function DoctorHome() {
 			method: "POST",
 			body: doctorData,
 		})
-		if (response.ok) {
-			console.log("Created doctor");
-		}
-		if (!response.ok) {
-			console.log("Error sending data");
-		}
+		
 	}
+
+    async function getDoctorDetails() {
+        if (user) {
+            doctorData.append("docemail", user.email);
+        }
+        const response = await fetch("/api/getDoctorDetails/", {
+            method: "POST",
+            body: doctorData,
+        })
+        const data = await response.json();
+        setDoctorDetails(data);
+    }
     
     async function getPatientName(id: string | Blob){
         const patientData = new FormData();
@@ -49,7 +57,7 @@ export default function DoctorHome() {
     }
     
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
+    // useEffect(() => {
         async function sendDoctorData() {
             if (user) {
                 doctorData.append("docname", user.name);
@@ -77,8 +85,15 @@ export default function DoctorHome() {
             }
             setPatientData(results);
             console.log(data);
-        } sendDoctorData();
-    }, [])
+        } 
+
+        useEffect(() => {
+            if (user){
+                createDoctor();
+                getDoctorDetails();
+                sendDoctorData();
+            }
+        }, [user]);
 
     const fetchImage = (imageBytes: any) => {
 		const t = Buffer.from(imageBytes, 'base64').toString('base64')
@@ -104,11 +119,11 @@ export default function DoctorHome() {
     );
 
 	if (user) return (
-        createDoctor(),
-    <div className='min-h-screen flex flex-row flex-wrap'>
+    <div className='min-h-1 flex flex-row flex-wrap'>
         <div className='flex flex-col basis-full justify-center items-center'>
           <div className='mb-20'>
-            <h3 className='font-quicksand font-medium text-4xl px-5 py-5 text-[#0B1E5B]'>Welcome, Dr. {user.name}</h3>
+            <h3 className='font-quicksand font-medium text-4xl px-5 py-5 text-[#0B1E5B]'>Welcome, Dr. {doctorDetails.name}</h3>
+            <h3 className='flex justify-center font-quicksand font-medium text-2xl px-5 py-5 text-[#0B1E5B]'>Specialization: {doctorDetails.specialization}</h3>
           </div> 
           <div className="w-4/5 flex justify-between text-[#f2e9e4]/90 text-xs font-quicksand font-bold p-5 rounded-2xl" style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}>
             <div>S.No.</div>
@@ -137,6 +152,9 @@ export default function DoctorHome() {
                     <div>{data.medsTaken}</div>
                     <div>{data.prescriptionFile}</div>
                     <div>
+                       Remarks 
+                    </div>
+                    <div>
                         <a
                             download
                             href={`data:image/png;base64,${fetchImage(data.imageFile)}`}
@@ -145,6 +163,7 @@ export default function DoctorHome() {
                             Prescription File
                         </a>
                     </div>
+                    
                 </div>
             ))}
 
