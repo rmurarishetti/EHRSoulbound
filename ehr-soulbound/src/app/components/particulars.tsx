@@ -18,7 +18,7 @@ export function Particulars() {
         });
         if(response.ok){
           setOpen(false);
-          setPatientState({name: "", email: ""});
+          setState({userName: ""});
         }
         
     }

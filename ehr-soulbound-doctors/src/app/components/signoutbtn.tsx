@@ -1,12 +1,11 @@
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { GearIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import { Particulars } from "./particulars";
 
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { GearIcon } from '@radix-ui/react-icons'
-import Link from 'next/link';
-import { Particulars } from './particulars';
-
-export function SignOutBtn(){
-    return(
-      <DropdownMenu.Root modal={false}>
+export function SignOutBtn() {
+  return (
+    <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger asChild>
         <button
           className="w-full flex ml-auto border-[2px] rounded-full border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200"
@@ -22,14 +21,13 @@ export function SignOutBtn(){
           sideOffset={5}
         >
           <Link href="/api/auth/logout">
-          <DropdownMenu.Item className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1" >
-            Sign Out{' '}
-          </DropdownMenu.Item>
+            <DropdownMenu.Item className="group text-[13px] leading-none text-violet11 rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+              Sign Out{" "}
+            </DropdownMenu.Item>
           </Link>
-           <Particulars/>
-          </DropdownMenu.Content>
-          
+          <Particulars />
+        </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
-    )
+  );
 }

@@ -20,12 +20,14 @@ export function Particulars() {
       }
       formData.append("specialization", state.specialization);
 
-      const response = await fetch('/api/createDoctor', {
+      const response = await fetch('/api/updateDoctor', {
         method: 'POST',
         body: formData,
       });
       if(response.ok){
         setOpen(false);
+        // var form = document.getElementsByName("userName")[0] as HTMLInputElement;
+        // form.value = "";
         setState({userName: "", specialization: ""});
       }
     }
