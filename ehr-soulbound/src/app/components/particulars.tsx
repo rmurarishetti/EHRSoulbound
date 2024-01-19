@@ -12,7 +12,7 @@ export function Particulars() {
         formData.append("name", state.userName);
         formData.append("email", user.email);
 
-        const response = await fetch('/api/createPatient', {
+        const response = await fetch('/api/updatePatient', {
             method: 'POST',
             body: formData,
         });

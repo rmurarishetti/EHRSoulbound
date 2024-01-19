@@ -13,6 +13,7 @@ type props = {
     labtest: string,
     healthrecord: string,
     labreportfile: string,
+    remarks: string
 }
 
 export function Records(props: props) {
@@ -36,6 +37,7 @@ export function Records(props: props) {
                     <li>Lab Test: {props.labtest}</li>
                     <li>Associated Health Record: {props.healthrecord}</li>
                     <li>Lab Report: {props.labreportfile}</li>
+                    <li>Remarks: {props.remarks}</li>
                 </ul>
             </div>
         </div>

@@ -9,7 +9,7 @@ export function SignOutBtn(){
       <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger asChild>
         <button
-          className="rounded-full w-[35px] h-[35px] inline-flex items-center justify-center text-violet11 bg-white shadow-[0_2px_10px] shadow-blackA4 outline-none hover:bg-violet3 focus:shadow-[0_0_0_2px] focus:shadow-black"
+          className="w-full flex ml-auto border-[2px] rounded-full border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200"
           aria-label="Customise options"
         >
           <GearIcon />

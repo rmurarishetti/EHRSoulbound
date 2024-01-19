@@ -1,16 +1,21 @@
 import { getSession, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Link from "next/link";
-import { useEffect } from "react";
 import { FiArrowRight } from 'react-icons/fi'
+import prisma from "../../../../lib/prisma";
 
 export default withPageAuthRequired(async function UserPage() {
   
   const { user } = await getSession();
+  const patient = await prisma.patient.findUnique({
+    where: {
+      email: user.email
+    }
+  });
 
   return (
     <div>
       <div className="ml-16 font-quicksand font-medium text-4xl px-5 pt-10 pb-2 text-[#0B1E5B]">
-        Hello, {user.name}
+        Hello, {patient?.name}
       </div>
       <div className="ml-16 font-quicksand font-medium text-2xl px-5 pt-2 text-[#0B1E5B]">
         Welcome To Your Dashboard
@@ -56,17 +61,4 @@ export default withPageAuthRequired(async function UserPage() {
   )
 
 }, { returnTo: '/user/home' });
-
-// export const getServerSideProps = async (formData: any) => {
-//   const response = await fetch("/api/createPatient", {
-//     method: "POST",
-//     body: formData,
-//   }
-//   if (response.ok) {
-//     console.log("Form data sent");
-//   }
-//   if (!response.ok) {
-//     console.log("Form data sent");
-//   });
-// }
 

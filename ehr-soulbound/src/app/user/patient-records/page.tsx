@@ -48,7 +48,7 @@ const RecordsPage = () => {
 		</div>
 		<div className="flex flex-row flex-wrap justify-around m-20">
 			{records.map((record) => (
-				<Records title={record.title} disease={record.disease} symptoms={record.symptoms} meds={record.medsTaken} sideeffects={record.sideEffects} persist={record.symptomsPersist.toString()} doctor={record.doctorId} presfile={fetchImage(record.imageFile)} labtest={record.labTest} healthrecord={record.id} labreportfile={record.symptomsPersist.toString()}></Records> //put title name and increment title number, doctor name, lab test, lab report file
+				<Records title={record.title} remarks={record.remarks} disease={record.disease} symptoms={record.symptoms} meds={record.medsTaken} sideeffects={record.sideEffects} persist={record.symptomsPersist.toString()} doctor={record.doctorId} presfile={fetchImage(record.imageFile)} labtest={record.labTest} healthrecord={record.id} labreportfile={record.symptomsPersist.toString()}></Records> //put title name and increment title number, doctor name, lab test, lab report file
 			))}
 		</div>
     </div>

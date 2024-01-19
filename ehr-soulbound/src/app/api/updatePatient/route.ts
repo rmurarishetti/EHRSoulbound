@@ -13,7 +13,7 @@ export async function POST(req: NextRequest){
         const patient = await prisma.patient.upsert({
             where: { email: p_email },
             update: {
-                
+                name: p_name
             },
             create:{
                 email: p_email,

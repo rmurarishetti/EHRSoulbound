@@ -53,9 +53,9 @@ const LabReport = () => {
     async function submitForm(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
 
-        formData.append("labtest", state.labtest);
-        formData.append("healthrecord", state.healthrecord);
-        formData.append("labreportfile", imageUploaded as File);
+        formData.append("labTest", state.labtest);
+        formData.append("healthRecordId", state.healthrecord);
+        formData.append("labReportFile", imageUploaded as File);
 
         const response = await fetch("/api/labReport", {
             method: "POST",
@@ -116,6 +116,13 @@ const LabReport = () => {
         setOptions(result);
         console.log(data);
     }
+
+    useEffect(() => {
+        if(user){
+            createPatient();
+            getPatientRecords();
+        }
+    }, [user])
     
 
     if (isLoading) return (
@@ -142,7 +149,7 @@ const LabReport = () => {
         </div>
         </div>);
     if (user) return (
-        createPatient(), getPatientRecords(),
+        // createPatient(), getPatientRecords(),
     <div className='min-h-screen flex flex-row flex-wrap'>
         <div className='flex basis-1/2 justify-center items-center'>
           <a href="https://www.freepik.com/">

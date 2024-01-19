@@ -1,10 +1,9 @@
 'use client'
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client'
-import { use, useEffect } from 'react'
+import { useUser } from '@auth0/nextjs-auth0/client'
+import {  useEffect } from 'react'
 import { useState } from 'react'
-import Image from "next/image";
-import Link from 'next/link';
-
+import { Remarks } from '@/app/components/remarks';
+import { DownloadIcon } from '@radix-ui/react-icons'
 
 export default function DoctorHome() {
 	const { user, error, isLoading } = useUser();
@@ -130,19 +129,17 @@ export default function DoctorHome() {
             <div>Patient Name</div>
             <div>Disease</div>
             <div>Symptoms</div>
+            <div>Symptoms Persisting?</div>
             <div>Medicines Taken</div>
             <div>Side-Effects</div>
-            <div>Symptoms Persisting?</div>
-            <div>Prescription File</div>
-            <div>Lab Test</div>
-            <div>Lab Report File</div>
+            <div>Attachments</div>
             <div>Remarks</div>
           </div>
          
             {patientData?.map((data, index) => (
                 <div
                     key={index}
-                    className="w-4/5 flex justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70"
+                    className="w-4/5 flex items-center justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70"
                 >
                     <div>{index+1}</div>
                     <div>{data.patientName}</div>
@@ -150,20 +147,22 @@ export default function DoctorHome() {
                     <div>{data.symptoms}</div>
                     <div>{data.symptomsPersist == true ? "True" : "False"}</div>
                     <div>{data.medsTaken}</div>
-                    <div>{data.prescriptionFile}</div>
+                    <div>{data.sideEffects}</div>
                     <div>
-                       Remarks 
+                        <div className='w-full flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200'>
+                            <a
+                                download
+                                href={`data:image/png;base64,${fetchImage(data.imageFile)}`}
+                                target="_blank"
+                                className='flex items-center'
+                            >
+                                <DownloadIcon/>  Attachments
+                            </a>
+                        </div>
                     </div>
                     <div>
-                        <a
-                            download
-                            href={`data:image/png;base64,${fetchImage(data.imageFile)}`}
-                            target="_blank"
-                        >
-                            Prescription File
-                        </a>
+                      <Remarks healthRecordId={data.id} doctorId={data.doctorId} disease={data.disease} symptoms={data.symptoms} remarks={data.remarks}/>
                     </div>
-                    
                 </div>
             ))}
 
