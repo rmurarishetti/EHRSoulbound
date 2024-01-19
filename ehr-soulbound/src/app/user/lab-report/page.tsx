@@ -8,11 +8,13 @@ import {
   CheckIcon,
   ChevronUpIcon,
   ChevronDownIcon,
+  Cross2Icon,
 } from "@radix-ui/react-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
+import * as Toast from "@radix-ui/react-toast";
 
 const LabReport = () => {
   const router = useRouter();
@@ -24,6 +26,8 @@ const LabReport = () => {
     healthrecord: "",
     labreportfile: {},
   });
+
+  const [toastOpen, setToastOpen] = useState(false);
 
   const [filename, setFileName] = useState<string>("");
   const [imageUploaded, setImageUploaded] = useState<File>();
@@ -80,7 +84,10 @@ const LabReport = () => {
         healthrecord: "",
         labreportfile: {},
       });
-      router.push("/user/home");
+      setToastOpen(true);
+      setTimeout(() => {
+        router.push("/user/home");
+      }, 2000);
     }
     if (!response.ok) {
       console.log("Error sending data");
@@ -313,7 +320,7 @@ const LabReport = () => {
                             value={`${hr.id}`}
                             className="font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                           >
-                            <Select.ItemText>{`${hr.disease}-${hr.symptoms}-${hr.medsTaken}-${hr.uploadDate}`}</Select.ItemText>
+                            <Select.ItemText>{`${hr.disease}-${hr.symptoms}-${hr.medsTaken}-${prettyDate(new Date(hr.uploadDate))}`}</Select.ItemText>
                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
                               <CheckIcon />
                             </Select.ItemIndicator>
@@ -371,8 +378,35 @@ const LabReport = () => {
             </Form.Submit>
           </Form.Root>
         </div>
+        <Toast.Provider swipeDirection="right" duration={5000}>
+          <Toast.Root
+            className="bg-white rounded-md shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] p-[15px] grid [grid-template-areas:_'title_action'_'description_action'] grid-cols-[auto_max-content] gap-x-[15px] items-center data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut"
+            open={toastOpen}
+            onOpenChange={setToastOpen}
+          >
+            <Toast.Title className="[grid-area:_title] mb-[5px] font-medium  text-violet11 text-[15px]">
+              Submission Successful
+            </Toast.Title>
+            <Toast.Description>
+              <div className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
+                Your submission has been submitted. You can view it in your
+                records.
+              </div>
+            </Toast.Description>
+            <Toast.Close className="[grid-area:_action]" asChild>
+              <button className="w-full flex ml-auto border-[2px] rounded-full border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
+                <Cross2Icon />
+              </button>
+            </Toast.Close>
+          </Toast.Root>
+          <Toast.Viewport className="[--viewport-padding:_25px] fixed bottom-0 right-0 flex flex-col p-[var(--viewport-padding)] gap-[10px] w-[470px] max-w-[100vw] m-0 list-none z-[2147483647] outline-none" />
+        </Toast.Provider>
       </div>
     );
 };
+
+function prettyDate(date: Date) {
+  return new Date(date).toLocaleDateString("en-GB");
+}
 
 export default LabReport;

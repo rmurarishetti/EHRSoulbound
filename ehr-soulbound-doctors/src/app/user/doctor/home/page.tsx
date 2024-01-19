@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Remarks } from "@/app/components/remarks";
 import { DownloadIcon } from "@radix-ui/react-icons";
+import { Attachments } from "@/app/components/attachmentdlg";
 
 export default function DoctorHome() {
   const { user, error, isLoading } = useUser();
@@ -85,7 +86,7 @@ export default function DoctorHome() {
       results.push(record);
     }
     setPatientData(results);
-    console.log(data);
+    //console.log(data);
   }
 
   useEffect(() => {
@@ -164,7 +165,7 @@ export default function DoctorHome() {
               <div>{data.medsTaken}</div>
               <div>{data.sideEffects}</div>
               <div>
-                <div className="w-full flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
+                {/* <div className="w-full flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
                   <a
                     download
                     href={`data:image/png;base64,${fetchImage(data.imageFile)}`}
@@ -173,6 +174,14 @@ export default function DoctorHome() {
                   >
                     <DownloadIcon /> Attachments
                   </a>
+                </div> */}
+                <div>
+                  <Attachments 
+                  healthRecordId={data.id}
+                  disease={data.disease}
+                  symptoms={data.symptoms}
+                  prescription={data.imageFile}
+                  />
                 </div>
               </div>
               <div>
