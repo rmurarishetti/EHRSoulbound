@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("../../public/fonts/Quicksand-VariableFont_wght.ttf");
+}
+
+html {
+    background-color: #F3F6EF;
+}

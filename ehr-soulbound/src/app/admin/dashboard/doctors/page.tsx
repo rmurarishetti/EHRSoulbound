@@ -1,6 +1,9 @@
 import Image from 'next/image';
+import prisma from "../../../../../lib/prisma";
 
-const page = () => {
+export default async function AdminDoctor() {
+	const data = await prisma.doctor.findMany();
+
   return (
     <div className='min-h-screen flex flex-col flex-wrap'>
         <div className="px-5 py-5 mt-24">
@@ -19,16 +22,16 @@ const page = () => {
                 <div>Specialization</div>
 				<div>Doctor E-Mail</div>
 			</div>
-            <div className="w-3/4 flex justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70">
-				<div>1</div>
-				<div>Data</div>
-				<div>Data</div>
-                <div>Data</div>
-				<div>Data</div>
-			</div>
+			{data.map((doctor, index) => (
+				<div key={index} className="w-3/4 flex justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70">
+					<div>{index+1}</div>
+					<div>{doctor.id}</div>
+					<div>{doctor.name}</div>
+					<div>{doctor.specialization}</div>
+					<div>{doctor.email}</div>
+				</div>
+			))}
 		</div>
     </div>
   )
-}
-
-export default page
+};
