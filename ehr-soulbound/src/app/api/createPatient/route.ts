@@ -1,7 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import prisma from "../../../../lib/prisma";
 
 export async function POST(req: NextRequest){
     const patientParticulars = await req.formData();
@@ -14,7 +12,9 @@ export async function POST(req: NextRequest){
     else{
         const patient = await prisma.patient.upsert({
             where: { email: p_email },
-            update: {},
+            update: {
+                
+            },
             create:{
                 email: p_email,
                 name: p_name,

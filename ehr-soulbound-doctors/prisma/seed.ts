@@ -31,7 +31,7 @@ async function main(){
             specialization: 'Cardiology',
         },
     })
-    console.log({patient}, {doctor1}, {doctor2})
+    //console.log({patient}, {doctor1}, {doctor2})
 }
 
 main()
@@ -39,7 +39,7 @@ main()
     await prisma.$disconnect()
   })
   .catch(async (e) => {
-    console.error(e)
+    //console.error(e)
     await prisma.$disconnect()
     process.exit(1)
   })

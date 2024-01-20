@@ -28,17 +28,9 @@ model LabRecord {
   labTest        String?
   healthRecordId Int          @unique
   HealthRecord   HealthRecord @relation(fields: [healthRecordId], references: [id])
-  labReport      LabReport?
+  imageFile       Bytes
 }
 
-model LabReport {
-  id          String    @id @default(cuid())
-  publicId    String    @unique
-  format      String
-  version     String
-  LabRecordId Int       @unique
-  LabRecord   LabRecord @relation(fields: [LabRecordId], references: [id])
-}
 
 model HealthRecord {
   id              Int           @id @default(autoincrement())
@@ -55,15 +47,5 @@ model HealthRecord {
   imageFile       Bytes
   doctor          Doctor        @relation(fields: [doctorId], references: [id])
   patient         Patient       @relation(fields: [patientId], references: [id])
-  HealthReport    HealthReport?
   LabRecord       LabRecord?
-}
-
-model HealthReport {
-  id             String       @id @default(cuid())
-  publicId       String       @unique
-  format         String
-  version        String
-  HealthRecordId Int          @unique
-  HealthRecord   HealthRecord @relation(fields: [HealthRecordId], references: [id])
 }
