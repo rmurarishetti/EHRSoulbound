@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Records } from "../../components/records";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect, useState } from "react";
+import { RecordCard } from "@/app/components/record";
 
 const RecordsPage = () => {
   const formData = new FormData();
@@ -23,15 +24,14 @@ const RecordsPage = () => {
           results.push(record);
         }
         setRecords(results);
-        console.log(data);
+        //console.log(data);
       }
     }
     fetchData();
-  }, []);
+  }, [user, formData]);
 
   const fetchImage = (imageBytes: any) => {
     const t = Buffer.from(imageBytes, "base64").toString("base64");
-    console.log(t);
     return t;
   };
 
@@ -57,24 +57,26 @@ const RecordsPage = () => {
           </a>
         </div>
       </div>
-      <div className="flex flex-row flex-wrap justify-around m-20">
-        {records.map((record) => (
-          <Records
-            title={record.title}
-            remarks={record.remarks}
-            disease={record.disease}
-            symptoms={record.symptoms}
-            meds={record.medsTaken}
-            sideeffects={record.sideEffects}
-            persist={record.symptomsPersist.toString()}
-            doctor={record.doctorId}
-            presfile={fetchImage(record.imageFile)}
-            labtest={record.labTest}
-            healthrecord={record.id}
-            labreportfile={record.symptomsPersist.toString()}
-          ></Records> //put title name and increment title number, doctor name, lab test, lab report file
+      <div className="grid grid-cols-2">
+        {records.map((record, idx) => (
+          <div key={idx} className="flex justify-center m-[20px]">
+          <RecordCard  title={record.title}
+          remarks={record.remarks}
+          disease={record.disease}
+          symptoms={record.symptoms}
+          meds={record.medsTaken}
+          sideeffects={record.sideEffects}
+          persist={record.symptomsPersist.toString()}
+          doctor={record.doctorId}
+          presfile={fetchImage(record.imageFile)}
+          healthrecord={record.id}
+          uploadDate={new Date(record.uploadDate)}
+          />
+          </div>
+          
         ))}
       </div>
+      
     </div>
   );
 };

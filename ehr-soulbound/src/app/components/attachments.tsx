@@ -14,26 +14,25 @@ interface remarksParams {
 export function Attachments(params: remarksParams) {
   const [open, setOpen] = useState(false);
   const [labRecords, setLabRecords] = useState<any>({});
+  
+  async function getLabRecords() {
+    const formData = new FormData();
+    formData.append("healthRecordId", params.healthRecordId.toString());
+    const response = await fetch("/api/getLabRecords", {
+      method: "POST",
+      body: formData,
+    });
+  
+    const data = await response.json();
+    setLabRecords(data);
+
+  }
+  
 
   async function handleOpen() {
+    getLabRecords();
     setOpen(true);
-    await getLabRecords();
   }
-
-  
-    async function getLabRecords() {
-      const formData = new FormData();
-      formData.append("healthRecordId", params.healthRecordId.toString());
-      //console.log(params.healthRecordId);
-      const response = await fetch("/api/getLabRecords", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-      setLabRecords(data);
-      
-    }
-    
 
   const fetchImage = (imageBytes: any) => {
     const t = Buffer.from(imageBytes, "base64").toString("base64");
@@ -43,7 +42,7 @@ export function Attachments(params: remarksParams) {
   return (
     <Dialog.Root open={open} onOpenChange={handleOpen}>
       <Dialog.Trigger asChild>
-        <button className="w-full flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
+        <button className="w-auto h-auto justify-center flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
           <DownloadIcon /> Attachments
         </button>
       </Dialog.Trigger>
@@ -80,24 +79,27 @@ export function Attachments(params: remarksParams) {
               </a>
             </div>
           </div>
-          {(labRecords && labRecords.labTest && labRecords.imageFile)?
-          <div className="mb-[15px] flex items-center gap-5">
-            <div className="text-violet11 w-auto text-right text-[15px]">
-              Lab Test : {labRecords.labTest}
-            </div>
-            <div className="w-[] flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
-              <a
-                download
-                href={`data:image/png;base64,${fetchImage(
+          {labRecords && labRecords.labTest && labRecords.imageFile ? (
+            <div className="mb-[15px] flex items-center gap-5">
+              <div className="text-violet11 w-auto text-right text-[15px]">
+                Lab Test : {labRecords.labTest}
+              </div>
+              <div className="w-[] flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
+                <a
+                  download
+                  href={`data:image/png;base64,${fetchImage(
                     labRecords.imageFile
-                )}`}
-                target="_blank"
-                className="flex items-center"
-              >
-                <DownloadIcon /> Download
-              </a>
+                  )}`}
+                  target="_blank"
+                  className="flex items-center"
+                >
+                  <DownloadIcon /> Download
+                </a>
+              </div>
             </div>
-          </div>:<div></div>}
+          ) : (
+            <div></div>
+          )}
           <button
             onClick={() => setOpen(false)}
             className="text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"

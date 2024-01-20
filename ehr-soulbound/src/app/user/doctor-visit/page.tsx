@@ -49,10 +49,10 @@ export default function DoctorVisitForm() {
       body: userData,
     });
     if (response.ok) {
-      console.log("User");
+      //console.log("User");
     }
     if (!response.ok) {
-      console.log("Error sending data");
+      //console.log("Error sending data");
     }
   }
 
@@ -111,7 +111,7 @@ export default function DoctorVisitForm() {
       body: formData,
     });
     if (response.ok) {
-      console.log("Form data sent");
+      //console.log("Form data sent");
       setState({
         userdisease: "",
         usersymptoms: "",
@@ -127,7 +127,7 @@ export default function DoctorVisitForm() {
       }, 2000);
     }
     if (!response.ok) {
-      console.log("Error sending data");
+      //console.log("Error sending data");
     }
   }
 

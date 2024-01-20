@@ -60,7 +60,7 @@ const LabReport = () => {
       "thyroid profile",
     ];
     if (x.includes(e)) {
-      console.log(e);
+      //console.log(e);
       setState({ ...state, ["labtest"]: e });
     } else {
       setState({ ...state, ["healthrecord"]: e });
@@ -90,7 +90,7 @@ const LabReport = () => {
       }, 2000);
     }
     if (!response.ok) {
-      console.log("Error sending data");
+      //console.log("Error sending data");
     }
   }
 
@@ -107,10 +107,10 @@ const LabReport = () => {
       body: userData,
     });
     if (response.ok) {
-      console.log("User");
+      //console.log("User");
     }
     if (!response.ok) {
-      console.log("Error sending data");
+      //console.log("Error sending data");
     }
   }
 
@@ -126,10 +126,10 @@ const LabReport = () => {
       body: formData,
     });
     if (response.ok) {
-      console.log("User");
+      //console.log("User");
     }
     if (!response.ok) {
-      console.log("Error sending data");
+      //console.log("Error sending data");
     }
 
     const data = await response.json();
@@ -138,7 +138,7 @@ const LabReport = () => {
       result.push(item);
     }
     setOptions(result);
-    console.log(data);
+    //console.log(data);
   }
 
   useEffect(() => {

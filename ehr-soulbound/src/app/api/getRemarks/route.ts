@@ -5,9 +5,16 @@ export async function POST(req: NextRequest) {
   const formData = await req.formData();
   const healthRecordId = formData.getAll("healthRecordId")[0].toString();
 
-  const records = await prisma.labRecord.findUnique({
+  if (!healthRecordId) {
+    return NextResponse.error();
+  }
+
+  const records = await prisma.healthRecord.findUnique({
     where: {
-      healthRecordId: parseInt(healthRecordId),
+      id: parseInt(healthRecordId),
+    },
+    select: {
+      remarks: true,
     },
   });
 

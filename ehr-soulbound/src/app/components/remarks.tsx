@@ -5,6 +5,7 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import * as Form from "@radix-ui/react-form";
 import * as Toast from "@radix-ui/react-toast";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 interface remarksParams {
   healthRecordId: number;
@@ -20,6 +21,7 @@ export function Remarks(params: remarksParams) {
 
   const [open, setOpen] = useState(false);
   const [toastOpen, setToastOpen] = useState(false);
+  const [remarks, setRemarks] = useState("");
 
   async function submitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,7 +31,7 @@ export function Remarks(params: remarksParams) {
 
     formData.append("healthRecordId", params.healthRecordId.toString());
     formData.append("doctorId", params.doctorId.toString());
-    formData.append("remarks", "From Doctor: "+state.remarks);
+    formData.append("remarks", "From Patient: " + state.remarks);
 
     const response = await fetch("/api/updateRemarks", {
       method: "POST",
@@ -61,14 +63,13 @@ export function Remarks(params: remarksParams) {
     });
 
     const data = await response.json();
-    //console.log(data);
-    setState({ remarks: data.remarks });
+    setRemarks(data.remarks);
   }
 
   return (
     <Dialog.Root open={open} onOpenChange={handleOpen}>
       <Dialog.Trigger asChild>
-        <button className="w-full flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
+        <button className="w-auto h-auto flex justify-center ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
           Add Remarks
         </button>
       </Dialog.Trigger>
@@ -79,13 +80,22 @@ export function Remarks(params: remarksParams) {
             Add Remarks
           </Dialog.Title>
           <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
-            Add your remarks post reviewing the case for the patient here. Click
+            Add your remarks for the doctor to view. Click
             submit when you&apos;re done.
           </Dialog.Description>
           <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
             <div className="flex justify-between">
               <div>Disease: {params.disease}</div>
               <div> Symptoms: {params.symptoms}</div>
+            </div>
+          </Dialog.Description>
+          <Dialog.Description className="rounded-xl bg-slate-300  text-violet11 mt-[10px] mb-5 text-[15px] leading-normal">
+            <div className="flex m-[10px] justify-between items-center text-justify">
+              <div className="mr-[10px] font-medium">
+                <InfoCircledIcon />
+              </div>
+
+              <div className="my-[10px]">Existing Remarks {remarks}</div>
             </div>
           </Dialog.Description>
           <Form.Root onSubmit={submitForm}>
@@ -107,11 +117,7 @@ export function Remarks(params: remarksParams) {
                   onChange={handleChange}
                   className="text-violet11 shadow-violet7 focus:shadow-violet8 block w-full rounded-[4px] px-[10px] py-[12px] text-[15px] leading-normal resize-both shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                   value={state.remarks}
-                  placeholder={
-                    state.remarks === "ok" || state.remarks === null
-                      ? "Enter your Remarks"
-                      : state.remarks
-                  }
+                  placeholder={"Enter your remarks here"}
                   required
                 />
               </Form.Control>

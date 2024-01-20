@@ -3,7 +3,6 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Remarks } from "@/app/components/remarks";
-import { DownloadIcon } from "@radix-ui/react-icons";
 import { Attachments } from "@/app/components/attachmentdlg";
 
 export default function DoctorHome() {
@@ -48,10 +47,10 @@ export default function DoctorHome() {
       body: patientData,
     });
     if (response.ok) {
-      console.log("Got patient name");
+      //console.log("Got patient name");
     }
     if (!response.ok) {
-      console.log("Error sending data");
+      //console.log("Error sending data");
     }
 
     const data = await response.json();
@@ -72,10 +71,10 @@ export default function DoctorHome() {
     });
 
     if (response.ok) {
-      console.log("Sent doctor data");
+      //console.log("Sent doctor data");
     }
     if (!response.ok) {
-      console.log("Error sending data");
+      //console.log("Error sending data");
     }
 
     const data = await response.json();
@@ -137,19 +136,20 @@ export default function DoctorHome() {
               Specialization: {doctorDetails.specialization}
             </h3>
           </div>
+          
           <div
             className="w-4/5 flex justify-between text-[#f2e9e4]/90 text-xs font-quicksand font-bold p-5 rounded-2xl"
             style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}
           >
-            <div>S.No.</div>
-            <div>Patient Name</div>
-            <div>Disease</div>
-            <div>Symptoms</div>
-            <div>Symptoms Persisting?</div>
-            <div>Medicines Taken</div>
-            <div>Side-Effects</div>
-            <div>Attachments</div>
-            <div>Remarks</div>
+            <div className="w-1/9 flex items-center">S.No.</div>
+            <div className="w-1/9 flex items-center">Patient Name</div>
+            <div className="w-1/9 flex items-center">Disease</div>
+            <div className="w-1/9 flex items-center">Symptoms</div>
+            <div className="w-1/9 flex items-center">Symptoms Persisting?</div>
+            <div className="w-1/9 flex items-center">Medicines Taken</div>
+            <div className="w-1/9 flex items-center">Side-Effects</div>
+            <div className="w-1/9 flex items-center">Attachments</div>
+            <div className="w-1/9 flex items-center">Remarks</div>
           </div>
 
           {patientData?.map((data, index) => (
@@ -157,34 +157,26 @@ export default function DoctorHome() {
               key={index}
               className="w-4/5 flex items-center justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70"
             >
-              <div>{index + 1}</div>
-              <div>{data.patientName}</div>
-              <div>{data.disease}</div>
-              <div>{data.symptoms}</div>
-              <div>{data.symptomsPersist == true ? "True" : "False"}</div>
-              <div>{data.medsTaken}</div>
-              <div>{data.sideEffects}</div>
-              <div>
-                {/* <div className="w-full flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
-                  <a
-                    download
-                    href={`data:image/png;base64,${fetchImage(data.imageFile)}`}
-                    target="_blank"
-                    className="flex items-center"
-                  >
-                    <DownloadIcon /> Attachments
-                  </a>
-                </div> */}
-                <div>
-                  <Attachments 
+              <div className="w-1/9 flex items-center">{index + 1}</div>
+              <div className="w-1/9 flex items-center">{data.patientName}</div>
+              <div className="w-1/9 flex items-center">{data.disease}</div>
+              <div className="w-1/9 flex items-center">{data.symptoms}</div>
+              <div className="w-1/9 flex items-center">
+                {data.symptomsPersist == true ? "True" : "False"}
+              </div>
+              <div className="w-1/9 flex items-center">{data.medsTaken}</div>
+              <div className="w-1/9 flex items-center">{data.sideEffects}</div>
+
+              <div className="w-1/9 flex items-center">
+                <Attachments
                   healthRecordId={data.id}
                   disease={data.disease}
                   symptoms={data.symptoms}
                   prescription={data.imageFile}
-                  />
-                </div>
+                />
               </div>
-              <div>
+
+              <div className="w-1/9 flex items-center">
                 <Remarks
                   healthRecordId={data.id}
                   doctorId={data.doctorId}

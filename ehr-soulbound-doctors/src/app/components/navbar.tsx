@@ -32,17 +32,7 @@ export default function Navbar() {
         >
           About
         </Link>
-        <Link
-          href="/doctors"
-          className={
-            "border-b-4 hover:border-[#0B1E5B] transition ease-in-out delay-50 duration-100" +
-            (currentRoute === "/doctors"
-              ? "border-b-4 border-[#0B1E5B]"
-              : "border-b-4 border-transparent")
-          }
-        >
-          Doctors
-        </Link>
+        
         <Link
           href="/user/doctor/home"
           className={

@@ -2,8 +2,6 @@
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect } from "react";
 import { useState } from "react";
-import axios from "axios";
-import { table } from "console";
 
 export default function DoctorHome() {
   const { user, error, isLoading } = useUser();
@@ -20,10 +18,10 @@ export default function DoctorHome() {
       });
 
       if (response.ok) {
-        console.log("Sent doctor data");
+        //console.log("Sent doctor data");
       }
       if (!response.ok) {
-        console.log("Error sending data");
+        //console.log("Error sending data");
       }
 
       const data = await response.json();
@@ -32,7 +30,7 @@ export default function DoctorHome() {
         results.push(record);
       }
       setPatientData(results);
-      console.log(data);
+      //console.log(data);
     }
     sendDoctorData();
   }, []);
