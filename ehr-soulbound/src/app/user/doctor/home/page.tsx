@@ -77,8 +77,8 @@ export default function DoctorHome() {
             <div>Remarks</div>
           </div>
           <div className="w-4/5 flex justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70">
-            {patientData?.map((data) => (
-              <div>
+            {patientData?.map((data, idx) => (
+              <div key={idx}>
                 <div>{data.id}</div>
                 <div>{data.patientId}</div>
                 <div>{data.doctorId}</div>

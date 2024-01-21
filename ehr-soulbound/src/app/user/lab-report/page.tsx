@@ -97,7 +97,7 @@ const LabReport = () => {
   const userData = new FormData();
 
   async function createPatient() {
-    if (user) {
+    if (user && user.name && user.email) {
       userData.append("name", user.name);
       userData.append("email", user.email);
     }
@@ -118,7 +118,7 @@ const LabReport = () => {
 
   async function getPatientRecords() {
     const formData = new FormData();
-    if (user) {
+    if (user && user.email) {
       formData.append("useremail", user.email);
     }
     const response = await fetch("/api/getPatientRecords/", {
@@ -320,7 +320,11 @@ const LabReport = () => {
                             value={`${hr.id}`}
                             className="font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                           >
-                            <Select.ItemText>{`${hr.disease}-${hr.symptoms}-${hr.medsTaken}-${prettyDate(new Date(hr.uploadDate))}`}</Select.ItemText>
+                            <Select.ItemText>{`${hr.disease}-${hr.symptoms}-${
+                              hr.medsTaken
+                            }-${prettyDate(
+                              new Date(hr.uploadDate)
+                            )}`}</Select.ItemText>
                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
                               <CheckIcon />
                             </Select.ItemIndicator>

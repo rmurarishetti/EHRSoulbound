@@ -39,7 +39,7 @@ export default function DoctorVisitForm() {
   const userData = new FormData();
 
   async function createPatient() {
-    if (user) {
+    if (user && user.name && user.email) {
       userData.append("name", user.name);
       userData.append("email", user.email);
     }
@@ -104,7 +104,9 @@ export default function DoctorVisitForm() {
     formData.append("userrecoverystatus", state.userrecoverystatus);
     formData.append("doctorid", state.doctorid);
     formData.append("prescriptionfile", imageUploaded as File);
-    formData.append("useremail", user.email as string);
+    if (user && user.email) {
+      formData.append("useremail", user.email as string);
+    }
 
     const response = await fetch("/api/docVisit", {
       method: "POST",
