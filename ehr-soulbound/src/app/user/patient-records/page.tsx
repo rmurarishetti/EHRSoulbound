@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { Records } from "../../components/records";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect, useState } from "react";
 import { RecordCard } from "@/app/components/record";
