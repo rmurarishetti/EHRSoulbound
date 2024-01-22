@@ -10,8 +10,6 @@ import {
   ChevronDownIcon,
   Cross2Icon,
 } from "@radix-ui/react-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
 import * as Toast from "@radix-ui/react-toast";
@@ -272,11 +270,7 @@ const LabReport = () => {
                       </Select.Group>
                     </Select.Viewport>
                     <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-                      <FontAwesomeIcon
-                        icon={faChevronDown}
-                        size="sm"
-                        style={{ color: "#0B1E5B" }}
-                      />
+                      <ChevronDownIcon />
                     </Select.ScrollDownButton>
                   </Select.Content>
                 </Select.Root>
@@ -333,11 +327,7 @@ const LabReport = () => {
                       </Select.Group>
                     </Select.Viewport>
                     <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-                      <FontAwesomeIcon
-                        icon={faChevronDown}
-                        size="sm"
-                        style={{ color: "#0B1E5B" }}
-                      />
+                      <ChevronDownIcon />
                     </Select.ScrollDownButton>
                   </Select.Content>
                 </Select.Root>
