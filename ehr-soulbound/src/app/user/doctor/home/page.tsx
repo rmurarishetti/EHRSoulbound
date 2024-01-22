@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export default function DoctorHome() {
-  const { user, error, isLoading } = useUser();
+  const { user, error, isLoading } = useUser(); 
   const [patientData, setPatientData] = useState<any[]>();
 
   const doctorData = new FormData();

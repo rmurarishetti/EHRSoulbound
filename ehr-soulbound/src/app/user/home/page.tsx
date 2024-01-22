@@ -6,12 +6,13 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 
 export default withPageAuthRequired(
   async function UserPage() {
-    const { user, error, isLoading } = useUser();
+    const { user } = getSession();
     const patient = await prisma.patient.findUnique({
       where: {
         email: user?.email ?? "",
       },
     });
+    
 
     return (
       <div>
