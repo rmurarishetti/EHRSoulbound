@@ -16,7 +16,7 @@ export default function DoctorHome() {
   const doctorData = new FormData();
 
   async function createDoctor() {
-    if (user) {
+    if (user && user.name && user.email) {
       doctorData.append("docname", user.name);
       doctorData.append("docemail", user.email);
     }
@@ -28,7 +28,7 @@ export default function DoctorHome() {
   }
 
   async function getDoctorDetails() {
-    if (user) {
+    if (user && user.email) {
       doctorData.append("docemail", user.email);
     }
     const response = await fetch("/api/getDoctorDetails/", {
@@ -60,7 +60,7 @@ export default function DoctorHome() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   // useEffect(() => {
   async function sendDoctorData() {
-    if (user) {
+    if (user && user.name && user.email) {
       doctorData.append("docname", user.name);
       doctorData.append("docemail", user.email);
     }
@@ -136,7 +136,7 @@ export default function DoctorHome() {
               Specialization: {doctorDetails.specialization}
             </h3>
           </div>
-          
+
           <div
             className="w-4/5 flex justify-between text-[#f2e9e4]/90 text-xs font-quicksand font-bold p-5 rounded-2xl"
             style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}

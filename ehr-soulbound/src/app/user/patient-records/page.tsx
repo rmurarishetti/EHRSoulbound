@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { Records } from "../../components/records";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect, useState } from "react";
 import { RecordCard } from "@/app/components/record";
@@ -12,7 +11,7 @@ const RecordsPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      if (user) {
+      if (user && user.email) {
         formData.append("useremail", user.email);
         const response = await fetch("/api/getPatientRecords", {
           method: "POST",
@@ -60,23 +59,22 @@ const RecordsPage = () => {
       <div className="grid grid-cols-2">
         {records.map((record, idx) => (
           <div key={idx} className="flex justify-center m-[20px]">
-          <RecordCard  title={record.title}
-          remarks={record.remarks}
-          disease={record.disease}
-          symptoms={record.symptoms}
-          meds={record.medsTaken}
-          sideeffects={record.sideEffects}
-          persist={record.symptomsPersist.toString()}
-          doctor={record.doctorId}
-          presfile={fetchImage(record.imageFile)}
-          healthrecord={record.id}
-          uploadDate={new Date(record.uploadDate)}
-          />
+            <RecordCard
+              title={record.title}
+              remarks={record.remarks}
+              disease={record.disease}
+              symptoms={record.symptoms}
+              meds={record.medsTaken}
+              sideeffects={record.sideEffects}
+              persist={record.symptomsPersist.toString()}
+              doctor={record.doctorId}
+              presfile={fetchImage(record.imageFile)}
+              healthrecord={record.id}
+              uploadDate={new Date(record.uploadDate)}
+            />
           </div>
-          
         ))}
       </div>
-      
     </div>
   );
 };

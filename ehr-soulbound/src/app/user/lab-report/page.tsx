@@ -10,8 +10,6 @@ import {
   ChevronDownIcon,
   Cross2Icon,
 } from "@radix-ui/react-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
 import * as Toast from "@radix-ui/react-toast";
@@ -97,7 +95,7 @@ const LabReport = () => {
   const userData = new FormData();
 
   async function createPatient() {
-    if (user) {
+    if (user && user.name && user.email) {
       userData.append("name", user.name);
       userData.append("email", user.email);
     }
@@ -118,7 +116,7 @@ const LabReport = () => {
 
   async function getPatientRecords() {
     const formData = new FormData();
-    if (user) {
+    if (user && user.email) {
       formData.append("useremail", user.email);
     }
     const response = await fetch("/api/getPatientRecords/", {
@@ -272,11 +270,7 @@ const LabReport = () => {
                       </Select.Group>
                     </Select.Viewport>
                     <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-                      <FontAwesomeIcon
-                        icon={faChevronDown}
-                        size="sm"
-                        style={{ color: "#0B1E5B" }}
-                      />
+                      <ChevronDownIcon />
                     </Select.ScrollDownButton>
                   </Select.Content>
                 </Select.Root>
@@ -320,7 +314,11 @@ const LabReport = () => {
                             value={`${hr.id}`}
                             className="font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                           >
-                            <Select.ItemText>{`${hr.disease}-${hr.symptoms}-${hr.medsTaken}-${prettyDate(new Date(hr.uploadDate))}`}</Select.ItemText>
+                            <Select.ItemText>{`${hr.disease}-${hr.symptoms}-${
+                              hr.medsTaken
+                            }-${prettyDate(
+                              new Date(hr.uploadDate)
+                            )}`}</Select.ItemText>
                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
                               <CheckIcon />
                             </Select.ItemIndicator>
@@ -329,11 +327,7 @@ const LabReport = () => {
                       </Select.Group>
                     </Select.Viewport>
                     <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-                      <FontAwesomeIcon
-                        icon={faChevronDown}
-                        size="sm"
-                        style={{ color: "#0B1E5B" }}
-                      />
+                      <ChevronDownIcon />
                     </Select.ScrollDownButton>
                   </Select.Content>
                 </Select.Root>

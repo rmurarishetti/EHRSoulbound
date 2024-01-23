@@ -10,8 +10,6 @@ import {
   Cross2Icon,
 } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
@@ -39,7 +37,7 @@ export default function DoctorVisitForm() {
   const userData = new FormData();
 
   async function createPatient() {
-    if (user) {
+    if (user && user.name && user.email) {
       userData.append("name", user.name);
       userData.append("email", user.email);
     }
@@ -104,7 +102,9 @@ export default function DoctorVisitForm() {
     formData.append("userrecoverystatus", state.userrecoverystatus);
     formData.append("doctorid", state.doctorid);
     formData.append("prescriptionfile", imageUploaded as File);
-    formData.append("useremail", user.email as string);
+    if (user && user.email) {
+      formData.append("useremail", user.email as string);
+    }
 
     const response = await fetch("/api/docVisit", {
       method: "POST",
@@ -323,11 +323,7 @@ export default function DoctorVisitForm() {
                         </Select.Group>
                       </Select.Viewport>
                       <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-                        <FontAwesomeIcon
-                          icon={faChevronDown}
-                          size="sm"
-                          style={{ color: "#0B1E5B" }}
-                        />
+                        <ChevronDownIcon />
                       </Select.ScrollDownButton>
                     </Select.Content>
                   </Select.Root>
@@ -380,11 +376,7 @@ export default function DoctorVisitForm() {
                         </Select.Group>
                       </Select.Viewport>
                       <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-                        <FontAwesomeIcon
-                          icon={faChevronDown}
-                          size="sm"
-                          style={{ color: "#0B1E5B" }}
-                        />
+                        <ChevronDownIcon />
                       </Select.ScrollDownButton>
                     </Select.Content>
                   </Select.Root>

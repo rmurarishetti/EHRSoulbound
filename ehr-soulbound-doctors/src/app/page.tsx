@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AiOutlineMail } from "react-icons/ai";
+import { EnvelopeClosedIcon } from "@radix-ui/react-icons";
 
 export default async function Home() {
   return (
@@ -17,7 +17,7 @@ export default async function Home() {
             <div className="pt-5">
               <div className="flex flex-row flex-wrap bg-white rounded-full p-3">
                 <div className="flex w-1/2 items-center">
-                  <AiOutlineMail />
+                  <EnvelopeClosedIcon />
                   <input
                     type="text"
                     className="flex font-quicksand gap-2 ml-3 focus:outline-none"

@@ -42,7 +42,7 @@ export function Attachments(params: remarksParams) {
   return (
     <Dialog.Root open={open} onOpenChange={handleOpen}>
       <Dialog.Trigger asChild>
-        <button className="w-auto h-auto justify-center flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
+        <button className="w-auto h-auto flex justify-center items-center ml-auto border-[2px] rounded-3xl border-[#F6D1CC] px-5 py-2 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] text-[11px] transition ease-in-out delay-50 duration-200">
           <DownloadIcon /> Attachments
         </button>
       </Dialog.Trigger>
