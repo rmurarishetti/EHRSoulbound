@@ -6,7 +6,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen flex flex-row items-center">
       <div className="flex flex-wrap justify-start md:p-10 p-2">
-        <div className="flex flex-row md:pl-10 pl-5 md:my-20 my-4 w-full">
+        <div className="flex flex-row md:pl-10 pl-5 md:my-20 my-10 w-full">
           <div className="md:mr-10 mr-2">
             <h3 className="font-quicksand md:max-lg:text-4xl/tight lg:text-6xl/tight text-2xl/tight font-medium text-[#0B1E5B]">
               A Platform For Your EHR
@@ -44,9 +44,11 @@ export default async function Home() {
             />
           </div>
         </div>
-        <div className="flex flex-row flex-wrap md:px-10 px-5 md:my-20 my-4 font-quicksand font-medium text-[#0B1E5B]">
+        <div className="flex flex-row flex-wrap md:px-10 px-5 my-20 font-quicksand font-medium text-[#0B1E5B]">
           <div className="w-[49%] md:pr-10 pr-2">
-            <div className="md:max-lg:text-3xl lg:text-5xl text-lg">What We Are</div>
+            <div className="md:max-lg:text-3xl lg:text-5xl text-lg">
+              What We Are
+            </div>
             <div className="pt-5 md:max-lg:text-md lg:text-lg text-base">
               eLekha is a distinguished platform that specialises in
               facilitating therapeutic interactions through the medium of
@@ -55,7 +57,9 @@ export default async function Home() {
           </div>
           <div className="h-full w-1 bg-[#0B1E5B]"></div>
           <div className="w-[49%] md:pl-20 pl-4">
-            <div className="md:max-lg:text-3xl lg:text-5xl text-lg">Our Motto</div>
+            <div className="md:max-lg:text-3xl lg:text-5xl text-lg">
+              Our Motto
+            </div>
             <div className="pt-5 md:max-lg:text-md lg:text-lg text-base">
               We are committed to providing a secure and private environment for
               individuals seeking professional support and guidance for their
@@ -63,11 +67,13 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap justify-start font-medium text-[#0B1E5B] my-20">
-          <div className="flex flex-row w-full items-center px-10 my-20">
-            <div className="w-1/2 mr-10">
-              <div className="font-quicksand md:max-lg:text-3xl lg:text-5xl">The Problem</div>
-              <div className="mt-10 font-quicksand md:max-lg:text-lg lg:text-xl">
+        <div className="flex flex-wrap justify-start font-medium text-[#0B1E5B] md:my-20 my-10">
+          <div className="flex flex-row w-full items-center md:px-10 px-5 md:my-20 my-10">
+            <div className="w-1/2 md:mr-10 mr-5">
+              <div className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl">
+                The Problem
+              </div>
+              <div className="md:mt-10 mt-5 font-quicksand md:max-lg:text-lg lg:text-xl text-base">
                 eLekha addresses the problem of limited accessibility and
                 flexibility in traditional therapy services.
               </div>
@@ -81,7 +87,7 @@ export default async function Home() {
               />
             </div>
           </div>
-          <div className="flex flex-row w-full items-center px-10 my-20">
+          <div className="flex flex-row w-full items-center md:px-10 px-5 md:my-20 my-10">
             <div className="flex w-1/2 justify-start">
               <Image
                 alt="psych-2.png"
@@ -90,9 +96,11 @@ export default async function Home() {
                 height={300}
               />
             </div>
-            <div className="w-1/2 ml-10">
-              <div className="font-quicksand md:max-lg:text-3xl lg:text-5xl">Our Solution</div>
-              <div className="mt-10 font-quicksand md:max-lg:text-lg lg:text-xl">
+            <div className="w-1/2 md:ml-10 ml-5">
+              <div className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl">
+                Our Solution
+              </div>
+              <div className="md:mt-10 mt-5 font-quicksand md:max-lg:text-lg lg:text-xl text-base">
                 We provide a secure platform for people to engage in therapy
                 through written communication, making mental health support more
                 accessible, private, and convenient for a wide range of clients.
@@ -100,13 +108,13 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full flex items-center justify-center my-20 px-10 font-quicksand font-medium text-[#0B1E5B]">
+        <div className="w-full flex items-center justify-center my-20 md:px-10 px-5 font-quicksand font-medium text-[#0B1E5B]">
           <div className="w-1/2 flex flex-col flex-wrap items-center">
-            <div className="md:max-lg:text-3xl lg:text-5xl text-center">
+            <div className="md:max-lg:text-3xl lg:text-5xl text-xl text-center">
               Book now for a free consultation
             </div>
             <Link
-              className="w-fit rounded-3xl mt-12 py-3 px-5 bg-[#0B1E5B] hover:bg-[#1e388a] font-quicksand md:max-lg:text-base lg:text-lg text-[#ffffff] transition ease-in-out delay-50 duration-200"
+              className="w-fit rounded-3xl md:mt-12 mt-6 py-3 md:px-5 px-3 bg-[#0B1E5B] hover:bg-[#1e388a] font-quicksand md:max-lg:text-base lg:text-lg text-sm text-[#ffffff] transition ease-in-out delay-50 duration-200"
               href="/user/home"
             >
               Book An Appointment
