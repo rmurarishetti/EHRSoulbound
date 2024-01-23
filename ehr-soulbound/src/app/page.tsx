@@ -8,7 +8,7 @@ export default async function Home() {
       <div className="flex flex-wrap justify-start md:p-10 p-2">
         <div className="flex flex-row md:pl-10 pl-5 md:my-20 my-10 w-full">
           <div className="md:mr-10 mr-2">
-            <h3 className="font-quicksand md:max-lg:text-4xl/tight lg:text-6xl/tight text-2xl/tight font-medium text-[#0B1E5B]">
+            <h3 className="font-quicksand max-md:text-3xl/tight md:max-lg:text-4xl/tight lg:text-6xl/tight font-medium text-[#0B1E5B]">
               A Platform For Your EHR
             </h3>
             <div className="w-4/5 pt-1 md:pt-5 font-quicksand md:max-lg:text-xl lg:text-2xl text-lg font-extralight text-[#0B1E5B]">
