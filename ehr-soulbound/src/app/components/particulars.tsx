@@ -56,7 +56,7 @@ export function Particulars() {
   return (
     <Dialog.Root onOpenChange={getParticulars} open={open}>
       <Dialog.Trigger asChild>
-        <button className="w-full group text-[13px] leading-none text-[#23356B] rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none hover:bg-[#38139F] hover:text-violet1">
+        <button className="w-full group text-[13px] leading-none text-[#23356B] rounded-[3px] flex items-center h-[25px] px-[5px] relative pl-[25px] select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none hover:bg-[#38139F]/80 hover:text-white">
           Update Particulars
         </button>
       </Dialog.Trigger>
@@ -75,7 +75,7 @@ export function Particulars() {
               className="mb-[15px] flex items-center gap-5"
               name="userName"
             >
-              <Form.Label className="text-[#23356B]/90 w-[90px] text-right text-[15px]">
+              <Form.Label className="text-[#23356B] w-[90px] font-normal text-right text-[15px]">
                 Name
               </Form.Label>
               <Form.Message
@@ -87,7 +87,7 @@ export function Particulars() {
               <Form.Control asChild>
                 <input
                   onChange={handleChange}
-                  className="text-[#23356B]/90 shadow-[#38139F]/30 focus:shadow-[#38139F]/50 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                  className="text-[#23356B] shadow-[#38139F]/30 focus:shadow-[#38139F]/50 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
                   value={state.userName}
                   placeholder={
                     patientState?.name ? patientState.name : "Enter your Name"
@@ -107,7 +107,7 @@ export function Particulars() {
 
           <button
             onClick={() => setOpen(false)}
-            className="text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"
+            className="text-[#38139F]/80 hover:bg-[#38139F]/10 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"
             aria-label="Close"
           >
             <Cross2Icon />
