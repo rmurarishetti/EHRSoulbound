@@ -1,4 +1,4 @@
-const about = () => {
+const About = () => {
   return (
 	<div className="flex flex-row flex-wrap items-start">
 		<div className="md:w-1/2 min-h-0 max-h-auto">
@@ -45,4 +45,4 @@ const about = () => {
   )
 }
 
-export default about
+export default About
