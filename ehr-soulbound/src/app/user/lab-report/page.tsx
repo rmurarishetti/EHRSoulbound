@@ -13,6 +13,7 @@ import {
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
 import * as Toast from "@radix-ui/react-toast";
+import axios from "axios";
 
 const LabReport = () => {
   const router = useRouter();
@@ -29,6 +30,7 @@ const LabReport = () => {
 
   const [filename, setFileName] = useState<string>("");
   const [imageUploaded, setImageUploaded] = useState<File>();
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.files && e.target.files[0]) {
       var allowedTypes = ["image/jpeg", "image/png"];
@@ -149,21 +151,10 @@ const LabReport = () => {
   if (isLoading)
     return (
       <div className="min-h-screen flex flex-row flex-wrap">
-        <div className="flex basis-1/2 justify-center items-center">
+        <div className="flex basis-full justify-center items-center">
           <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
-            Login to Continue
+            Logging In...
           </h3>
-        </div>
-        <div className="flex basis-1/2 justify-center items-center">
-          <a href="https://www.freepik.com/">
-            <Image
-              alt="doctor-visit.png"
-              src="/doctor-visit.png"
-              width="1500"
-              height="1000"
-              priority
-            />
-          </a>
         </div>
       </div>
     );
@@ -172,19 +163,22 @@ const LabReport = () => {
       <div className="min-h-screen flex flex-row flex-wrap">
         <div className="flex basis-1/2 justify-center items-center">
           <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
-            Login to Continue
+            Lab Report
           </h3>
         </div>
         <div className="flex basis-1/2 justify-center items-center">
           <a href="https://www.freepik.com/">
             <Image
-              alt="doctor-visit.png"
-              src="/doctor-visit.png"
+              alt="lab-report.png"
+              src="/lab-report.png"
               width="1500"
-              height="1000"
+              height="979"
               priority
             />
           </a>
+        </div>
+        <div className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
+          Please Login To Continue
         </div>
       </div>
     );
@@ -273,7 +267,7 @@ const LabReport = () => {
                 </Select.Root>
               </Form.Control>
             </Form.Field>
-            <Form.Field className="grid mb-10" name="labtest">
+            <Form.Field className="grid mb-10" name="healthrecord">
               <div className="flex items-baseline justify-between">
                 <Form.Label className="font-quicksand pl-4 md:text-xl text-lg font-semibold text-[#0B1E5B]">
                   Health Record
@@ -291,7 +285,7 @@ const LabReport = () => {
                   defaultValue="select the health record..."
                 >
                   <Select.Trigger asChild aria-label="choose health record">
-                    <button className="font-quicksand box-border w-full px-4 md:h-12 h-10 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full md:text-xl text-lg leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none">
+                    <button className="font-quicksand box-border w-full px-4 md:h-12 h-10 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full md:text-xl text-lg leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none truncate">
                       <Select.Value />
                       <Select.Icon className="ml-auto">
                         <ChevronDownIcon />
@@ -302,7 +296,7 @@ const LabReport = () => {
                     <Select.ScrollUpButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
                       <ChevronUpIcon className="text-black" />
                     </Select.ScrollUpButton>
-                    <Select.Viewport className="w-full bg-[#f2e9e4] rounded-3xl shadow-[0_0_0_2px_rgba(255,144,144,1)]">
+                    <Select.Viewport className="bg-[#f2e9e4] rounded-3xl shadow-[0_0_0_2px_rgba(255,144,144,1)]">
                       <Select.Group>
                         {options.map((hr, i) => (
                           <Select.Item
@@ -311,11 +305,9 @@ const LabReport = () => {
                             value={`${hr.id}`}
                             className="font-quicksand relative flex items-center px-4 md:h-12 h-10 rounded-full md:text-xl text-lg text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                           >
-                            <Select.ItemText>{`${hr.disease}-${hr.symptoms}-${
-                              hr.medsTaken
-                            }-${prettyDate(
-                              new Date(hr.uploadDate)
-                            )}`}</Select.ItemText>
+                            <Select.ItemText>{`${hr.disease}-${
+                              prettyDate(new Date(hr.uploadDate))
+                            }`}</Select.ItemText>
                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
                               <CheckIcon />
                             </Select.ItemIndicator>
