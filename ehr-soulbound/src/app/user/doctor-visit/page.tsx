@@ -154,9 +154,8 @@ export default function DoctorVisitForm() {
             <Image
               alt="doctor-visit.png"
               src="/doctor-visit.png"
-              width="3000"
-              height="2000"
-              style={{ width: "100%", height: "auto" }}
+              width="1500"
+              height="1000"
               priority
             />
           </a>
@@ -187,7 +186,7 @@ export default function DoctorVisitForm() {
               />
             </a>
           </div>
-          <div className="w-3/4">
+          <div className="max-lg:w-3/4 lg:w-1/2">
             <Form.Root className="md:mt-20 mt-10" onSubmit={submitForm}>
               <Form.Field className="grid mb-10" name="userdisease">
                 <div className="flex items-baseline justify-between">
