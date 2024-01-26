@@ -17,43 +17,43 @@ export default withPageAuthRequired(
 
     return (
       <div>
-        <div className="xl:ml-14 ml-8 font-quicksand font-medium md:text-4xl text-2xl px-5 pt-10 pb-2 text-[#0B1E5B]">
+        <div className="xl:ml-14 ml-8 font-quicksand font-medium md:text-4xl text-2xl px-5 pt-10 text-[#0B1E5B]">
           Hello, {patient?.name}
         </div>
-        <div className="xl:ml-14 ml-8 font-quicksand font-medium md:text-2xl text-sm px-5 pt-2 text-[#0B1E5B]">
+        <div className="xl:ml-14 ml-8 font-quicksand font-medium md:text-2xl text-xl px-5 pt-4 text-[#0B1E5B]">
           Welcome To Your Dashboard
         </div>
-        <div className="flex justify-center items-center">
-          <div className="flex justify-between mt-20 mb-16">
+        <div className="flex md:justify-center md:items-center">
+          <div className="flex flex-row flex-wrap justify-center items-center md:mt-20 mt-5 md:mb-16 mb-8">
             <Link
               className="border-[2px] border-[#ffaeae] rounded-3xl bg-[#f2e9e4] hover:bg-[#eadbd3] hover:border-[#ff9090] py-4 px-4 m-10 font-quicksand font-medium text-[#0b1e5b] transition ease-in-out delay-50 duration-200"
               href="./doctor-visit"
             >
-              <div className="text-2xl mb-10 inline-flex items-center">
+              <div className="md:text-2xl text-lg md:mb-10 mb-6 inline-flex items-center">
                 <h3>Doctor&apos;s Visit</h3>
                 <FiArrowRight />
               </div>
-              <div className="text-lg">Click Here To Add Prescription</div>
+              <div className="md:text-lg text-sm">Click Here To Add Prescription</div>
             </Link>
             <Link
               className="border-[2px] border-[#ffaeae] rounded-3xl bg-[#f2e9e4] hover:bg-[#eadbd3] hover:border-[#ff9090] py-4 px-4 m-10 font-quicksand font-medium text-[#0b1e5b] transition ease-in-out delay-50 duration-200"
               href="./lab-report"
             >
-              <div className="text-2xl mb-10 inline-flex items-center">
+              <div className="md:text-2xl text-lg md:mb-10 mb-6 inline-flex items-center">
                 <h3>Lab Reports</h3>
                 <FiArrowRight />
               </div>
-              <div className="text-lg">Click Here To Add Lab Reports</div>
+              <div className="md:text-lg text-sm">Click Here To Add Lab Reports</div>
             </Link>
             <Link
               className="border-[2px] border-[#ffaeae] rounded-3xl bg-[#f2e9e4] hover:bg-[#eadbd3] hover:border-[#ff9090] py-4 px-4 m-10 font-quicksand font-medium text-[#0b1e5b] transition ease-in-out delay-50 duration-200"
               href="./patient-records"
             >
-              <div className="text-2xl mb-10 inline-flex items-center">
-                <h3>Records</h3>
+              <div className="md:text-2xl text-lg md:mb-10 mb-6 inline-flex items-center">
+                <h3>View Records</h3>
                 <FiArrowRight />
               </div>
-              <div className="text-lg">Click Here To View Your Records</div>
+              <div className="md:text-lg text-sm">Click Here To View Your Records</div>
             </Link>
           </div>
         </div>
