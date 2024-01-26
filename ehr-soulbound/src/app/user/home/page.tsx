@@ -17,10 +17,10 @@ export default withPageAuthRequired(
 
     return (
       <div>
-        <div className="ml-16 font-quicksand font-medium text-4xl px-5 pt-10 pb-2 text-[#0B1E5B]">
+        <div className="xl:ml-14 ml-8 font-quicksand font-medium md:text-4xl text-2xl px-5 pt-10 pb-2 text-[#0B1E5B]">
           Hello, {patient?.name}
         </div>
-        <div className="ml-16 font-quicksand font-medium text-2xl px-5 pt-2 text-[#0B1E5B]">
+        <div className="xl:ml-14 ml-8 font-quicksand font-medium md:text-2xl text-sm px-5 pt-2 text-[#0B1E5B]">
           Welcome To Your Dashboard
         </div>
         <div className="flex justify-center items-center">

@@ -46,7 +46,7 @@ export default async function Home() {
         </div>
         <div className="flex flex-row flex-wrap md:px-10 px-5 my-20 font-quicksand font-medium text-[#0B1E5B]">
           <div className="w-[49%] md:pr-10 pr-4">
-            <div className="md:max-lg:text-3xl lg:text-5xl text-lg">
+            <div className="md:max-lg:text-3xl lg:text-5xl text-xl">
               What We Are
             </div>
             <div className="pt-5 md:max-lg:text-md lg:text-lg text-sm">
@@ -57,7 +57,7 @@ export default async function Home() {
           </div>
           <div className="h-full w-1 bg-[#0B1E5B]"></div>
           <div className="w-[49%] md:pl-20 pl-4">
-            <div className="md:max-lg:text-3xl lg:text-5xl text-lg">
+            <div className="md:max-lg:text-3xl lg:text-5xl text-xl">
               Our Motto
             </div>
             <div className="pt-5 md:max-lg:text-md lg:text-lg text-sm">
@@ -73,7 +73,7 @@ export default async function Home() {
               <div className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl">
                 The Problem
               </div>
-              <div className="md:mt-10 mt-5 font-quicksand md:max-lg:text-lg lg:text-xl text-base">
+              <div className="md:mt-10 mt-5 font-quicksand md:max-lg:text-lg lg:text-xl text-sm">
                 eLekha addresses the problem of limited accessibility and
                 flexibility in traditional therapy services.
               </div>
@@ -100,7 +100,7 @@ export default async function Home() {
               <div className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl">
                 Our Solution
               </div>
-              <div className="md:mt-10 mt-5 font-quicksand md:max-lg:text-lg lg:text-xl text-base">
+              <div className="md:mt-10 mt-5 font-quicksand md:max-lg:text-lg lg:text-xl text-sm">
                 We provide a secure platform for people to engage in therapy
                 through written communication, making mental health support more
                 accessible, private, and convenient for a wide range of clients.
