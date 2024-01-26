@@ -135,7 +135,7 @@ export default function DoctorVisitForm() {
     return (
       <div className="min-h-screen flex flex-row flex-wrap">
         <div className="flex basis-full justify-center items-center">
-          <h3 className="font-quicksand lg:text-5xl md:max-lg:text-3xl text-xl p-5 font-medium text-[#0B1E5B]">
+          <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
             Logging In...
           </h3>
         </div>
@@ -145,7 +145,7 @@ export default function DoctorVisitForm() {
     return (
       <div className="min-h-screen flex flex-row flex-wrap">
         <div className="flex basis-1/2 justify-center items-center">
-          <h3 className="font-quicksand lg:text-5xl md:max-lg:text-3xl text-xl p-5 font-medium text-[#0B1E5B]">
+          <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
             Doctor&apos;s Visit Form
           </h3>
         </div>
@@ -161,7 +161,7 @@ export default function DoctorVisitForm() {
             />
           </a>
         </div>
-        <div className="font-quicksand lg:text-5xl md:max-lg:text-3xl text-xl p-5 font-medium text-[#0B1E5B]">
+        <div className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
           Please Login To Continue
         </div>
       </div>
@@ -172,7 +172,7 @@ export default function DoctorVisitForm() {
       (
         <div className="min-h-screen flex flex-row flex-wrap justify-center">
           <div className="flex basis-1/2 justify-center items-center">
-            <h3 className="font-quicksand lg:text-5xl md:max-lg:text-3xl text-xl text-center p-5 font-medium text-[#0B1E5B]">
+            <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl text-center p-5 font-medium text-[#0B1E5B]">
               Doctor&apos;s Visit Form
             </h3>
           </div>
