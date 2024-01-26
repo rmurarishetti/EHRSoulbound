@@ -3,7 +3,7 @@ const about = () => {
 	<div className="flex flex-row flex-wrap items-start">
 		<div className="md:w-1/2 min-h-0 max-h-auto">
 			<div className="flex flex-col flex-wrap justify-start md:ml-10 md:mr-5 md:mt-20 m-7 bg-[#cff0f9] rounded-3xl">
-				<div className="md:p-10 p-7 lg:text-4xl md:text-2xl text-lg font-quicksand font-medium text-[#0B1E5B]">
+				<div className="md:p-10 p-7 md:max-lg:text-2xl lg:text-4xl text-lg font-quicksand font-medium text-[#0B1E5B]">
 					Our Goal
 				</div>
 				<div className="md:px-10 md:pb-10 px-7 pb-7 md:text-xl text-sm font-quicksand font-medium text-[#0B1E5B]">
@@ -13,7 +13,7 @@ const about = () => {
 		</div>
 		<div className="md:w-1/2 min-h-0 max-h-auto md:mt-10">
 			<div className="flex flex-col flex-wrap justify-start md:ml-5 md:mr-10 md:mt-20 m-7 bg-[#ffe8d3] rounded-3xl">
-				<div className="md:p-10 p-7 lg:text-4xl md:text-2xl text-lg font-quicksand font-medium text-[#0B1E5B]">
+				<div className="md:p-10 p-7 md:max-lg:text-2xl lg:text-4xl text-lg font-quicksand font-medium text-[#0B1E5B]">
 					Our Promise
 				</div>
 				<div className="md:px-10 md:pb-10 px-7 pb-7 md:text-xl text-sm font-quicksand font-medium text-[#0B1E5B]">
@@ -23,7 +23,7 @@ const about = () => {
 		</div>
 		<div className="md:w-1/2 min-h-0 max-h-auto">
 			<div className="flex flex-col flex-wrap justify-start md:ml-10 md:mr-5 md:mt-20 m-7 bg-[#f6d1cc] rounded-3xl">
-				<div className="md:p-10 p-7 lg:text-4xl md:text-2xl text-lg font-quicksand font-medium text-[#0B1E5B]">
+				<div className="md:p-10 p-7 md:max-lg:text-2xl lg:text-4xl text-lg font-quicksand font-medium text-[#0B1E5B]">
 					Our Vision
 				</div>
 				<div className="md:px-10 md:pb-10 px-7 pb-7 md:text-xl text-sm font-quicksand font-medium text-[#0B1E5B]">
@@ -33,7 +33,7 @@ const about = () => {
 		</div>
 		<div className="md:w-1/2 min-h-0 max-h-auto">
 			<div className="flex flex-col flex-wrap justify-start md:ml-5 md:mr-10 m-7 bg-[#cff0f9] rounded-3xl">
-				<div className="md:p-10 p-7 lg:text-4xl md:text-2xl text-lg font-quicksand font-medium text-[#0B1E5B]">
+				<div className="md:p-10 p-7 md:max-lg:text-2xl lg:text-4xl text-lg font-quicksand font-medium text-[#0B1E5B]">
 					Our Mission
 				</div>
 				<div className="md:px-10 md:pb-10 px-7 pb-7 md:text-xl text-sm font-quicksand font-medium text-[#0B1E5B]">

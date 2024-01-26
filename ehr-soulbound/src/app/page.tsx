@@ -49,7 +49,7 @@ export default async function Home() {
             <div className="md:max-lg:text-3xl lg:text-5xl text-lg">
               What We Are
             </div>
-            <div className="pt-5 md:max-lg:text-md lg:text-lg text-base">
+            <div className="pt-5 md:max-lg:text-md lg:text-lg text-sm">
               eLekha is a distinguished platform that specialises in
               facilitating therapeutic interactions through the medium of
               written communication.
@@ -60,7 +60,7 @@ export default async function Home() {
             <div className="md:max-lg:text-3xl lg:text-5xl text-lg">
               Our Motto
             </div>
-            <div className="pt-5 md:max-lg:text-md lg:text-lg text-base">
+            <div className="pt-5 md:max-lg:text-md lg:text-lg text-sm">
               We are committed to providing a secure and private environment for
               individuals seeking professional support and guidance for their
               mental health and emotional well-being.
