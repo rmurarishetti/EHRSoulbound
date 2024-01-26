@@ -45,7 +45,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="flex flex-row flex-wrap md:px-10 px-5 my-20 font-quicksand font-medium text-[#0B1E5B]">
-          <div className="w-[49%] md:pr-10 pr-2">
+          <div className="w-[49%] md:pr-10 pr-4">
             <div className="md:max-lg:text-3xl lg:text-5xl text-lg">
               What We Are
             </div>
