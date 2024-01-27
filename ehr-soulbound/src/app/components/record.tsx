@@ -54,7 +54,7 @@ export function RecordCard(props: props) {
             Case: {props.disease.toLocaleUpperCase()}
           </div>
           <div className="text-[#23356B] group-hover:font-medium md:text-sm text-xs">
-            <div className="flex justify-between">
+            <div className="md:flex md:justify-between">
               <div>Dr. {doctorName.name ? doctorName.name : ""}</div>
               <div>{prettyDate(props.uploadDate)}</div>
             </div>
