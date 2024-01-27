@@ -194,7 +194,7 @@ export default function DoctorVisitForm() {
                     Disease
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please enter disease name
@@ -216,7 +216,7 @@ export default function DoctorVisitForm() {
                     Symptoms
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please enter symptoms
@@ -238,7 +238,7 @@ export default function DoctorVisitForm() {
                     Medicines taken
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please enter medicines
@@ -260,7 +260,7 @@ export default function DoctorVisitForm() {
                     Side-Effects
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please enter side-effects
@@ -282,7 +282,7 @@ export default function DoctorVisitForm() {
                     Do the symptoms persist?
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Choose Yes/No
@@ -335,7 +335,7 @@ export default function DoctorVisitForm() {
                     Choose Doctor
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please pick a doctor
@@ -388,7 +388,7 @@ export default function DoctorVisitForm() {
                     Add Prescription
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please upload file

@@ -38,61 +38,51 @@ export function RecordCard(props: props) {
   }, [props.doctor, props.healthrecord]);
 
   return (
-    
-    <div className="w-[80%] h-[200px] border-[3px] border-[rgba(255,174,174,1)]/75 hover:border-[rgba(255,144,144,1)] focus:border-[rgba(255,144,144,1)] rounded-lg bg-[#cff0f9]/50 hover:bg-[#cff0f9]/100 focus:outline-none focus:ring focus:ring-[#F6D1CC]/300 group">
-      <div className="h-[175px] my-[10px] flex justify-around">
-        <div className="w-[40%] rounded-2xl flex justify-center items-center border-[3px] overflow-hidden">
+    <div className="m-12 border-[2px] border-[rgba(255,174,174,1)]/75 hover:border-[rgba(255,144,144,1)] focus:border-[rgba(255,144,144,1)] rounded-lg bg-[#38139F]/20 hover:bg-[#38139F]/30 focus:outline-none focus:ring focus:ring-[#F6D1CC]/300 group">
+      <div className="flex flex-row justify-around">
+        <div className="md:m-6 m-2 rounded-2xl flex justify-center items-center lg:block max-lg:hidden">
           <Image
             src={`data:image/png;base64,${props.presfile}`}
             alt="prescription-image"
-            width="500"
-            height="500"
-            objectFit="fill" // Adjust image to fill container, even if it overflows
+            width="150"
+            height="150"
+            //objectFit="fill" // Adjust image to fill container, even if it overflows
           />
         </div>
-        <div className="w-[50%] justify-right">
-          <div className="font-medium text-[#0B1E5B] group-hover:font-semibold text-[17px]">
+        <div className="md:m-6 m-2 flex flex-col flex-wrap justify-center">
+          <div className="font-medium text-[#0B1E5B] group-hover:font-semibold md:text-base text-sm">
             Case: {props.disease.toLocaleUpperCase()}
           </div>
-          <div className="text-mauve11 group-hover:font-medium group-hover:text-violet11 text-[15px] leading-normal">
+          <div className="text-[#23356B] group-hover:font-medium md:text-sm text-xs">
             <div className="flex justify-between">
               <div>Dr. {doctorName.name ? doctorName.name : ""}</div>
               <div>{prettyDate(props.uploadDate)}</div>
             </div>
           </div>
-          <div className="text-mauve11 group-hover:font-medium group-hover:text-violet11 mt-[7px] text-[15px] leading-normal">
-            <div className="flex justify-between">
+          <div className="text-[#23356B] group-hover:font-medium mt-3 md:text-sm text-xs">
+            <div className="flex flex-col flex-wrap">
               <div>Symptoms: {props.symptoms} </div>
-              <div>Persist:{props.persist == "true" ? "T" : "F"}</div>
-            </div>
-          </div>
-          <div className="text-mauve11 group-hover:font-medium group-hover:text-violet11 text-[15px] leading-normal">
-            <div className="flex justify-between">
+              <div>Persisting: {props.persist == "true" ? "Yes" : "No"}</div>
               <div>Medicines Taken: {props.meds}</div>
-            </div>
-          </div>
-          <div className="text-mauve11 group-hover:font-medium group-hover:text-violet11 text-[15px] leading-normal">
-            <div className="flex justify-between">
               <div>Side-Effects: {props.sideeffects}</div>
             </div>
           </div>
           
-          <div className="text-mauve11 group-hover:font-medium group-hover:text-violet11 mt-[7px] text-[15px] leading-normal">
-            <div className="flex">
-              <Attachments
-                healthRecordId={parseInt(props.healthrecord)}
-                disease={props.disease}
-                symptoms={props.symptoms}
-                prescription={props.presfile}
-              />
-              <Remarks
-                healthRecordId={parseInt(props.healthrecord)}
-                doctorId={parseInt(props.doctor)}
-                disease={props.disease}
-                symptoms={props.symptoms}
-                remarks={props.remarks}
-              />
-            </div>
+          <div className="flex flex-row justify-between mt-6 text-[#23356B]">
+            <Attachments
+              healthRecordId={parseInt(props.healthrecord)}
+              disease={props.disease}
+              symptoms={props.symptoms}
+              prescription={props.presfile}
+            />
+            &nbsp;
+            <Remarks
+              healthRecordId={parseInt(props.healthrecord)}
+              doctorId={parseInt(props.doctor)}
+              disease={props.disease}
+              symptoms={props.symptoms}
+              remarks={props.remarks}
+            />
           </div>
         </div>
       </div>

@@ -114,7 +114,7 @@ const LabReport = () => {
     }
   }
 
-  const [options, setOptions] = useState<any[]>(["Choose an option..."]);
+  const [options, setOptions] = useState<any[]>([]);
 
   async function getPatientRecords() {
     const formData = new FormData();
@@ -139,6 +139,23 @@ const LabReport = () => {
     }
     setOptions(result);
     //console.log(data);
+  }
+
+  async function getDoctorName(doctorId: any) {
+    const formD = new FormData();
+    formD.append("doctorId", doctorId);
+    if (doctorId==null){
+      return "N/A"
+    }
+    else {
+      const response = await fetch("/api/getDoctor", {
+        method: "POST",
+        body: formD,
+      });
+      const data = await response.json();
+      //console.log(data['name'])
+      return data['name'];
+    }
   }
 
   useEffect(() => {
@@ -210,7 +227,7 @@ const LabReport = () => {
                   Lab Test
                 </Form.Label>
                 <Form.Message
-                  className="font-quicksand ml-auto md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                  className="font-quicksand ml-auto md:text-lg text-base text-red-500 opacity-[0.8]"
                   match="valueMissing"
                 >
                   Please choose lab test
@@ -273,7 +290,7 @@ const LabReport = () => {
                   Health Record
                 </Form.Label>
                 <Form.Message
-                  className="font-quicksand ml-auto md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                  className="font-quicksand ml-auto md:text-lg text-base text-red-500 opacity-[0.8]"
                   match="valueMissing"
                 >
                   Please pick health record
@@ -305,7 +322,7 @@ const LabReport = () => {
                             value={`${hr.id}`}
                             className="font-quicksand relative flex items-center px-4 md:h-12 h-10 rounded-full md:text-xl text-lg text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                           >
-                            <Select.ItemText>{`${hr.disease}-${
+                            <Select.ItemText>{`${hr.disease}-${getDoctorName(hr.doctorId)}-${
                               prettyDate(new Date(hr.uploadDate))
                             }`}</Select.ItemText>
                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
@@ -328,7 +345,7 @@ const LabReport = () => {
                   Add Lab Reports
                 </Form.Label>
                 <Form.Message
-                  className="font-quicksand ml-auto md:text-lg text-base text-[#0B1E5B] opacity-[0.8]"
+                  className="font-quicksand ml-auto md:text-lg text-base text-red-500 opacity-[0.8]"
                   match="valueMissing"
                 >
                   Please upload file

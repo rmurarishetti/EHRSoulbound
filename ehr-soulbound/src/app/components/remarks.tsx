@@ -69,21 +69,21 @@ export function Remarks(params: remarksParams) {
   return (
     <Dialog.Root open={open} onOpenChange={handleOpen}>
       <Dialog.Trigger asChild>
-        <button className="w-auto h-auto flex justify-center items-center ml-auto border-[2px] rounded-3xl border-[#F6D1CC] px-5 py-2 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] text-[11px] transition ease-in-out delay-50 duration-200">
+        <button className="flex justify-center items-center border-[2px] rounded-3xl border-[#F6D1CC] md:px-5 px-2 py-2 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#23356B] md:text-[11px] text-[6px] transition ease-in-out delay-50 duration-200">
           Add Remarks
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0" />
         <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
-          <Dialog.Title className="text-mauve12 m-0 text-[17px] font-medium">
+          <Dialog.Title className="text-[#0B1E5B] m-0 text-[17px] font-medium">
             Add Remarks
           </Dialog.Title>
-          <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
+          <Dialog.Description className="text-[#23356B] mt-[10px] mb-5 text-[15px] leading-normal">
             Add your remarks for the doctor to view. Click
             submit when you&apos;re done.
           </Dialog.Description>
-          <Dialog.Description className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
+          <Dialog.Description className="text-[#23356B] mt-[10px] mb-5 text-[15px] leading-normal">
             <div className="flex justify-between">
               <div>Disease: {params.disease}</div>
               <div> Symptoms: {params.symptoms}</div>
@@ -107,7 +107,7 @@ export function Remarks(params: remarksParams) {
                 Remarks
               </Form.Label>
               <Form.Message
-                className="font-quicksand text-lg text-[#0B1E5B] opacity-[0.8]"
+                className="font-quicksand text-lg text-red-500 opacity-[0.8]"
                 match="valueMissing"
               >
                 Please enter your remarks
