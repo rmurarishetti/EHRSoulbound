@@ -10,8 +10,6 @@ import {
   Cross2Icon,
 } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useRouter } from "next/navigation";
@@ -39,7 +37,7 @@ export default function DoctorVisitForm() {
   const userData = new FormData();
 
   async function createPatient() {
-    if (user) {
+    if (user && user.name && user.email) {
       userData.append("name", user.name);
       userData.append("email", user.email);
     }
@@ -104,7 +102,9 @@ export default function DoctorVisitForm() {
     formData.append("userrecoverystatus", state.userrecoverystatus);
     formData.append("doctorid", state.doctorid);
     formData.append("prescriptionfile", imageUploaded as File);
-    formData.append("useremail", user.email as string);
+    if (user && user.email) {
+      formData.append("useremail", user.email as string);
+    }
 
     const response = await fetch("/api/docVisit", {
       method: "POST",
@@ -134,8 +134,8 @@ export default function DoctorVisitForm() {
   if (isLoading)
     return (
       <div className="min-h-screen flex flex-row flex-wrap">
-        <div className="flex basis-full justify-center items-center">
-          <h3 className="font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]">
+        <div className="flex basis-full justify-center">
+          <h3 className="font-quicksand md:max-lg:text-2xl lg:text-4xl text-xl p-5 font-medium text-[#0B1E5B]">
             Logging In...
           </h3>
         </div>
@@ -144,8 +144,8 @@ export default function DoctorVisitForm() {
   if (error)
     return (
       <div className="min-h-screen flex flex-row flex-wrap">
-        <div className="flex basis-1/2 justify-center items-center">
-          <h3 className="font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]">
+        <div className="flex basis-1/2 justify-center">
+          <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
             Doctor&apos;s Visit Form
           </h3>
         </div>
@@ -154,23 +154,24 @@ export default function DoctorVisitForm() {
             <Image
               alt="doctor-visit.png"
               src="/doctor-visit.png"
-              width="3000"
-              height="2000"
-              style={{ width: "100%", height: "auto" }}
+              width="1500"
+              height="1000"
               priority
             />
           </a>
         </div>
-        <div>Please Login To Continue</div>
+        <div className="font-quicksand md:max-lg:text-2xl lg:text-4xl text-xl p-5 font-medium text-[#0B1E5B]">
+          Please Login To Continue
+        </div>
       </div>
     );
   if (user)
     return (
       createPatient(),
       (
-        <div className="min-h-screen flex flex-row flex-wrap">
+        <div className="min-h-screen flex flex-row flex-wrap justify-center">
           <div className="flex basis-1/2 justify-center items-center">
-            <h3 className="font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]">
+            <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl text-center p-5 font-medium text-[#0B1E5B]">
               Doctor&apos;s Visit Form
             </h3>
           </div>
@@ -179,22 +180,21 @@ export default function DoctorVisitForm() {
               <Image
                 alt="doctor-visit.png"
                 src="/doctor-visit.png"
-                width="3000"
-                height="2000"
-                style={{ width: "100%", height: "auto" }}
+                width="1500"
+                height="1000"
                 priority
               />
             </a>
           </div>
-          <div className="mx-auto w-3/4">
-            <Form.Root className="mx-auto w-1/2 mt-20" onSubmit={submitForm}>
+          <div className="max-lg:w-3/4 lg:w-1/2">
+            <Form.Root className="md:mt-20 mt-10" onSubmit={submitForm}>
               <Form.Field className="grid mb-10" name="userdisease">
                 <div className="flex items-baseline justify-between">
-                  <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
+                  <Form.Label className="font-quicksand pl-4 md:text-xl text-lg font-semibold text-[#0B1E5B]">
                     Disease
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand text-lg text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please enter disease name
@@ -202,7 +202,7 @@ export default function DoctorVisitForm() {
                 </div>
                 <Form.Control asChild>
                   <input
-                    className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
+                    className="font-quicksand box-border w-full px-4 md:h-12 h-10 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full md:text-xl text-lg leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
                     onChange={handleChange}
                     value={state.userdisease}
                     placeholder="Ex: Hypothyroidism"
@@ -212,11 +212,11 @@ export default function DoctorVisitForm() {
               </Form.Field>
               <Form.Field className="grid mb-10" name="usersymptoms">
                 <div className="flex items-baseline justify-between">
-                  <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
+                  <Form.Label className="font-quicksand pl-4 md:text-xl text-lg font-semibold text-[#0B1E5B]">
                     Symptoms
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand text-lg text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please enter symptoms
@@ -224,7 +224,7 @@ export default function DoctorVisitForm() {
                 </div>
                 <Form.Control asChild>
                   <input
-                    className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
+                    className="font-quicksand box-border w-full px-4 md:h-12 h-10 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full md:text-xl text-lg leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
                     onChange={handleChange}
                     value={state.usersymptoms}
                     placeholder="Ex: Fever, Nausea"
@@ -234,11 +234,11 @@ export default function DoctorVisitForm() {
               </Form.Field>
               <Form.Field className="grid mb-10" name="usermeds">
                 <div className="flex items-baseline justify-between">
-                  <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
+                  <Form.Label className="font-quicksand pl-4 md:text-xl text-lg font-semibold text-[#0B1E5B]">
                     Medicines taken
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand text-lg text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please enter medicines
@@ -246,7 +246,7 @@ export default function DoctorVisitForm() {
                 </div>
                 <Form.Control asChild>
                   <input
-                    className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
+                    className="font-quicksand box-border w-full px-4 md:h-12 h-10 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full md:text-xl text-lg leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
                     onChange={handleChange}
                     value={state.usermeds}
                     placeholder="Ex: DOLO 650"
@@ -256,11 +256,11 @@ export default function DoctorVisitForm() {
               </Form.Field>
               <Form.Field className="grid mb-10" name="usersideeffects">
                 <div className="flex items-baseline justify-between">
-                  <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
+                  <Form.Label className="font-quicksand pl-4 md:text-xl text-lg font-semibold text-[#0B1E5B]">
                     Side-Effects
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand text-lg text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please enter side-effects
@@ -268,7 +268,7 @@ export default function DoctorVisitForm() {
                 </div>
                 <Form.Control asChild>
                   <input
-                    className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
+                    className="font-quicksand box-border w-full px-4 md:h-12 h-10 bg-[#f2e9e4] font-semibold inline-flex appearance-none items-center justify-center rounded-full md:text-xl text-lg leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none placeholder:text-blackA6 caret-blackA6"
                     onChange={handleChange}
                     value={state.usersideeffects}
                     placeholder="Ex: Headache"
@@ -278,11 +278,11 @@ export default function DoctorVisitForm() {
               </Form.Field>
               <Form.Field className="grid mb-10" name="userrecoverystatus">
                 <div className="flex items-baseline justify-between">
-                  <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
+                  <Form.Label className="font-quicksand pl-4 md:text-xl text-lg font-semibold text-[#0B1E5B]">
                     Do the symptoms persist?
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand text-lg text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Choose Yes/No
@@ -294,7 +294,7 @@ export default function DoctorVisitForm() {
                     defaultValue="choose an option..."
                   >
                     <Select.Trigger asChild aria-label="choose recovery status">
-                      <button className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none">
+                      <button className="font-quicksand box-border w-full px-4 md:h-12 h-10 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full md:text-xl text-lg leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none">
                         <Select.Value />
                         <Select.Icon className="ml-auto">
                           <ChevronDownIcon />
@@ -312,7 +312,7 @@ export default function DoctorVisitForm() {
                               disabled={f === "Choose an option..."}
                               key={`${f}-${i}`}
                               value={f.toLowerCase()}
-                              className="font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
+                              className="font-quicksand relative flex items-center px-4 md:h-12 h-10 rounded-full md:text-xl text-lg text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                             >
                               <Select.ItemText>{f}</Select.ItemText>
                               <Select.ItemIndicator className="ml-auto inline-flex items-center">
@@ -323,11 +323,7 @@ export default function DoctorVisitForm() {
                         </Select.Group>
                       </Select.Viewport>
                       <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-                        <FontAwesomeIcon
-                          icon={faChevronDown}
-                          size="sm"
-                          style={{ color: "#0B1E5B" }}
-                        />
+                        <ChevronDownIcon />
                       </Select.ScrollDownButton>
                     </Select.Content>
                   </Select.Root>
@@ -335,11 +331,11 @@ export default function DoctorVisitForm() {
               </Form.Field>
               <Form.Field className="grid mb-10" name="doctorid">
                 <div className="flex items-baseline justify-between">
-                  <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
+                  <Form.Label className="font-quicksand pl-4 md:text-xl text-lg font-semibold text-[#0B1E5B]">
                     Choose Doctor
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand text-lg text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please pick a doctor
@@ -351,7 +347,7 @@ export default function DoctorVisitForm() {
                     defaultValue=""
                   >
                     <Select.Trigger asChild aria-label="choose doctor">
-                      <button className="font-quicksand box-border w-full px-4 h-12 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full text-xl leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none">
+                      <button className="font-quicksand box-border w-full px-4 md:h-12 h-10 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 font-semibold focus:bg-[#eadbd3] inline-flex appearance-none items-center justify-center rounded-full md:text-xl text-lg leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,0.6)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] resize-none select-none">
                         <Select.Value />
                         <Select.Icon className="ml-auto">
                           <ChevronDownIcon />
@@ -369,7 +365,7 @@ export default function DoctorVisitForm() {
                               disabled={doc.id == "0"}
                               key={`${doc.id}`}
                               value={`${doc.id}`}
-                              className="font-quicksand relative flex items-center px-4 h-12 rounded-full text-xl text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
+                              className="font-quicksand relative flex items-center px-4 md:h-12 h-10 rounded-full md:text-xl text-lg text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                             >
                               <Select.ItemText>{doc.name}</Select.ItemText>
                               <Select.ItemIndicator className="ml-auto inline-flex items-center">
@@ -380,11 +376,7 @@ export default function DoctorVisitForm() {
                         </Select.Group>
                       </Select.Viewport>
                       <Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-                        <FontAwesomeIcon
-                          icon={faChevronDown}
-                          size="sm"
-                          style={{ color: "#0B1E5B" }}
-                        />
+                        <ChevronDownIcon />
                       </Select.ScrollDownButton>
                     </Select.Content>
                   </Select.Root>
@@ -392,11 +384,11 @@ export default function DoctorVisitForm() {
               </Form.Field>
               <Form.Field className="grid mb-10" name="prescriptionfile">
                 <div className="flex items-baseline justify-between">
-                  <Form.Label className="font-quicksand pl-4 text-xl font-semibold text-[#0B1E5B]">
+                  <Form.Label className="font-quicksand pl-4 md:text-xl text-lg font-semibold text-[#0B1E5B]">
                     Add Prescription
                   </Form.Label>
                   <Form.Message
-                    className="font-quicksand text-lg text-[#0B1E5B] opacity-[0.8]"
+                    className="font-quicksand md:text-lg text-base text-red-500 opacity-[0.8]"
                     match="valueMissing"
                   >
                     Please upload file
@@ -415,7 +407,7 @@ export default function DoctorVisitForm() {
                 <div className="flex items-center">
                   <label
                     htmlFor="fileupload"
-                    className="font-quicksand cursor-pointer box-border w-48 h-12 px-4 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full text-xl justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none"
+                    className="font-quicksand cursor-pointer box-border md:w-48 w-32 md:h-12 h-10 px-4 bg-[#f2e9e4] hover:bg-[#eadbd3] hover:bg-opacity-80 focus:bg-[#eadbd3] font-semibold inline-flex appearance-none rounded-full md:text-xl text-lg justify-center items-center leading-none text-[#0B1E5B] shadow-[0_0_0_1px_rgba(255,174,174,1)] outline-none hover:shadow-[0_0_0_2px_rgba(255,144,144,1)] focus:shadow-[0_0_0_3px_rgba(255,144,144,1)] selection:text-[#ffffff] selection:bg-[#ffaeae] selection:bg-opacity-60 resize-none"
                   >
                     Select file...
                   </label>
@@ -423,7 +415,7 @@ export default function DoctorVisitForm() {
                 </div>
               </Form.Field>
               <Form.Submit asChild>
-                <button className="box-border w-full text-[#0B1E5B] hover:text-[#9aaff3] inline-flex h-12 items-center justify-center rounded-full bg-[#f6a290] hover:bg-[#f6d1cc] px-4 text-xl font-semibold leading-none focus:outline-none mt-3 mb-5 transition-colors duration-200">
+                <button className="box-border w-full text-[#0B1E5B] hover:text-[#9aaff3] inline-flex md:h-14 h-12 items-center justify-center rounded-full bg-[#f6a290] hover:bg-[#f6d1cc] px-4 md:text-xl text-lg font-semibold leading-none focus:outline-none mt-3 mb-5 transition-colors duration-200">
                   Submit
                 </button>
               </Form.Submit>
@@ -434,11 +426,11 @@ export default function DoctorVisitForm() {
                 open={toastOpen}
                 onOpenChange={setToastOpen}
               >
-                <Toast.Title className="[grid-area:_title] mb-[5px] font-medium  text-violet11 text-[15px]">
+                <Toast.Title className="[grid-area:_title] mb-[5px] font-medium text-[#38139F]/90 md:text-[15px] text-[10px]">
                   Submission Successful
                 </Toast.Title>
                 <Toast.Description>
-                  <div className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
+                  <div className="text-mauve11 mt-[10px] mb-5 md:text-[15px] text-[10px] leading-normal">
                     Your submission has been submitted. You can view it in your
                     records.
                   </div>

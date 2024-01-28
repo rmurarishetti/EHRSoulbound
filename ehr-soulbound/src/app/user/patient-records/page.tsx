@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { Records } from "../../components/records";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect, useState } from "react";
 import { RecordCard } from "@/app/components/record";
@@ -12,7 +11,7 @@ const RecordsPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      if (user) {
+      if (user && user.email) {
         formData.append("useremail", user.email);
         const response = await fetch("/api/getPatientRecords", {
           method: "POST",
@@ -37,8 +36,8 @@ const RecordsPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col flex-wrap">
-      <div className="px-5 py-5 mt-24">
-        <h3 className="font-quicksand text-5xl mb-8 text-center font-medium text-[#0B1E5B]">
+      <div className="px-5 py-5 md:mt-24 mt-16">
+        <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl mb-8 text-center font-medium text-[#0B1E5B]">
           Records
         </h3>
         <div className="flex basis-1/2 justify-center items-center">
@@ -49,34 +48,31 @@ const RecordsPage = () => {
             <Image
               alt="health-record.jpg"
               src="/health-record.jpg"
-              width="2000"
-              height="2000"
-              style={{ width: "50%", height: "auto" }}
+              width="500"
+              height="500"
               priority
             />
           </a>
         </div>
       </div>
-      <div className="grid grid-cols-2">
+      <div className="flex flex-row flex-wrap justify-center">
         {records.map((record, idx) => (
-          <div key={idx} className="flex justify-center m-[20px]">
-          <RecordCard  title={record.title}
-          remarks={record.remarks}
-          disease={record.disease}
-          symptoms={record.symptoms}
-          meds={record.medsTaken}
-          sideeffects={record.sideEffects}
-          persist={record.symptomsPersist.toString()}
-          doctor={record.doctorId}
-          presfile={fetchImage(record.imageFile)}
-          healthrecord={record.id}
-          uploadDate={new Date(record.uploadDate)}
+          <RecordCard
+            key={idx}
+            title={record.title}
+            remarks={record.remarks}
+            disease={record.disease}
+            symptoms={record.symptoms}
+            meds={record.medsTaken}
+            sideeffects={record.sideEffects}
+            persist={record.symptomsPersist.toString()}
+            doctor={record.doctorId}
+            presfile={fetchImage(record.imageFile)}
+            healthrecord={record.id}
+            uploadDate={new Date(record.uploadDate)}
           />
-          </div>
-          
         ))}
       </div>
-      
     </div>
   );
 };
