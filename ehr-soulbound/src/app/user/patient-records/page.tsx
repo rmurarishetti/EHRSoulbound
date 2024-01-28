@@ -58,6 +58,7 @@ const RecordsPage = () => {
       <div className="flex flex-row flex-wrap justify-center">
         {records.map((record, idx) => (
             <RecordCard
+              key={idx}
               title={record.title}
               remarks={record.remarks}
               disease={record.disease}
