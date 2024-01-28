@@ -50,16 +50,16 @@ export function RecordCard(props: props) {
           />
         </div>
         <div className="md:m-6 m-2 flex flex-col flex-wrap justify-center">
-          <div className="font-medium text-[#0B1E5B] group-hover:font-semibold md:text-base text-sm">
+          <div className="font-medium text-[#0B1E5B] md:text-base text-sm">
             Case: {props.disease.toLocaleUpperCase()}
           </div>
-          <div className="text-[#23356B] group-hover:font-medium md:text-sm text-xs">
+          <div className="text-[#23356B] md:text-sm text-xs">
             <div className="md:flex md:justify-between">
               <div>Dr. {doctorName.name ? doctorName.name : ""}</div>
               <div>{prettyDate(props.uploadDate)}</div>
             </div>
           </div>
-          <div className="text-[#23356B] group-hover:font-medium mt-3 md:text-sm text-xs">
+          <div className="text-[#23356B] mt-3 md:text-sm text-xs">
             <div className="flex flex-col flex-wrap">
               <div>Symptoms: {props.symptoms} </div>
               <div>Persisting: {props.persist == "true" ? "Yes" : "No"}</div>

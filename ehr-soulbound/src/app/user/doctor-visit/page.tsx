@@ -426,7 +426,7 @@ export default function DoctorVisitForm() {
                 open={toastOpen}
                 onOpenChange={setToastOpen}
               >
-                <Toast.Title className="[grid-area:_title] mb-[5px] font-medium  text-violet11 md:text-[15px] text-[10px]">
+                <Toast.Title className="[grid-area:_title] mb-[5px] font-medium text-[#38139F]/90 md:text-[15px] text-[10px]">
                   Submission Successful
                 </Toast.Title>
                 <Toast.Description>
