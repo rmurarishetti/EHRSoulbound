@@ -18,20 +18,20 @@ export default async function AdminDoctor() {
 		</div>
 		<div className='flex flex-col basis-full justify-center items-center'>
         	<div className="w-3/5 grid grid-cols-5 text-center text-[#f2e9e4]/90 md:text-sm text-[6px] font-quicksand font-bold md:p-5 p-3 md:rounded-2xl rounded-lg" style={{ backgroundColor: "rgba(11, 30, 91, 0.7)"}}>
-                <div>S.No.</div>
-            	<div>Doctor ID</div>
-				<div>Doctor Name</div>
-                <div>Specialization</div>
-				<div>Doctor E-Mail</div>
+                <div className='text-wrap break-words'>S.No.</div>
+            	<div className='text-wrap break-words'>Doctor ID</div>
+				<div className='text-wrap break-words'>Doctor Name</div>
+                <div className='text-wrap break-words'>Specialization</div>
+				<div className='text-wrap break-words'>Doctor E-Mail</div>
 			</div>
 			<div className="w-3/5 md:rounded-2xl rounded-lg bg-[#cff0f9]/70">
 				{data.map((doctor, index) => (
 					<div key={index} className="grid grid-cols-5 text-center text-[#0B1E5B] md:text-sm text-[6px] font-quicksand font-bold md:p-5 p-3">
-						<div className='text-wrap break-all'>{index+1}</div>
-						<div className='text-wrap break-all'>{doctor.id}</div>
-						<div className='text-wrap break-all'>{doctor.name}</div>
-						<div className='text-wrap break-all'>{doctor.specialization}</div>
-						<div className='text-wrap break-all'>{doctor.email}</div>
+						<div className='text-wrap break-words'>{index+1}</div>
+						<div className='text-wrap break-words'>{doctor.id}</div>
+						<div className='text-wrap break-words'>{doctor.name}</div>
+						<div className='text-wrap break-words'>{doctor.specialization}</div>
+						<div className='text-wrap break-words'>{doctor.email}</div>
 					</div>
 				))}
 			</div>

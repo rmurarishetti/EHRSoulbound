@@ -105,8 +105,8 @@ export default function DoctorHome() {
   if (isLoading)
     return (
       <div className="min-h-screen flex flex-row flex-wrap">
-        <div className="flex basis-full justify-center items-center">
-          <h3 className="font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]">
+        <div className="flex basis-full justify-center">
+          <h3 className="font-quicksand md:max-lg:text-2xl lg:text-4xl text-xl p-5 font-medium text-[#0B1E5B]">
             Logging In...
           </h3>
         </div>
@@ -116,8 +116,8 @@ export default function DoctorHome() {
   if (!user || error)
     return (
       <div className="min-h-screen flex flex-row flex-wrap">
-        <div className="flex basis-full justify-center items-center">
-          <h3 className="font-quicksand text-5xl px-5 py-5 font-medium text-[#0B1E5B]">
+        <div className="flex basis-full justify-center">
+          <h3 className="font-quicksand md:max-lg:text-2xl lg:text-4xl text-xl p-5 font-medium text-[#0B1E5B]">
             Please Login To Continue
           </h3>
         </div>
@@ -126,67 +126,67 @@ export default function DoctorHome() {
 
   if (user)
     return (
-      <div className="min-h-1 flex flex-row flex-wrap">
+      <div className="min-h-screen flex flex-row flex-wrap">
         <div className="flex flex-col basis-full justify-center items-center">
-          <div className="mb-20">
-            <h3 className="font-quicksand font-medium text-4xl px-5 py-5 text-[#0B1E5B]">
+          <div className="md:mb-20 mb-10">
+            <h3 className="font-quicksand font-medium md:max-lg:text-3xl lg:text-5xl text-xl px-5 py-5 text-[#0B1E5B]">
               Welcome, Dr. {doctorDetails.name}
             </h3>
-            <h3 className="flex justify-center font-quicksand font-medium text-2xl px-5 py-5 text-[#0B1E5B]">
+            <h3 className="flex justify-center font-quicksand font-medium md:max-lg:text-xl lg:text-2xl text-lg px-5 py-5 text-[#0B1E5B]">
               Specialization: {doctorDetails.specialization}
             </h3>
           </div>
-
-          <div
-            className="w-4/5 flex justify-between text-[#f2e9e4]/90 text-xs font-quicksand font-bold p-5 rounded-2xl"
-            style={{ backgroundColor: "rgba(11, 30, 91, 0.6)" }}
-          >
-            <div className="w-1/9 flex items-center">S.No.</div>
-            <div className="w-1/9 flex items-center">Patient Name</div>
-            <div className="w-1/9 flex items-center">Disease</div>
-            <div className="w-1/9 flex items-center">Symptoms</div>
-            <div className="w-1/9 flex items-center">Symptoms Persisting?</div>
-            <div className="w-1/9 flex items-center">Medicines Taken</div>
-            <div className="w-1/9 flex items-center">Side-Effects</div>
-            <div className="w-1/9 flex items-center">Attachments</div>
-            <div className="w-1/9 flex items-center">Remarks</div>
-          </div>
-
-          {patientData?.map((data, index) => (
-            <div
-              key={index}
-              className="w-4/5 flex items-center justify-between text-[#0B1E5B] text-xs font-quicksand font-bold p-5 rounded-2xl bg-[#cff0f9]/70"
+          <div className='flex flex-col basis-full md:justify-center items-center'>
+            <div 
+              className="w-[95%] grid grid-cols-9 text-center text-[#f2e9e4]/90 md:max-lg:text-[10px] lg:text-sm text-[6px] font-quicksand font-bold md:p-5 p-3 md:rounded-2xl rounded-lg"
+              style={{ backgroundColor: "rgba(11, 30, 91, 0.7)" }}
             >
-              <div className="w-1/9 flex items-center">{index + 1}</div>
-              <div className="w-1/9 flex items-center">{data.patientName}</div>
-              <div className="w-1/9 flex items-center">{data.disease}</div>
-              <div className="w-1/9 flex items-center">{data.symptoms}</div>
-              <div className="w-1/9 flex items-center">
-                {data.symptomsPersist == true ? "True" : "False"}
-              </div>
-              <div className="w-1/9 flex items-center">{data.medsTaken}</div>
-              <div className="w-1/9 flex items-center">{data.sideEffects}</div>
-
-              <div className="w-1/9 flex items-center">
-                <Attachments
-                  healthRecordId={data.id}
-                  disease={data.disease}
-                  symptoms={data.symptoms}
-                  prescription={data.imageFile}
-                />
-              </div>
-
-              <div className="w-1/9 flex items-center">
-                <Remarks
-                  healthRecordId={data.id}
-                  doctorId={data.doctorId}
-                  disease={data.disease}
-                  symptoms={data.symptoms}
-                  remarks={data.remarks}
-                />
-              </div>
+              <div className='text-wrap break-words'>S.No.</div>
+              <div className='text-wrap break-words'>Patient Name</div>
+              <div className='text-wrap break-words'>Disease</div>
+              <div className='text-wrap break-words'>Symptoms</div>
+              <div className='text-wrap break-words'>Symptoms Persisting?</div>
+              <div className='text-wrap break-words'>Medicines Taken</div>
+              <div className='text-wrap break-words'>Side Effects</div>
+              <div className='text-wrap break-words'>Attachments</div>
+              <div className='text-wrap break-words'>Remarks</div>
             </div>
-          ))}
+            <div className="w-[95%] md:rounded-2xl rounded-lg bg-[#cff0f9]/70">
+              {patientData?.map((data, index) => (
+                <div
+                  key={index}
+                  className="grid grid-cols-9 text-center text-[#0B1E5B] md:max-lg:text-[10px] lg:text-sm text-[6px] font-quicksand font-bold md:p-5 p-3"
+                >
+                  <div className='text-wrap break-words'>{index + 1}</div>
+                  <div className='text-wrap break-words'>{data.patientName}</div>
+                  <div className='text-wrap break-words'>{data.disease}</div>
+                  <div className='text-wrap break-words'>{data.symptoms}</div>
+                  <div className='text-wrap break-words'>
+                    {data.symptomsPersist == true ? "True" : "False"}
+                  </div>
+                  <div className='text-wrap break-words'>{data.medsTaken}</div>
+                  <div className='text-wrap break-words'>{data.sideEffects}</div>
+                  <div>
+                    <Attachments
+                      healthRecordId={data.id}
+                      disease={data.disease}
+                      symptoms={data.symptoms}
+                      prescription={data.imageFile}
+                    />
+                  </div>
+                  <div>
+                    <Remarks
+                      healthRecordId={data.id}
+                      doctorId={data.doctorId}
+                      disease={data.disease}
+                      symptoms={data.symptoms}
+                      remarks={data.remarks}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     );

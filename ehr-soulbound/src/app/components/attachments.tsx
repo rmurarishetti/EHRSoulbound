@@ -55,7 +55,7 @@ export function Attachments(params: remarksParams) {
           <Dialog.Description className="text-[#23356B] mt-1 mb-5 md:text-[15px] text-[8px]">
             Explore all the attachments associated with this case here.
           </Dialog.Description>
-          <Dialog.Description className="text-[#23356B]/90 mb-5 md:text-[13px] text-[6px]">
+          <Dialog.Description className="text-[#23356B]/80 mb-5 md:text-[13px] text-[6px]">
             <div className="flex justify-between">
               <div>Disease: {params.disease}</div>
               <div> Symptoms: {params.symptoms}</div>

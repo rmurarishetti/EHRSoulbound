@@ -148,12 +148,12 @@ export function Remarks(params: remarksParams) {
             Submission Successful
           </Toast.Title>
           <Toast.Description>
-            <div className="text-mauve11 mt-[10px] mb-5 text-[15px] leading-normal">
-              Your remarks been submitted. You can view it in your records.
+            <div className="text-mauve11 font-normal mt-[10px] mb-5 text-[15px] leading-normal">
+              Your remarks have been submitted. You can view it in your records.
             </div>
           </Toast.Description>
           <Toast.Close className="[grid-area:_action]" asChild>
-            <button className="w-full flex ml-auto border-[2px] rounded-full border-[#F6D1CC] py-2 px-5 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
+            <button className="w-full flex ml-auto border-[2px] rounded-full border-[#F6D1CC] py-2 px-4 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-medium text-[#0B1E5B] transition ease-in-out delay-50 duration-200">
               <Cross2Icon />
             </button>
           </Toast.Close>
