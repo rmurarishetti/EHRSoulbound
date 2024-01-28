@@ -44,8 +44,8 @@ export function RecordCard(props: props) {
           <Image
             src={`data:image/png;base64,${props.presfile}`}
             alt="prescription-image"
-            width="150"
-            height="150"
+            width="100"
+            height="50"
             //objectFit="fill" // Adjust image to fill container, even if it overflows
           />
         </div>
