@@ -28,7 +28,7 @@ export default function AdminHome(){
         return (
             <div className="min-h-screen flex flex-row flex-wrap">
                 <div className="flex basis-full justify-center">
-                <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
+                <h3 className="font-quicksand md:max-lg:text-2xl lg:text-4xl text-xl p-5 font-medium text-[#0B1E5B]">
                     Logging In...
                 </h3>
                 </div>
@@ -39,7 +39,7 @@ export default function AdminHome(){
         return (
             <div className="min-h-screen flex flex-row flex-wrap">
                 <div className="flex basis-full justify-center">
-                <h3 className="font-quicksand md:max-lg:text-3xl lg:text-5xl text-xl p-5 font-medium text-[#0B1E5B]">
+                <h3 className="font-quicksand md:max-lg:text-2xl lg:text-4xl text-xl p-5 font-medium text-[#0B1E5B]">
                     Please Login To Continue
                 </h3>
                 </div>
