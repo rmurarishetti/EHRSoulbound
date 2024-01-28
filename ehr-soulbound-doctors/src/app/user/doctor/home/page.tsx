@@ -136,20 +136,20 @@ export default function DoctorHome() {
               Specialization: {doctorDetails.specialization}
             </h3>
           </div>
-          <div className='flex flex-col basis-full md:justify-center items-center'>
-            <div 
+          <div className="flex flex-col basis-full md:justify-center items-center">
+            <div
               className="w-[95%] grid grid-cols-9 text-center text-[#f2e9e4]/90 md:max-lg:text-[10px] lg:text-sm text-[6px] font-quicksand font-bold md:p-5 p-3 md:rounded-2xl rounded-lg"
               style={{ backgroundColor: "rgba(11, 30, 91, 0.7)" }}
             >
-              <div className='text-wrap break-words'>S.No.</div>
-              <div className='text-wrap break-words'>Patient Name</div>
-              <div className='text-wrap break-words'>Disease</div>
-              <div className='text-wrap break-words'>Symptoms</div>
-              <div className='text-wrap break-words'>Symptoms Persisting?</div>
-              <div className='text-wrap break-words'>Medicines Taken</div>
-              <div className='text-wrap break-words'>Side Effects</div>
-              <div className='text-wrap break-words'>Attachments</div>
-              <div className='text-wrap break-words'>Remarks</div>
+              <div className="text-wrap break-words">S.No.</div>
+              <div className="text-wrap break-words">Patient Name</div>
+              <div className="text-wrap break-words">Disease</div>
+              <div className="text-wrap break-words">Symptoms</div>
+              <div className="text-wrap break-words">Symptoms Persisting?</div>
+              <div className="text-wrap break-words">Medicines Taken</div>
+              <div className="text-wrap break-words">Side Effects</div>
+              <div className="text-wrap break-words">Attachments</div>
+              <div className="text-wrap break-words">Remarks</div>
             </div>
             <div className="w-[95%] md:rounded-2xl rounded-lg bg-[#cff0f9]/70">
               {patientData?.map((data, index) => (
@@ -157,15 +157,19 @@ export default function DoctorHome() {
                   key={index}
                   className="grid grid-cols-9 text-center text-[#0B1E5B] md:max-lg:text-[10px] lg:text-sm text-[6px] font-quicksand font-bold md:p-5 p-3"
                 >
-                  <div className='text-wrap break-words'>{index + 1}</div>
-                  <div className='text-wrap break-words'>{data.patientName}</div>
-                  <div className='text-wrap break-words'>{data.disease}</div>
-                  <div className='text-wrap break-words'>{data.symptoms}</div>
-                  <div className='text-wrap break-words'>
+                  <div className="text-wrap break-words">{index + 1}</div>
+                  <div className="text-wrap break-words">
+                    {data.patientName}
+                  </div>
+                  <div className="text-wrap break-words">{data.disease}</div>
+                  <div className="text-wrap break-words">{data.symptoms}</div>
+                  <div className="text-wrap break-words">
                     {data.symptomsPersist == true ? "True" : "False"}
                   </div>
-                  <div className='text-wrap break-words'>{data.medsTaken}</div>
-                  <div className='text-wrap break-words'>{data.sideEffects}</div>
+                  <div className="text-wrap break-words">{data.medsTaken}</div>
+                  <div className="text-wrap break-words">
+                    {data.sideEffects}
+                  </div>
                   <div>
                     <Attachments
                       healthRecordId={data.id}

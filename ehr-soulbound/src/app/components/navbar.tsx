@@ -52,7 +52,7 @@ export function Navbar() {
               : "border-b-4 border-transparent")
           }
         >
-          Patient <br className="md:hidden visible"/> Dashboard
+          Patient <br className="md:hidden visible" /> Dashboard
         </Link>
         {/* <Link href="/user/doctor/home" className={ 'border-b-4 hover:border-[#0B1E5B] transition ease-in-out delay-50 duration-100' + (currentRoute === "/user/doctor/home" ? "border-b-4 border-[#0B1E5B]" : "border-b-4 border-transparent")}>
                     Doctor Dashboard

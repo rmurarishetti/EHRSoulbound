@@ -20,20 +20,17 @@ export function Attachments(params: remarksParams) {
     await getLabRecords();
   }
 
-  
-    async function getLabRecords() {
-      const formData = new FormData();
-      formData.append("healthRecordId", params.healthRecordId.toString());
-      //console.log(params.healthRecordId);
-      const response = await fetch("/api/getLabRecords", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-      setLabRecords(data);
-      
-    }
-    
+  async function getLabRecords() {
+    const formData = new FormData();
+    formData.append("healthRecordId", params.healthRecordId.toString());
+    //console.log(params.healthRecordId);
+    const response = await fetch("/api/getLabRecords", {
+      method: "POST",
+      body: formData,
+    });
+    const data = await response.json();
+    setLabRecords(data);
+  }
 
   const fetchImage = (imageBytes: any) => {
     const t = Buffer.from(imageBytes, "base64").toString("base64");
@@ -44,7 +41,10 @@ export function Attachments(params: remarksParams) {
     <Dialog.Root open={open} onOpenChange={handleOpen}>
       <Dialog.Trigger asChild>
         <button className="w-full flex justify-center items-center border-[2px] md:rounded-3xl rounded-xl border-[#F6D1CC] px-2 sm:py-2 py-1 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-semibold text-[#0B1E5B] md:text-xs text-[6px] transition ease-in-out delay-50 duration-200 text-wrap break-words">
-          <DownloadIcon />&nbsp;Attach<br className="md:hidden visible"/>ments
+          <DownloadIcon />
+          &nbsp;Attach
+          <br className="md:hidden visible" />
+          ments
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -69,31 +69,34 @@ export function Attachments(params: remarksParams) {
             </div>
             <a
               download
-              href={`data:image/png;base64,${fetchImage(
-                params.prescription
-              )}`}
+              href={`data:image/png;base64,${fetchImage(params.prescription)}`}
               target="_blank"
               className="flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-4 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-semibold text-[#23356B] text-xs transition ease-in-out delay-50 duration-200 items-center"
             >
-              <DownloadIcon />&nbsp;Download
+              <DownloadIcon />
+              &nbsp;Download
             </a>
           </div>
-          {(labRecords && labRecords.labTest && labRecords.imageFile)?
-          <div className="mb-2 flex items-center">
-            <div className="text-[#23356B] font-medium md:text-[14px] text-[7px]">
-              Lab Test - {labRecords.labTest}
+          {labRecords && labRecords.labTest && labRecords.imageFile ? (
+            <div className="mb-2 flex items-center">
+              <div className="text-[#23356B] font-medium md:text-[14px] text-[7px]">
+                Lab Test - {labRecords.labTest}
+              </div>
+              <a
+                download
+                href={`data:image/png;base64,${fetchImage(
+                  labRecords.imageFile
+                )}`}
+                target="_blank"
+                className="flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-4 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-semibold text-[#23356B] text-xs transition ease-in-out delay-50 duration-200 items-center"
+              >
+                <DownloadIcon />
+                &nbsp;Download
+              </a>
             </div>
-            <a
-              download
-              href={`data:image/png;base64,${fetchImage(
-                labRecords.imageFile
-              )}`}
-              target="_blank"
-              className="flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-4 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-semibold text-[#23356B] text-xs transition ease-in-out delay-50 duration-200 items-center"
-            >
-              <DownloadIcon />&nbsp;Download
-            </a>
-          </div> : <div className="hidden"></div>}
+          ) : (
+            <div className="hidden"></div>
+          )}
           <button
             onClick={() => setOpen(false)}
             className="text-[#38139F]/80 hover:bg-[#38139F]/10 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full"

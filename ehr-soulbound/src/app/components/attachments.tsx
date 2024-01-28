@@ -2,7 +2,6 @@
 import React, { FormEvent, useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon, DownloadIcon } from "@radix-ui/react-icons";
-import * as Form from "@radix-ui/react-form";
 
 interface remarksParams {
   healthRecordId: number;
@@ -14,7 +13,7 @@ interface remarksParams {
 export function Attachments(params: remarksParams) {
   const [open, setOpen] = useState(false);
   const [labRecords, setLabRecords] = useState<any>({});
-  
+
   async function getLabRecords() {
     const formData = new FormData();
     formData.append("healthRecordId", params.healthRecordId.toString());
@@ -22,12 +21,10 @@ export function Attachments(params: remarksParams) {
       method: "POST",
       body: formData,
     });
-  
+
     const data = await response.json();
     setLabRecords(data);
-
   }
-  
 
   async function handleOpen() {
     getLabRecords();
@@ -43,7 +40,8 @@ export function Attachments(params: remarksParams) {
     <Dialog.Root open={open} onOpenChange={handleOpen}>
       <Dialog.Trigger asChild>
         <button className="flex justify-center items-center border-[2px] rounded-3xl border-[#F6D1CC] md:px-4 px-2 py-2 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-semibold text-[#0B1E5B] md:text-xs text-[6px] transition ease-in-out delay-50 duration-200">
-          <DownloadIcon />&nbsp;Attachments
+          <DownloadIcon />
+          &nbsp;Attachments
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -68,13 +66,12 @@ export function Attachments(params: remarksParams) {
             </div>
             <a
               download
-              href={`data:image/png;base64,${fetchImage(
-                params.prescription
-              )}`}
+              href={`data:image/png;base64,${fetchImage(params.prescription)}`}
               target="_blank"
               className="flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-4 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-semibold text-[#23356B] text-xs transition ease-in-out delay-50 duration-200 items-center"
             >
-              <DownloadIcon />&nbsp;Download
+              <DownloadIcon />
+              &nbsp;Download
             </a>
           </div>
           {labRecords && labRecords.labTest && labRecords.imageFile ? (
@@ -90,7 +87,8 @@ export function Attachments(params: remarksParams) {
                 target="_blank"
                 className="flex ml-auto border-[2px] rounded-3xl border-[#F6D1CC] py-2 px-4 bg-[#f2e9e4]/75 hover:bg-[#eadbd3]/75 font-quicksand font-semibold text-[#23356B] text-xs transition ease-in-out delay-50 duration-200 items-center"
               >
-                <DownloadIcon />&nbsp;Download
+                <DownloadIcon />
+                &nbsp;Download
               </a>
             </div>
           ) : (

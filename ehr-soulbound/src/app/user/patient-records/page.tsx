@@ -57,20 +57,20 @@ const RecordsPage = () => {
       </div>
       <div className="flex flex-row flex-wrap justify-center">
         {records.map((record, idx) => (
-            <RecordCard
-              key={idx}
-              title={record.title}
-              remarks={record.remarks}
-              disease={record.disease}
-              symptoms={record.symptoms}
-              meds={record.medsTaken}
-              sideeffects={record.sideEffects}
-              persist={record.symptomsPersist.toString()}
-              doctor={record.doctorId}
-              presfile={fetchImage(record.imageFile)}
-              healthrecord={record.id}
-              uploadDate={new Date(record.uploadDate)}
-            />
+          <RecordCard
+            key={idx}
+            title={record.title}
+            remarks={record.remarks}
+            disease={record.disease}
+            symptoms={record.symptoms}
+            meds={record.medsTaken}
+            sideeffects={record.sideEffects}
+            persist={record.symptomsPersist.toString()}
+            doctor={record.doctorId}
+            presfile={fetchImage(record.imageFile)}
+            healthrecord={record.id}
+            uploadDate={new Date(record.uploadDate)}
+          />
         ))}
       </div>
     </div>

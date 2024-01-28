@@ -80,8 +80,8 @@ export function Remarks(params: remarksParams) {
             Add Remarks
           </Dialog.Title>
           <Dialog.Description className="text-[#23356B] mt-1 mb-5 md:text-[15px] text-[8px]">
-            Add your remarks for the doctor to view. Click
-            submit when you&apos;re done.
+            Add your remarks for the doctor to view. Click submit when
+            you&apos;re done.
           </Dialog.Description>
           <Dialog.Description className="text-[#23356B]/90 mb-5 md:text-[13px] text-[6px]">
             <div className="flex justify-between">
@@ -98,10 +98,7 @@ export function Remarks(params: remarksParams) {
             </div>
           </Dialog.Description>
           <Form.Root onSubmit={submitForm}>
-            <Form.Field
-              className="flex items-center gap-5"
-              name="remarks"
-            >
+            <Form.Field className="flex items-center gap-5" name="remarks">
               <Form.Label className="text-[#23356B] m-3 font-medium md:text-[15px] text-[8px]">
                 Remarks
               </Form.Label>

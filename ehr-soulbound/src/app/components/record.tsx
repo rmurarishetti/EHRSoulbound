@@ -34,7 +34,6 @@ export function RecordCard(props: props) {
       setDoctorName(data);
     }
     getDoctorName();
-   
   }, [props.doctor, props.healthrecord]);
 
   return (
@@ -67,7 +66,7 @@ export function RecordCard(props: props) {
               <div>Side-Effects: {props.sideeffects}</div>
             </div>
           </div>
-          
+
           <div className="flex flex-row justify-between mt-6 text-[#23356B]">
             <Attachments
               healthRecordId={parseInt(props.healthrecord)}

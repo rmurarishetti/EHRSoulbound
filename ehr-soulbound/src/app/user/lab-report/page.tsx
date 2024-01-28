@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import * as Toast from "@radix-ui/react-toast";
 import axios from "axios";
 
-export default function LabReport(){
+export default function LabReport() {
   const router = useRouter();
   const formData = new FormData();
   const { user, error, isLoading } = useUser();
@@ -305,9 +305,11 @@ export default function LabReport(){
                             value={`${hr.id}`}
                             className="font-quicksand relative flex items-center px-4 md:h-12 h-10 rounded-full md:text-xl text-lg text-[#0B1E5B] font-semibold focus:bg-[#eadbd3] focus:outline-none cursor-pointer select-none"
                           >
-                            <Select.ItemText>{`${hr.disease}-${hr.doctor.name}-${
-                              prettyDate(new Date(hr.uploadDate))
-                            }`}</Select.ItemText>
+                            <Select.ItemText>{`${hr.disease}-${
+                              hr.doctor.name
+                            }-${prettyDate(
+                              new Date(hr.uploadDate)
+                            )}`}</Select.ItemText>
                             <Select.ItemIndicator className="ml-auto inline-flex items-center">
                               <CheckIcon />
                             </Select.ItemIndicator>
@@ -386,7 +388,7 @@ export default function LabReport(){
         </Toast.Provider>
       </div>
     );
-};
+}
 
 function prettyDate(date: Date) {
   return new Date(date).toLocaleDateString("en-GB");

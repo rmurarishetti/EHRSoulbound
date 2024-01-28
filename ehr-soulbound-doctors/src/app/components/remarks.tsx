@@ -29,7 +29,7 @@ export function Remarks(params: remarksParams) {
 
     formData.append("healthRecordId", params.healthRecordId.toString());
     formData.append("doctorId", params.doctorId.toString());
-    formData.append("remarks", "From Doctor: "+state.remarks);
+    formData.append("remarks", "From Doctor: " + state.remarks);
 
     const response = await fetch("/api/updateRemarks", {
       method: "POST",
@@ -89,10 +89,7 @@ export function Remarks(params: remarksParams) {
             </div>
           </Dialog.Description>
           <Form.Root onSubmit={submitForm}>
-            <Form.Field
-              className="flex items-center gap-5"
-              name="remarks"
-            >
+            <Form.Field className="flex items-center gap-5" name="remarks">
               <Form.Label className="text-[#23356B] m-3 font-medium md:text-[15px] text-[8px]">
                 Remarks
               </Form.Label>

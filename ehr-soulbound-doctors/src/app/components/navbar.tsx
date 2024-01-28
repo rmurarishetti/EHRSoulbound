@@ -32,7 +32,7 @@ export default function Navbar() {
         >
           About
         </Link>
-        
+
         <Link
           href="/user/doctor/home"
           className={
@@ -42,9 +42,9 @@ export default function Navbar() {
               : "border-b-4 border-transparent")
           }
         >
-          Doctor <br className="md:hidden visible"/> Dashboard
+          Doctor <br className="md:hidden visible" /> Dashboard
         </Link>
-              </div>
+      </div>
       <div className="flex md:px-8 md:py-6 px-4 py-8 justify-end">
         {!isLoading && !user && (
           <div>

@@ -13,7 +13,6 @@ export default withPageAuthRequired(
         email: user?.email ?? "",
       },
     });
-    
 
     return (
       <div>
@@ -33,7 +32,9 @@ export default withPageAuthRequired(
                 <h3>Doctor&apos;s Visit</h3>
                 <FiArrowRight />
               </div>
-              <div className="md:text-lg text-sm">Click Here To Add Prescription</div>
+              <div className="md:text-lg text-sm">
+                Click Here To Add Prescription
+              </div>
             </Link>
             <Link
               className="border-[2px] border-[#ffaeae] rounded-3xl bg-[#f2e9e4] hover:bg-[#eadbd3] hover:border-[#ff9090] py-4 px-4 m-10 font-quicksand font-medium text-[#0b1e5b] transition ease-in-out delay-50 duration-200"
@@ -43,7 +44,9 @@ export default withPageAuthRequired(
                 <h3>Lab Reports</h3>
                 <FiArrowRight />
               </div>
-              <div className="md:text-lg text-sm">Click Here To Add Lab Reports</div>
+              <div className="md:text-lg text-sm">
+                Click Here To Add Lab Reports
+              </div>
             </Link>
             <Link
               className="border-[2px] border-[#ffaeae] rounded-3xl bg-[#f2e9e4] hover:bg-[#eadbd3] hover:border-[#ff9090] py-4 px-4 m-10 font-quicksand font-medium text-[#0b1e5b] transition ease-in-out delay-50 duration-200"
@@ -53,7 +56,9 @@ export default withPageAuthRequired(
                 <h3>View Records</h3>
                 <FiArrowRight />
               </div>
-              <div className="md:text-lg text-sm">Click Here To View Your Records</div>
+              <div className="md:text-lg text-sm">
+                Click Here To View Your Records
+              </div>
             </Link>
           </div>
         </div>
